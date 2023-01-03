@@ -1,6 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Content;
+using MonoGame.Extended.Sprites;
+using MonoGame.Extended.Tiled;
+using MonoGame.Extended.Tiled.Renderers;
+
 
 namespace CHADventure
 {
@@ -8,6 +13,7 @@ namespace CHADventure
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private AnimatedSprite _perso;
 
         public Game1()
         {
@@ -25,6 +31,7 @@ namespace CHADventure
 
         protected override void LoadContent()
         {
+            _perso = new AnimatedSprite(spriteSheet);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
