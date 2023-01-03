@@ -11,9 +11,10 @@ namespace CHADventure
 {
     public class Game1 : Game
     {
+     
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private AnimatedSprite _perso;
 
         public Game1()
         {
@@ -31,7 +32,6 @@ namespace CHADventure
 
         protected override void LoadContent()
         {
-            _perso = new AnimatedSprite(spriteSheet);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
@@ -43,8 +43,6 @@ namespace CHADventure
                 Exit();
 
             // TODO: Add your update logic here
-
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
