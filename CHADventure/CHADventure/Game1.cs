@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
@@ -27,6 +27,10 @@ namespace CHADventure
         private EnigmeGauche _enigmeGauche;
         private CouloirPrincipale _couloirPrincipale;
         private SalleBoss _salleBoss;
+        private Vector2 _position;
+        private ClassPerso _perso;
+
+        
         public SpriteBatch SpriteBatch { get; set; }
 
         public Game1()
@@ -41,7 +45,6 @@ namespace CHADventure
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -71,6 +74,7 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                //ClassPerso.InitPosition(_position);
             }
             else if (keyboardState.IsKeyDown(Keys.E))
             {

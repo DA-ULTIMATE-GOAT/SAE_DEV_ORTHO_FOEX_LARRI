@@ -8,14 +8,25 @@ using MonoGame.Extended.Tiled.Renderers;
 
 namespace CHADventure
 {
-    internal class ClassPerso
+    public class ClassPerso
     {
         public const int HAUTEUR_SPRITE = 72;
-        public const int LARGEUR_SPRITE = 52;
+        public const int LARGEUR_SPRITE = 72;
 
-        private AnimatedSprite _perso;
-        private Vector2 _positionPerso;
-        private int _vitesse = 100;
+        private AnimatedSprite Sprite;
+        private Vector2 position;
+        private int vitesse = 100;
+        public ClassPerso(Game1 game)
+        {
+        }
+
+
+
+        public void InitPosition(Vector2 position)
+        {
+            this.position = position;
+        }
+
 
     }
 }
