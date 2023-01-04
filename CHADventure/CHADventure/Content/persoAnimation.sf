@@ -1,0 +1,55 @@
+{
+  "textureAtlas": {
+    "texture": "Chad.png",
+    "regionWidth": 92,
+    "regionHeight": 72
+  },
+  "cycles": {
+    "idle": {
+      "frames": [0],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+    "walkSouth": {
+      "frames": [1,0,2,0],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+    "walkWest": {
+      "frames": [3,4,5,4],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+    "walkEast": {
+      "frames": [6,7,8,7],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+    "walkNorth": {
+      "frames": [9,10,11,10],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+	"attackSouth": {
+      "frames": [12,13,14,13],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+	"attackWest": {
+      "frames": [15,16,17,16],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+	"attackEast": {
+      "frames": [18,19,20,19],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+	"attackNorth": {
+      "frames": [21,22,23,22],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+  }
+  
+}

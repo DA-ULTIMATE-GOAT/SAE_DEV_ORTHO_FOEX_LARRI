@@ -28,7 +28,7 @@ namespace CHADventure
         private CouloirPrincipale _couloirPrincipale;
         private SalleBoss _salleBoss;
         private Vector2 _position;
-        private ClassPerso _perso;
+        private AnimatedSprite _perso;
         public const int HAUTEUR_FENETRE = 800;
         public const int LARGEUR_FENETRE = 800;
 
@@ -46,12 +46,15 @@ namespace CHADventure
 
         protected override void Initialize()
         {
+            _position = new Vector2(400, 672);
             // TODO: Add your initialization logic here
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _perso = new AnimatedSprite(spriteSheet);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _entree = new Entree(this); // en leur donnant une référence au Game
             _sallePrincipale = new SallePrincipale(this);
@@ -79,7 +82,7 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                //ClassPerso.InitPosition(_position);
+                _perso.Update(_position);
             }
             else if (keyboardState.IsKeyDown(Keys.E))
             {
@@ -110,7 +113,9 @@ namespace CHADventure
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(_perso, _position);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

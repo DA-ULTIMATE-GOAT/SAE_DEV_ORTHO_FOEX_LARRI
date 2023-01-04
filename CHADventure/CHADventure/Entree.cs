@@ -17,6 +17,7 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer; 
         private TiledMapTileLayer _mapLayer2;
         private Vector2 position;
+
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
         public Entree(Game1 game) : base(game)
@@ -25,7 +26,7 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            
+            position = new Vector2(400,672);
             base.Initialize();
         }
         public override void LoadContent()
