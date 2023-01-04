@@ -1,4 +1,4 @@
-﻿ using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
@@ -68,6 +68,8 @@ namespace CHADventure
                 Exit();
 
             // TODO: Add your update logic here
+
+            _myGame.GraphicsDevice.Clear(Color.Black);
 
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))

@@ -14,7 +14,8 @@ namespace CHADventure
         private Game1 _myGame;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
-        private TiledMapTileLayer _mapLayer;
+        private TiledMapTileLayer _mapLayer; 
+        private TiledMapTileLayer _mapLayer2;
         private Vector2 position;
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
@@ -29,9 +30,10 @@ namespace CHADventure
         }
         public override void LoadContent()
         {
-            _tiledMap = Content.Load<TiledMap>("Entree");
+            _tiledMap = Content.Load<TiledMap>("ExterieurMap");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
+            _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)

@@ -10,6 +10,67 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\MonoGame.Extended.Content.Pipeline.dll
+/reference:..\..\MonoGame.Extended.dll
+/reference:..\..\MonoGame.Extended.Graphics.dll
+/reference:..\..\MonoGame.Extended.Tiled.dll
+/reference:..\..\Newtonsoft.Json.dll
 
 #---------------------------------- Content ---------------------------------#
+
+#begin ExterieurMAP.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:ExterieurMAP.tmx
+
+#begin Exterior.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Exterior.png
+
+#begin Exterior.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Exterior.tsx
+
+#begin FacadeChateau.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FacadeChateau.png
+
+#begin FacadeChateau.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:FacadeChateau.tsx
+
+#begin Stairs-Bridge.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Stairs-Bridge.png
+
+#begin Stairs-Bridge.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Stairs-Bridge.tsx
 
