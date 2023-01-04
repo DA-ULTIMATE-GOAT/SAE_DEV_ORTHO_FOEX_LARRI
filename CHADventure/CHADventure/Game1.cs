@@ -29,8 +29,10 @@ namespace CHADventure
         private SalleBoss _salleBoss;
         private Vector2 _position;
         private ClassPerso _perso;
+        public const int HAUTEUR_FENETRE = 800;
+        public const int LARGEUR_FENETRE = 800;
 
-        
+
         public SpriteBatch SpriteBatch { get; set; }
 
         public Game1()
@@ -69,8 +71,9 @@ namespace CHADventure
 
             // TODO: Add your update logic here
 
-            _myGame.GraphicsDevice.Clear(Color.Black);
-
+           _graphics.PreferredBackBufferWidth = LARGEUR_FENETRE;
+           _graphics.PreferredBackBufferHeight = HAUTEUR_FENETRE;
+           _graphics.ApplyChanges();
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))
             {
@@ -104,7 +107,7 @@ namespace CHADventure
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
