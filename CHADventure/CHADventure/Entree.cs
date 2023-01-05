@@ -56,7 +56,7 @@ namespace CHADventure
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.Q))
+            if ((_positionPerso.X > ClassPerso.LARGEUR_SPRITE/4 ) && keyboardState.IsKeyDown(Keys.Q))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth -1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight+1);
@@ -67,7 +67,7 @@ namespace CHADventure
                     _positionPerso.X -= VITESSE_PERSO * deltaTime;
                 Console.WriteLine("LEFT");
             }
-            else if (keyboardState.IsKeyDown(Keys.D))
+            else if ((_positionPerso.X < 800 - ClassPerso.LARGEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.D))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth+ 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight+1);
@@ -78,7 +78,7 @@ namespace CHADventure
                 _positionPerso.X += VITESSE_PERSO * deltaTime;
                 Console.WriteLine("RIGHT");
             }
-            else if (keyboardState.IsKeyDown(Keys.Z))
+            else if ((_positionPerso.Y > ClassPerso.HAUTEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.Z))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight -1);
@@ -89,7 +89,7 @@ namespace CHADventure
                     _positionPerso.Y -= VITESSE_PERSO * deltaTime;
                 Console.WriteLine("UP");
             }
-            else if (keyboardState.IsKeyDown(Keys.S))
+            else if ((_positionPerso.Y < 800 - ClassPerso.HAUTEUR_SPRITE/2) && keyboardState.IsKeyDown(Keys.S))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight +2);
