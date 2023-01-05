@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
@@ -26,14 +27,15 @@ namespace CHADventure
         private EnigmeDroite _enigmeDroite;
         private EnigmeGauche _enigmeGauche;
         private CouloirPrincipale _couloirPrincipale;
-        private SalleBoss _salleBoss;
-        private Vector2 _position;
         private AnimatedSprite _perso;
+        private Vector2 _positionPerso;
+        private const int VITESSE_PERSO = 110;
+        private SalleBoss _salleBoss;
         public const int HAUTEUR_FENETRE = 800;
         public const int LARGEUR_FENETRE = 800;
 
 
-        public SpriteBatch SpriteBatch { get; set; }
+        
 
         public Game1()
         {
@@ -46,15 +48,15 @@ namespace CHADventure
 
         protected override void Initialize()
         {
-            _position = new Vector2(400, 672);
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _perso = new AnimatedSprite(spriteSheet);
+            _positionPerso = new Vector2(400, 672);
             // TODO: Add your initialization logic here
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _perso = new AnimatedSprite(spriteSheet);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _entree = new Entree(this); // en leur donnant une référence au Game
             _sallePrincipale = new SallePrincipale(this);
@@ -69,6 +71,7 @@ namespace CHADventure
 
         protected override void Update(GameTime gameTime)
         {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -78,18 +81,19 @@ namespace CHADventure
            _graphics.PreferredBackBufferHeight = HAUTEUR_FENETRE;
            _graphics.ApplyChanges();
             KeyboardState keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.Left))
+            if (keyboardState.IsKeyDown(Keys.C))
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _perso.Update(_position);
+                _perso.Update(deltaTime);
+               
             }
             else if (keyboardState.IsKeyDown(Keys.E))
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
-            else if (keyboardState.IsKeyDown(Keys.Right))
+            else if (keyboardState.IsKeyDown(Keys.V))
             {
                 _screenManager.LoadScreen(_couloirDroit, new FadeTransition(GraphicsDevice,
                 Color.Black));
@@ -104,7 +108,26 @@ namespace CHADventure
                 _screenManager.LoadScreen(_couloirPrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
-
+            if (keyboardState.IsKeyDown(Keys.Left))
+            {
+                _perso.Play("walkWest");
+                _perso.Update(deltaTime);
+                _positionPerso.X -= VITESSE_PERSO*deltaTime;
+                Console.WriteLine("LEFT");
+            }
+            else if (keyboardState.IsKeyDown(Keys.Right))
+            {
+                _perso.Play("walkEast");
+                _perso.Update(deltaTime);
+                _positionPerso.X += VITESSE_PERSO * deltaTime;
+                Console.WriteLine("RIGHT");
+            }
+            else
+            {
+                _perso.Play("idle");
+                _perso.Update(deltaTime);
+                
+            }
             base.Update(gameTime);
         }
 
@@ -114,7 +137,7 @@ namespace CHADventure
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            _spriteBatch.Draw(_perso, _position);
+            _spriteBatch.Draw(_perso, _positionPerso);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
