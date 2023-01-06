@@ -96,6 +96,7 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
+
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale.Dehors(tx, ty) == true)
             {
