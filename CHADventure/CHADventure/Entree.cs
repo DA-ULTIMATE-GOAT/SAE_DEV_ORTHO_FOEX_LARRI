@@ -23,8 +23,10 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer2;
         private AnimatedSprite _perso;
         private Vector2 _positionPerso;
-        private const int VITESSE_PERSO = 110;
-        private const int TAILLE_TUILE = 16;
+        private String _animation;
+
+        public const int VITESSE_PERSO = 110;
+        public const int TAILLE_TUILE = 16;
 
 
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
@@ -37,7 +39,9 @@ namespace CHADventure
         public override void Initialize()
         {
             
+            
             _positionPerso = new Vector2(400,672);
+            _animation = "idle";
             base.Initialize();
         }
         public override void LoadContent()
@@ -61,40 +65,41 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth -1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight+1);
 
-                _perso.Play("walkWest");
+                _animation = "walkWest";
                 _perso.Update(deltaTime);
                 if (!IsCollision(tx,ty))
                     _positionPerso.X -= VITESSE_PERSO * deltaTime;
-                Console.WriteLine("LEFT");
+               
             }
             else if ((_positionPerso.X < 800 - ClassPerso.LARGEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.D))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth+ 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight+1);
 
-                _perso.Play("walkEast");
+                _animation = "walkEast";
                 _perso.Update(deltaTime);
                 if (!IsCollision(tx, ty))
                 _positionPerso.X += VITESSE_PERSO * deltaTime;
-                Console.WriteLine("RIGHT");
+               
             }
             else if ((_positionPerso.Y > ClassPerso.HAUTEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.Z))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
 
-                _perso.Play("walkNorth");
+               _animation = "walkNorth";
                 _perso.Update(deltaTime);
                 if (!IsCollision(tx, ty))
                     _positionPerso.Y -= VITESSE_PERSO * deltaTime;
-                Console.WriteLine("UP");
+                Console.WriteLine(_mapLayer2.GetTile(tx, ty).GlobalIdentifier);
+               
             }
             else if ((_positionPerso.Y < 800 - ClassPerso.HAUTEUR_SPRITE/2) && keyboardState.IsKeyDown(Keys.S))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight +2);
 
-                _perso.Play("walkSouth");
+                _animation = "walkSouth";
                 _perso.Update(deltaTime);
                 if (!IsCollision(tx,ty))
                     _positionPerso.Y += VITESSE_PERSO * deltaTime;
@@ -102,10 +107,11 @@ namespace CHADventure
             }
             else
             {
-                _perso.Play("idle");
+                _animation = "idle";
                 _perso.Update(deltaTime);
 
             }
+            _perso.Play(_animation);
             _tiledMapRenderer.Update(gameTime);
         }
         public override void Draw(GameTime gameTime)
