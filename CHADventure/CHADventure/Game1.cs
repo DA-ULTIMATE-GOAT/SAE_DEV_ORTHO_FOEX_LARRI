@@ -69,13 +69,13 @@ namespace CHADventure
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _entree = new Entree(this); // en leur donnant une référence au Game
             _sallePrincipale = new SallePrincipale(this);
-            
+            _menu = new ScreenMenu(this);
             _couloirDroit = new CouloirDroit(this);
             _couloirGauche = new CouloirGauche(this);
             _parcoursDroit = new ParcoursDroit(this);
             _parcoursGauche = new ParcoursGauche(this);
             _couloirPrincipale = new CouloirPrincipale(this);
-
+            _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
             // TODO: use this.Content to load your game content here
         }
 
@@ -102,7 +102,7 @@ namespace CHADventure
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale.Dehors(tx, ty) == true)
+            else if (keyboardState.IsKeyDown(Keys.F) && _sallePrincipale.Dehors(tx, ty) == true)
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
