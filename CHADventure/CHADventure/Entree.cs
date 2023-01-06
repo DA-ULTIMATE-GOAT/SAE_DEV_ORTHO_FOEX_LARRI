@@ -47,7 +47,7 @@ namespace CHADventure
         public override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _tiledMap = Content.Load<TiledMap>("ExterieurMap");
+            _tiledMap = Content.Load<TiledMap>("map/Entree/ExterieurMap");
              _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
              _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);

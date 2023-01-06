@@ -30,12 +30,12 @@
 /processorParam:TextureFormat=Color
 /build:Chad.png
 
-#begin ExterieurMAP.tmx
+#begin map/Entree/ExterieurMAP.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
-/build:ExterieurMAP.tmx
+/build:map/Entree/ExterieurMAP.tmx
 
-#begin Exterior.png
+#begin map/Entree/Exterior.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -45,14 +45,14 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Exterior.png
+/build:map/Entree/Exterior.png
 
-#begin Exterior.tsx
+#begin map/Entree/Exterior.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
-/build:Exterior.tsx
+/build:map/Entree/Exterior.tsx
 
-#begin FacadeChateau.png
+#begin map/Entree/FacadeChateau.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -62,33 +62,109 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:FacadeChateau.png
+/build:map/Entree/FacadeChateau.png
 
-#begin FacadeChateau.tsx
+#begin map/Entree/FacadeChateau.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
-/build:FacadeChateau.tsx
+/build:map/Entree/FacadeChateau.tsx
+
+#begin map/Entree/Stairs-Bridge.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Entree/Stairs-Bridge.png
+
+#begin map/Entree/Stairs-Bridge.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/Entree/Stairs-Bridge.tsx
+
+#begin map/Principale/CombatDroite.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/Principale/CombatDroite.tmx
+
+#begin map/Principale/CombatGauche.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/Principale/CombatGauche.tmx
+
+#begin map/Principale/CouloirDroit.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/Principale/CouloirDroit.tmx
+
+#begin map/Principale/CouloirGauche.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/Principale/CouloirGauche.tmx
+
+#begin map/Principale/Decor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Principale/Decor.png
+
+#begin map/Principale/Decor.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/Principale/Decor.tsx
+
+#begin map/Principale/mapcentral.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/Principale/mapcentral.tmx
+
+#begin map/Principale/Props.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Principale/Props.png
+
+#begin map/Principale/Props.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/Principale/Props.tsx
+
+#begin map/Principale/Tiles.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Principale/Tiles.png
+
+#begin map/Principale/Tiles.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/Principale/Tiles.tsx
 
 #begin persoAnimation.sf
 /importer:SpriteFactoryContentImporter
 /processor:SpriteFactoryContentProcessor
 /processorParam:ContentType=MonoGame.Extended MonoGame.Extended.Animations.SpriteFactory.SpriteFactoryFileReader, MonoGame.Extended.Animations
 /build:persoAnimation.sf
-
-#begin Stairs-Bridge.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Stairs-Bridge.png
-
-#begin Stairs-Bridge.tsx
-/importer:TiledMapTilesetImporter
-/processor:TiledMapTilesetProcessor
-/build:Stairs-Bridge.tsx
 
