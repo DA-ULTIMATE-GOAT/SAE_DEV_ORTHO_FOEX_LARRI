@@ -16,7 +16,7 @@ namespace CHADventure
     {
         //pour le changement de scene
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
         private Entree _entree;
         public SallePrincipale _sallePrincipale;
@@ -90,9 +90,7 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _perso.Update(deltaTime);
-
-               
+                _perso.Update(deltaTime);  
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
             {

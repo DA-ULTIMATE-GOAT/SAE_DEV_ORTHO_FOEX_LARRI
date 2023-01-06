@@ -14,14 +14,12 @@ namespace CHADventure
     public class Entree : GameScreen
     {
         private Game1 _myGame;
-        private readonly ScreenManager _screenManager;
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private Perso _perso = new Perso();
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer; 
         private TiledMapTileLayer _mapLayer2;
-        private AnimatedSprite _perso;
+        private AnimatedSprite _sprite;
         private Vector2 _positionPerso;
         private String _animation;
 
@@ -40,54 +38,47 @@ namespace CHADventure
         {
             _positionPerso = new Vector2(400,672);
             _animation = "idle";
+            _perso.InitPosition(_positionPerso);
             base.Initialize();
         }
         public override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
             _tiledMap = Content.Load<TiledMap>("map/Entree/ExterieurMap");
-             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
-             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
+            _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
+            _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _perso = new AnimatedSprite(spriteSheet);
+            _perso._perso = new AnimatedSprite(spriteSheet);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
         {
-            var instancePerso = new ClassPerso();
-            instancePerso.DeplacementPerso(gameTime);
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
+            _perso.DeplacementPerso(gameTime,_tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
+            _perso._perso.Play(_perso._animation);
+            _perso._perso.Update(deltaTime);
 
         }
         public override void Draw(GameTime gameTime)
         {
             _tiledMapRenderer.Draw(); // on utilise la reference vers
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(_perso, _positionPerso);
-            _spriteBatch.End();                         // Game1 pour changer le graphisme
+            _myGame._spriteBatch.Begin();
+            _myGame._spriteBatch.Draw(_perso._perso, _perso._positionPerso);
+            _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
+            
         }
-
-        /*private bool IsCollision(ushort x, ushort y)
-        {
-            // définition de tile qui peut être null (?)
-            TiledMapTile? tile;
-            if ((_mapLayer.TryGetTile(x, y, out tile) == false) && (_mapLayer2.TryGetTile(x, y, out tile) == false))
-                return false;
-            if (!tile.Value.IsBlank)
-                return true;
-            return false;
-        }*/
-
 
         public bool OuverturePorte(ushort tx, ushort ty)
         {
-            tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-            ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
+            tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
+            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
             bool reponse = false;
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
                 reponse = true;
+                Console.WriteLine("TRUE");
             }
             return reponse;
             
