@@ -51,7 +51,7 @@ namespace CHADventure
 
         protected override void Initialize()
         {
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso = new AnimatedSprite(spriteSheet);
             _positionPerso = new Vector2(400, 672);
             tx = 0;

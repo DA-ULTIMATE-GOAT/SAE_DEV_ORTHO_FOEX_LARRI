@@ -18,7 +18,13 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Chad.png
+#begin ezio/ezioAnimation.sf
+/importer:SpriteFactoryContentImporter
+/processor:SpriteFactoryContentProcessor
+/processorParam:ContentType=MonoGame.Extended MonoGame.Extended.Animations.SpriteFactory.SpriteFactoryFileReader, MonoGame.Extended.Animations
+/build:ezio/ezioAnimation.sf
+
+#begin ezio/EzioFini.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -28,7 +34,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Chad.png
+/build:ezio/EzioFini.png
 
 #begin map/Entree/ExterieurMAP.tmx
 /importer:TiledMapImporter
@@ -162,9 +168,75 @@
 /processor:TiledMapTilesetProcessor
 /build:map/Principale/Tiles.tsx
 
-#begin persoAnimation.sf
+#begin mob/BlueBlob/blueBlobAnimation.sf
 /importer:SpriteFactoryContentImporter
 /processor:SpriteFactoryContentProcessor
 /processorParam:ContentType=MonoGame.Extended MonoGame.Extended.Animations.SpriteFactory.SpriteFactoryFileReader, MonoGame.Extended.Animations
-/build:persoAnimation.sf
+/build:mob/BlueBlob/blueBlobAnimation.sf
+
+#begin mob/BlueBlob/BlueBlobFini.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:mob/BlueBlob/BlueBlobFini.png
+
+#begin mob/RedBlob/redBlobAnimation.sf
+/importer:SpriteFactoryContentImporter
+/processor:SpriteFactoryContentProcessor
+/processorParam:ContentType=MonoGame.Extended MonoGame.Extended.Animations.SpriteFactory.SpriteFactoryFileReader, MonoGame.Extended.Animations
+/build:mob/RedBlob/redBlobAnimation.sf
+
+#begin mob/RedBlob/RedBlobFini.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:mob/RedBlob/RedBlobFini.png
+
+#begin mob/Sans/bossAnimation.sf
+/importer:SpriteFactoryContentImporter
+/processor:SpriteFactoryContentProcessor
+/processorParam:ContentType=MonoGame.Extended MonoGame.Extended.Animations.SpriteFactory.SpriteFactoryFileReader, MonoGame.Extended.Animations
+/build:mob/Sans/bossAnimation.sf
+
+#begin mob/Sans/FakeSansFini.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:mob/Sans/FakeSansFini.png
+
+#begin mob/Sombrero/sombreroAnimation.sf
+/importer:SpriteFactoryContentImporter
+/processor:SpriteFactoryContentProcessor
+/processorParam:ContentType=MonoGame.Extended MonoGame.Extended.Animations.SpriteFactory.SpriteFactoryFileReader, MonoGame.Extended.Animations
+/build:mob/Sombrero/sombreroAnimation.sf
+
+#begin mob/Sombrero/SombreroFini.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:mob/Sombrero/SombreroFini.png
 

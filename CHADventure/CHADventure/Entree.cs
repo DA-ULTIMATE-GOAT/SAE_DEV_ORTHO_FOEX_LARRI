@@ -47,7 +47,7 @@ namespace CHADventure
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._perso = new AnimatedSprite(spriteSheet);
             base.LoadContent();
         }

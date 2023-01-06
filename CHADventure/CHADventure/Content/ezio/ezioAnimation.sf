@@ -1,6 +1,6 @@
 {
   "textureAtlas": {
-    "texture": "Chad.png",
+    "texture": "EzioFini.png",
     "regionWidth": 92,
     "regionHeight": 72
   },
@@ -47,6 +47,16 @@
     },
 	"attackNorth": {
       "frames": [21,22,23,22],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+	"death": {
+      "frames": [24,25,26,27,28,29],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+	"jump": {
+      "frames": [30,31,32],
       "isLooping": false,
       "frameDuration": 0.1
     },
