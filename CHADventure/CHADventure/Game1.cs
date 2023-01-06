@@ -91,13 +91,9 @@ namespace CHADventure
            _graphics.PreferredBackBufferHeight = HAUTEUR_FENETRE;
            _graphics.ApplyChanges();
             KeyboardState keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.C))
-            {
-                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
-                Color.Black));
-                _perso.Update(deltaTime);  
-            }
-            else if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
+            MouseState _mouseState = Mouse.GetState();
+            
+            if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
@@ -108,20 +104,15 @@ namespace CHADventure
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
-            else if (keyboardState.IsKeyDown(Keys.V))
+            if (_mouseState.LeftButton == ButtonState.Pressed)
             {
-                _screenManager.LoadScreen(_couloirDroit, new FadeTransition(GraphicsDevice,
-                Color.Black));
-            }
-            else if (keyboardState.IsKeyDown(Keys.R))
-            {
-                _screenManager.LoadScreen(_couloirGauche, new FadeTransition(GraphicsDevice,
-                Color.Black));
-            }
-            else if (keyboardState.IsKeyDown(Keys.Y))
-            {
-                _screenManager.LoadScreen(_couloirPrincipale, new FadeTransition(GraphicsDevice,
-                Color.Black));
+                // Attention, l'état a été mis à jour directement par l'écran en question
+                if (this.Etat == Etats.Quit)
+                    Exit();
+
+                else if (this.Etat == Etats.Play)
+                    _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
+
             }
             if (keyboardState.IsKeyDown(Keys.Left))
             {
@@ -148,12 +139,7 @@ namespace CHADventure
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(_perso, _positionPerso);
-            _spriteBatch.End();
             base.Draw(gameTime);
         }
         public Etats Etat

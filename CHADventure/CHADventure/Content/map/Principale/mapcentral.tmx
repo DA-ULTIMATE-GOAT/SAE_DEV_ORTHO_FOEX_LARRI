@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="1">
- <tileset firstgid="1" source="C:/Users/foexr/source/repos/SAE_DEV_ORTHO_FOEX_LARRI/CHADventure/CHADventure/Content/map/Principale/Tiles.tsx"/>
- <tileset firstgid="626" source="C:/Users/foexr/source/repos/SAE_DEV_ORTHO_FOEX_LARRI/CHADventure/CHADventure/Content/map/Principale/Props.tsx"/>
+ <tileset firstgid="1" source="Tiles.tsx"/>
+ <tileset firstgid="626" source="Props.tsx"/>
  <layer id="2" name="Calque de Tuiles 4" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
