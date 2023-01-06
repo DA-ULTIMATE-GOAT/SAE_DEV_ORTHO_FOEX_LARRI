@@ -24,6 +24,7 @@ namespace CHADventure
         private AnimatedSprite _perso;
         private Vector2 _positionPerso;
         private String _animation;
+        private int nb;
 
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
