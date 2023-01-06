@@ -20,7 +20,7 @@ namespace CHADventure
         public Vector2 _positionPerso = new Vector2(400, 672);
         public AnimatedSprite _perso;
         public String _animation;
-        
+        private string idle = "S";
 
 
         public void InitPosition(Vector2 _positionPerso)
@@ -37,7 +37,8 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
                 _animation = "walkWest";
-                
+                idle = "S";
+
                 if (!IsCollision(tx, ty,_mapLayer,_mapLayer2))
                     _positionPerso.X -= VITESSE_PERSO * deltaTime;
             }
@@ -46,7 +47,8 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth + 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
                 _animation = "walkEast";
-               
+                idle = "S";
+
                 if (!IsCollision(tx, ty,_mapLayer, _mapLayer2))
                     _positionPerso.X += VITESSE_PERSO * deltaTime;
 
@@ -56,6 +58,7 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
                 _animation = "walkNorth";
+                idle = "N";
                
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.Y -= VITESSE_PERSO * deltaTime;
@@ -68,6 +71,7 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 2);
                 _animation = "walkSouth";
+                idle = "S";
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.Y += VITESSE_PERSO * deltaTime;
@@ -76,7 +80,10 @@ namespace CHADventure
             }
             else
             {
-                _animation = "idle";
+                if (idle == "N")
+                    _perso.Play("idleNorth");
+                else
+                    _perso.Play("idle");
             }
             //Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
             

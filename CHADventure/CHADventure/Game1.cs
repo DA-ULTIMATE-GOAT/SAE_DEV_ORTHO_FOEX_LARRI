@@ -114,26 +114,7 @@ namespace CHADventure
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
 
             }
-            if (keyboardState.IsKeyDown(Keys.Left))
-            {
-                _perso.Play("walkWest");
-                _perso.Update(deltaTime);
-                _positionPerso.X -= VITESSE_PERSO*deltaTime;
-                Console.WriteLine("LEFT");
-            }
-            else if (keyboardState.IsKeyDown(Keys.Right))
-            {
-                _perso.Play("walkEast");
-                _perso.Update(deltaTime);
-                _positionPerso.X += VITESSE_PERSO * deltaTime;
-                Console.WriteLine("RIGHT");
-            }
-            else
-            {
-                _perso.Play("idle");
-                _perso.Update(deltaTime);
-                
-            }
+            
             base.Update(gameTime);
         }
 
