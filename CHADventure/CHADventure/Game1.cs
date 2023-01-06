@@ -19,7 +19,7 @@ namespace CHADventure
         private SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
         private Entree _entree;
-        private SallePrincipale _sallePrincipale;
+        public SallePrincipale _sallePrincipale;
         private CouloirDroit _couloirDroit;
         private CouloirGauche _couloirGauche;
         private ParcoursDroit _parcoursDroit;
@@ -29,6 +29,9 @@ namespace CHADventure
         private CouloirPrincipale _couloirPrincipale;
         private AnimatedSprite _perso;
         private Vector2 _positionPerso;
+        private ushort tx;
+        private ushort ty;
+
         private const int VITESSE_PERSO = 110;
         private SalleBoss _salleBoss;
         public const int HAUTEUR_FENETRE = 800;
@@ -86,9 +89,10 @@ namespace CHADventure
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
                 _perso.Update(deltaTime);
+
                
             }
-            else if (keyboardState.IsKeyDown(Keys.E))
+            else if (keyboardState.IsKeyDown(Keys.E) && Entree.OuverturePorte(Entree.tx, Entree.ty))
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));

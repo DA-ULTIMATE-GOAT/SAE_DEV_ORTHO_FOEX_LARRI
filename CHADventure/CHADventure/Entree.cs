@@ -112,7 +112,19 @@ namespace CHADventure
 
             }
             _perso.Play(_animation);
+            if (keyboardState.IsKeyDown(Keys.E))
+            {
+                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
+                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
+                if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
+                {
+                    _screenManager.LoadScreen(_myGame._sallePrincipale, new FadeTransition(GraphicsDevice,
+                Color.Black));
+                }
+            }
+            
             _tiledMapRenderer.Update(gameTime);
+
         }
         public override void Draw(GameTime gameTime)
         {
@@ -131,6 +143,15 @@ namespace CHADventure
             if (!tile.Value.IsBlank)
                 return true;
             return false;
+        }
+        public bool OuverturePorte(ushort tx, ushort ty)
+        {
+            bool reponse = false;
+            if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
+            {
+                reponse = true;
+            }
+            return reponse;
         }
     }
 }
