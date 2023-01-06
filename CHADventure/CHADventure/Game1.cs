@@ -54,6 +54,8 @@ namespace CHADventure
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("persoAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso = new AnimatedSprite(spriteSheet);
             _positionPerso = new Vector2(400, 672);
+            tx = 0;
+            ty = 0;
             // TODO: Add your initialization logic here
             base.Initialize();
         }
@@ -92,7 +94,7 @@ namespace CHADventure
 
                
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && Entree.OuverturePorte(Entree.tx, Entree.ty))
+            else if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));

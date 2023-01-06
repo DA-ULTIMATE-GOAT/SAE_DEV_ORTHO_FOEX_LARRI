@@ -24,7 +24,6 @@ namespace CHADventure
         private AnimatedSprite _perso;
         private Vector2 _positionPerso;
         private String _animation;
-        private int nb;
 
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
@@ -113,16 +112,6 @@ namespace CHADventure
 
             }
             _perso.Play(_animation);
-            if (keyboardState.IsKeyDown(Keys.E))
-            {
-                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
-                if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
-                {
-                    _screenManager.LoadScreen(_myGame._sallePrincipale, new FadeTransition(GraphicsDevice,
-                Color.Black));
-                }
-            }
             
             _tiledMapRenderer.Update(gameTime);
 
@@ -147,12 +136,15 @@ namespace CHADventure
         }
         public bool OuverturePorte(ushort tx, ushort ty)
         {
+            tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
+            ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
             bool reponse = false;
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
                 reponse = true;
             }
             return reponse;
+            
         }
     }
 }
