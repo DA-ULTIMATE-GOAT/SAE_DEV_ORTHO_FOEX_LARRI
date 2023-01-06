@@ -16,7 +16,7 @@ namespace CHADventure
     {
         //pour le changement de scene
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
         private Entree _entree;
         public SallePrincipale _sallePrincipale;
