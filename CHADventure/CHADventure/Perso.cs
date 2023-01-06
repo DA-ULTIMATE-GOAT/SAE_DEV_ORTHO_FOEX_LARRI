@@ -71,6 +71,8 @@ namespace CHADventure
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.Y += VITESSE_PERSO * deltaTime;
+
+                Console.WriteLine(_mapLayer.GetTile(tx, ty).GlobalIdentifier);
             }
             else
             {
