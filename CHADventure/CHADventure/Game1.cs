@@ -19,6 +19,7 @@ namespace CHADventure
         public SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
         private Entree _entree;
+        private ScreenMenu _menu;
         public SallePrincipale _sallePrincipale;
         private CouloirDroit _couloirDroit;
         private CouloirGauche _couloirGauche;
@@ -37,8 +38,9 @@ namespace CHADventure
         public const int HAUTEUR_FENETRE = 800;
         public const int LARGEUR_FENETRE = 800;
 
+        public enum Etats { Menu, Controls, Play, Quit };
+        public Etats etat;
 
-        
 
         public Game1()
         {
@@ -47,6 +49,8 @@ namespace CHADventure
             IsMouseVisible = true;
             _screenManager = new ScreenManager();
             Components.Add(_screenManager);
+
+            Etat = Etats.Menu; 
         }
 
         protected override void Initialize()
@@ -65,6 +69,7 @@ namespace CHADventure
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _entree = new Entree(this); // en leur donnant une référence au Game
             _sallePrincipale = new SallePrincipale(this);
+            
             _couloirDroit = new CouloirDroit(this);
             _couloirGauche = new CouloirGauche(this);
             _parcoursDroit = new ParcoursDroit(this);
@@ -145,5 +150,18 @@ namespace CHADventure
             _spriteBatch.End();
             base.Draw(gameTime);
         }
+        public Etats Etat
+        {
+            get
+            {
+                return this.etat;
+            }
+
+            set
+            {
+                this.etat = value;
+            }
+        }
+
     }
 }

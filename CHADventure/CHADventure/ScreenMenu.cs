@@ -49,11 +49,11 @@ namespace CHADventure
                     {
                         // on change l'état défini dans Game1 en fonction du bouton cliqué
                         if (i == 0)
-                            _myGame.Etat = Game1.Etats.Controls;
+                            _myGame.etat = Game1.Etats.Controls;
                         else if (i == 1)
-                            _myGame.Etat = Game1.Etats.Play;
+                            _myGame.etat = Game1.Etats.Play;
                         else
-                            _myGame.Etat = Game1.Etats.Quit;
+                            _myGame.etat = Game1.Etats.Quit;
                         break;
                     }
 
@@ -64,9 +64,9 @@ namespace CHADventure
         public override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            _myGame.SpriteBatch.Begin();
-            _myGame.SpriteBatch.Draw(_textBoutons, new Vector2(0, 0), Color.White);
-            _myGame.SpriteBatch.End();
+            _myGame._spriteBatch.Begin();
+            _myGame._spriteBatch.Draw(_textBoutons, new Vector2(0, 0), Color.White);
+            _myGame._spriteBatch.End();
 
 
         }
