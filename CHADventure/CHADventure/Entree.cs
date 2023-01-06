@@ -66,18 +66,19 @@ namespace CHADventure
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._perso, _perso._positionPerso);
-            _myGame._spriteBatch.End();                         // Game1 pour changer le graphisme
+            _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
             
         }
 
         public bool OuverturePorte(ushort tx, ushort ty)
         {
-            tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-            ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
+            tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
+            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
             bool reponse = false;
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
                 reponse = true;
+                Console.WriteLine("TRUE");
             }
             return reponse;
             

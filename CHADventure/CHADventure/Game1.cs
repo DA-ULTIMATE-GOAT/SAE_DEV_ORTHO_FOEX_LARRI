@@ -90,9 +90,7 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _perso.Update(deltaTime);
-
-               
+                _perso.Update(deltaTime);  
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
             {
