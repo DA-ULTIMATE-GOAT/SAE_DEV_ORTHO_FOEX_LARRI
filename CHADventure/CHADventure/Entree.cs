@@ -81,7 +81,7 @@ namespace CHADventure
             else if ((_positionPerso.Y > ClassPerso.HAUTEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.Z))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight -1);
+                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
 
                 _perso.Play("walkNorth");
                 _perso.Update(deltaTime);
