@@ -50,7 +50,9 @@ namespace CHADventure
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._perso = new AnimatedSprite(spriteSheet);
             base.LoadContent();
+            
         }
+
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -81,6 +83,17 @@ namespace CHADventure
             }
             return reponse;
             
+        }
+        public override void UnloadContent()
+        {
+            ushort tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
+            ushort ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
+            KeyboardState keyboardState = Keyboard.GetState();
+            if (keyboardState.IsKeyDown(Keys.E) && (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223))
+            {
+                base.UnloadContent();
+            }
+
         }
     }
 }
