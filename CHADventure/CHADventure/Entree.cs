@@ -78,7 +78,6 @@ namespace CHADventure
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
                 reponse = true;
-                Console.WriteLine("TRUE");
             }
             return reponse;
             
