@@ -38,8 +38,6 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            
-            
             _positionPerso = new Vector2(400,672);
             _animation = "idle";
             base.Initialize();
@@ -57,62 +55,8 @@ namespace CHADventure
         }
         public override void Update(GameTime gameTime)
         {
-
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            KeyboardState keyboardState = Keyboard.GetState();
-            if ((_positionPerso.X > ClassPerso.LARGEUR_SPRITE/4 ) && keyboardState.IsKeyDown(Keys.Q))
-            {
-                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth -1);
-                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight+1);
-
-                _animation = "walkWest";
-                _perso.Update(deltaTime);
-                if (!IsCollision(tx,ty))
-                    _positionPerso.X -= VITESSE_PERSO * deltaTime;
-               
-            }
-            else if ((_positionPerso.X < 800 - ClassPerso.LARGEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.D))
-            {
-                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth+ 1);
-                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight+1);
-
-                _animation = "walkEast";
-                _perso.Update(deltaTime);
-                if (!IsCollision(tx, ty))
-                _positionPerso.X += VITESSE_PERSO * deltaTime;
-               
-            }
-            else if ((_positionPerso.Y > ClassPerso.HAUTEUR_SPRITE/4) && keyboardState.IsKeyDown(Keys.Z))
-            {
-                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
-
-               _animation = "walkNorth";
-                _perso.Update(deltaTime);
-                if (!IsCollision(tx, ty))
-                    _positionPerso.Y -= VITESSE_PERSO * deltaTime;
-                Console.WriteLine(_mapLayer2.GetTile(tx, ty).GlobalIdentifier);
-               
-            }
-            else if ((_positionPerso.Y < 800 - ClassPerso.HAUTEUR_SPRITE/2) && keyboardState.IsKeyDown(Keys.S))
-            {
-                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight +2);
-
-                _animation = "walkSouth";
-                _perso.Update(deltaTime);
-                if (!IsCollision(tx,ty))
-                    _positionPerso.Y += VITESSE_PERSO * deltaTime;
-                Console.WriteLine("DOWN");
-            }
-            else
-            {
-                _animation = "idle";
-                _perso.Update(deltaTime);
-
-            }
-            _perso.Play(_animation);
-            
+            var instancePerso = new ClassPerso();
+            instancePerso.DeplacementPerso(gameTime);
             _tiledMapRenderer.Update(gameTime);
 
         }
@@ -121,10 +65,10 @@ namespace CHADventure
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _spriteBatch.Begin();
             _spriteBatch.Draw(_perso, _positionPerso);
-            _spriteBatch.End();                         // Game1 pour chnager le graphisme
+            _spriteBatch.End();                         // Game1 pour changer le graphisme
         }
 
-        private bool IsCollision(ushort x, ushort y)
+        /*private bool IsCollision(ushort x, ushort y)
         {
             // définition de tile qui peut être null (?)
             TiledMapTile? tile;
@@ -133,7 +77,9 @@ namespace CHADventure
             if (!tile.Value.IsBlank)
                 return true;
             return false;
-        }
+        }*/
+
+
         public bool OuverturePorte(ushort tx, ushort ty)
         {
             tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
