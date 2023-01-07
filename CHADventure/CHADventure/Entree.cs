@@ -15,6 +15,7 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso = new Perso();
+        //private Timer _timer;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer; 
@@ -53,8 +54,9 @@ namespace CHADventure
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if(!_perso.Attaque())
-                _perso.DeplacementPerso(gameTime,_tiledMap, _mapLayer, _mapLayer2);
+            _perso.Attaque(gameTime);
+            if (!_perso._attaque)
+                _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
