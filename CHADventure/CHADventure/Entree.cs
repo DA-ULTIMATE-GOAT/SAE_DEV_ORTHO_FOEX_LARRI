@@ -53,8 +53,8 @@ namespace CHADventure
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
-            _perso.DeplacementPerso(gameTime,_tiledMap, _mapLayer, _mapLayer2);
+            if(!_perso.Attaque())
+                _perso.DeplacementPerso(gameTime,_tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);

@@ -21,7 +21,7 @@ namespace CHADventure
         public AnimatedSprite _ezioSprite;
         public String _animation;
         private String _sensIdle = "S";
-        private String _sensAttack = "S";
+        
 
 
         public void InitPosition(Vector2 _positionPerso)
@@ -34,9 +34,8 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
 
-            Attaque();
-            if (!(keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.Down)))
-            {
+            //Attaque();
+            
 
                     if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
                     {
@@ -92,7 +91,7 @@ namespace CHADventure
                             _animation = "idle";
                     }
                 
-            }
+            
             //Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
 
         }
@@ -106,35 +105,33 @@ namespace CHADventure
                 return true;
             return false;
         }
-        private void Attaque()
+        public bool Attaque()
         {
-            
+            bool attaque = false; 
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.Down))
-                _sensAttack = "S";
-            if (keyboardState.IsKeyDown(Keys.Up))
-                _sensAttack = "N";
-            if (keyboardState.IsKeyDown(Keys.Left))
-                _sensAttack = "W";
-            if (keyboardState.IsKeyDown(Keys.Right))
-                _sensAttack = "E";
-            if (_sensAttack == "N")
-            {
-                _animation = "attackNorth";
-            }
-            else if (_sensAttack == "E")
-            {
-                _animation = "attackEast";
-            }
-            else if (_sensAttack == "W")
-            {
-                _animation = "attackWest";
-            }
-            else if (_sensAttack == "S")
             {
                 _animation = "attackSouth";
+                attaque = true;
             }
+            if (keyboardState.IsKeyDown(Keys.Up))
+            {
+                _animation = "attackNorth";
+                attaque = true;
+            }
+            if (keyboardState.IsKeyDown(Keys.Left))
+            {
+                _animation = "attackWest";
+                attaque = true;
+            }
+            if (keyboardState.IsKeyDown(Keys.Right))
+            {
+                _animation = "attackEast";
+                attaque = true;
+            }
+           
+            return attaque;
         }
     }
 }
