@@ -33,19 +33,11 @@ namespace CHADventure
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.Down))
-                _sensAttack = "S";
-            if (keyboardState.IsKeyDown(Keys.Up))
-                _sensAttack = "N";
-            if (keyboardState.IsKeyDown(Keys.Left))
-                _sensAttack = "W";
-            if (keyboardState.IsKeyDown(Keys.Right))
-                _sensAttack = "E";
 
+            Attaque();
             if (!(keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.Down)))
             {
-                if (!keyboardState.IsKeyDown(Keys.Space))
-                {
+
                     if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
                     {
                         ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
@@ -99,29 +91,8 @@ namespace CHADventure
                         else
                             _animation = "idle";
                     }
-                }
-                else
-                { }
+                
             }
-            else if (_sensAttack == "N")
-            {
-                _animation = "attackNorth";
-            }
-            else if (_sensAttack == "E")
-            {
-                _animation = "attackEast";
-            }
-            else if (_sensAttack == "W")
-            {
-                _animation = "attackWest";
-            }
-            else if(_sensAttack == "S")
-            {
-                _animation = "attackSouth";
-            }
-
-
-
             //Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
 
         }
@@ -134,6 +105,41 @@ namespace CHADventure
             if (!tile.Value.IsBlank)
                 return true;
             return false;
+        }
+        private bool Attaque()
+        {
+            bool attaque = false;
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if (keyboardState.IsKeyDown(Keys.Down))
+                _sensAttack = "S";
+            if (keyboardState.IsKeyDown(Keys.Up))
+                _sensAttack = "N";
+            if (keyboardState.IsKeyDown(Keys.Left))
+                _sensAttack = "W";
+            if (keyboardState.IsKeyDown(Keys.Right))
+                _sensAttack = "E";
+            if (_sensAttack == "N")
+            {
+                _animation = "attackNorth";
+                attaque = true;
+            }
+            else if (_sensAttack == "E")
+            {
+                _animation = "attackEast";
+                attaque = true;
+            }
+            else if (_sensAttack == "W")
+            {
+                _animation = "attackWest";
+                attaque = true;
+            }
+            else if (_sensAttack == "S")
+            {
+                _animation = "attackSouth";
+                attaque = true;
+            }
+            return attaque;
         }
     }
 }
