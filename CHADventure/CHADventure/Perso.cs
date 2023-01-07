@@ -18,7 +18,7 @@ namespace CHADventure
         public const int VITESSE_PERSO = 110;
 
         public Vector2 _positionPerso = new Vector2(400, 672);
-        public AnimatedSprite _perso;
+        public AnimatedSprite _ezioSprite;
         public String _animation;
         private string idle = "S";
 
@@ -81,9 +81,9 @@ namespace CHADventure
             else
             {
                 if (idle == "N")
-                    _perso.Play("idleNorth");
+                    _animation = "idleNorth";
                 else
-                    _perso.Play("idle");
+                    _animation = "idle";
             }
             //Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
             

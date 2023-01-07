@@ -42,7 +42,7 @@ namespace CHADventure
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles2Salle1");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _perso._perso = new AnimatedSprite(spriteSheet);
+            _perso._ezioSprite = new AnimatedSprite(spriteSheet);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
@@ -51,15 +51,15 @@ namespace CHADventure
 
             _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
-            _perso._perso.Play(_perso._animation);
-            _perso._perso.Update(deltaTime);
+            _perso._ezioSprite.Play(_perso._animation);
+            _perso._ezioSprite.Update(deltaTime);
         }
         public override void Draw(GameTime gameTime)
         {
             _myGame.GraphicsDevice.Clear(Color.Black); // on utilise la reference vers
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
-            _myGame._spriteBatch.Draw(_perso._perso, _perso._positionPerso);
+            _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme                                          // Game1 pour chnager le graphisme
         }
 
