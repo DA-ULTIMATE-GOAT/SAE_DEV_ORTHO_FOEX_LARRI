@@ -60,11 +60,16 @@
       "isLooping": false,
       "frameDuration": 0.1
     },
-    "jump": {
+    "jumpWest": {
       "frames": [ 30, 31, 32 ],
       "isLooping": false,
       "frameDuration": 0.1
-    }
+    },
+	"jumpEast": {
+      "frames": [ 33, 34, 35 ],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
   }
   
 }
