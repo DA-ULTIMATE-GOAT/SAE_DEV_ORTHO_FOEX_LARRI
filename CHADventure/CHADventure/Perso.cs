@@ -106,9 +106,9 @@ namespace CHADventure
                 return true;
             return false;
         }
-        private bool Attaque()
+        private void Attaque()
         {
-            bool attaque = false;
+            
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.Down))
@@ -122,24 +122,19 @@ namespace CHADventure
             if (_sensAttack == "N")
             {
                 _animation = "attackNorth";
-                attaque = true;
             }
             else if (_sensAttack == "E")
             {
                 _animation = "attackEast";
-                attaque = true;
             }
             else if (_sensAttack == "W")
             {
                 _animation = "attackWest";
-                attaque = true;
             }
             else if (_sensAttack == "S")
             {
                 _animation = "attackSouth";
-                attaque = true;
             }
-            return attaque;
         }
     }
 }
