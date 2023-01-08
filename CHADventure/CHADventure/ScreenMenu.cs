@@ -20,7 +20,7 @@ namespace CHADventure
 
         // texture du menu avec 3 boutons
         private Texture2D _textBoutons;
-
+        private Texture2D _fond;
         // contient les rectangles : position et taille des 3 boutons présents dans la texture 
         private Rectangle[] lesBoutons;
 
@@ -37,6 +37,7 @@ namespace CHADventure
         public override void LoadContent()
         {
             _textBoutons = Content.Load<Texture2D>("boutons");
+            _fond = Content.Load<Texture2D>("Fond_Chateau");
             SpriteSheet logo = Content.Load<SpriteSheet>("logo/logo.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _logo = new AnimatedSprite(logo);
             base.LoadContent();
@@ -69,6 +70,7 @@ namespace CHADventure
         {
             GraphicsDevice.Clear(Color.Black);
             _myGame._spriteBatch.Begin();
+            _myGame._spriteBatch.Draw(_fond, new Vector2(0, 0), Color.White);
             _myGame._spriteBatch.Draw(_textBoutons, new Vector2(0, 0), Color.White);
             _myGame._spriteBatch.Draw(_logo, new Vector2(400,375));
             _myGame._spriteBatch.End();
