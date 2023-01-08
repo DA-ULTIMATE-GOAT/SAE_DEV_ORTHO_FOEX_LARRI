@@ -21,12 +21,11 @@ namespace CHADventure
 
         public Vector2 _positionPerso = new Vector2(400, 672);
         public AnimatedSprite _ezioSprite;
-        public String _animation;
+        public String _animation= "idle";
         private String _sensIdle = "S";
         private float _coolDown = 0;
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
-        public int _vie = 3;
         
 
         public void InitPosition(Vector2 _positionPerso)
@@ -39,12 +38,23 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.M))
+            if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Down))
             {
-                _vie -= 1;
+                    _animation = "attackSouth";
             }
-
-            if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
+            else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Up))
+            {
+                _animation = "attackNorth";
+            }
+            else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Right))
+            {
+                _animation = "attackEast";
+            }
+            else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Left))
+            {
+                _animation = "attackWest";
+            }
+            else if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
@@ -144,6 +154,7 @@ namespace CHADventure
         public void AttaqueCooldown(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (_attaque && _isCoolDownEzio)
             {
                 
