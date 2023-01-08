@@ -15,6 +15,8 @@ namespace CHADventure
     public class Game1 : Game
     {
         //pour le changement de scene
+        private Perso _perso = new Perso();
+
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
@@ -28,13 +30,13 @@ namespace CHADventure
         private EnigmeDroite _enigmeDroite;
         private EnigmeGauche _enigmeGauche;
         private CouloirPrincipale _couloirPrincipale;
-        private AnimatedSprite _perso;
+        private AnimatedSprite _sprite;
         private Vector2 _positionPerso;
         private ushort tx;
         private ushort ty;
+        private SalleBoss _salleBoss;
 
         private const int VITESSE_PERSO = 110;
-        private SalleBoss _salleBoss;
         public const int HAUTEUR_FENETRE = 800;
         public const int LARGEUR_FENETRE = 800;
 
@@ -50,13 +52,13 @@ namespace CHADventure
             _screenManager = new ScreenManager();
             Components.Add(_screenManager);
 
-            Etat = Etats.Menu; 
+            Etat = Etats.Menu;
         }
 
         protected override void Initialize()
         {
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _perso = new AnimatedSprite(spriteSheet);
+            _sprite = new AnimatedSprite(spriteSheet);
             _positionPerso = new Vector2(400, 672);
             tx = 0;
             ty = 0;
@@ -85,14 +87,17 @@ namespace CHADventure
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-
-           _graphics.PreferredBackBufferWidth = LARGEUR_FENETRE;
-           _graphics.PreferredBackBufferHeight = HAUTEUR_FENETRE;
-           _graphics.ApplyChanges();
+            _graphics.PreferredBackBufferWidth = LARGEUR_FENETRE;
+            _graphics.PreferredBackBufferHeight = HAUTEUR_FENETRE;
+            _graphics.ApplyChanges();
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState _mouseState = Mouse.GetState();
-            
+            if (_perso._vie == 0)
+            {
+                _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice,
+                Color.Black));
+            }
+
             if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
@@ -114,7 +119,6 @@ namespace CHADventure
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
 
             }
-            
             base.Update(gameTime);
         }
 

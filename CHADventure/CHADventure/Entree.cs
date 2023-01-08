@@ -15,7 +15,6 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso = new Perso();
-        //private Timer _timer;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer; 
@@ -60,7 +59,6 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
-
         }
         public override void Draw(GameTime gameTime)
         {

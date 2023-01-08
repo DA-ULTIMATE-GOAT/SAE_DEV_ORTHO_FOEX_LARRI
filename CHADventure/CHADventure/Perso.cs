@@ -17,17 +17,17 @@ namespace CHADventure
         public const int HAUTEUR_SPRITE = 72;
         public const int LARGEUR_SPRITE = 92;
         public const int VITESSE_PERSO = 110;
-        public const int COOLDOWNEZIO = 3;
-        public const double TEMPSANIMATION = 0.4;
+        public const int COOLDOWNEZIO = 1;
 
         public Vector2 _positionPerso = new Vector2(400, 672);
         public AnimatedSprite _ezioSprite;
         public String _animation;
         private String _sensIdle = "S";
-        private float _coolDown=0;
+        private float _coolDown = 0;
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
-        private double _tempsAnimation = TEMPSANIMATION;
+        public int _vie = 3;
+        
 
         public void InitPosition(Vector2 _positionPerso)
         {
@@ -39,61 +39,65 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
 
-            
-                if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
-                {
-                    ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
-                    ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
-                    _animation = "walkWest";
-                    _sensIdle = "S";
+            if (keyboardState.IsKeyDown(Keys.M))
+            {
+                _vie -= 1;
+            }
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionPerso.X -= VITESSE_PERSO * deltaTime;
-                }
-                else if ((_positionPerso.X < 800 - Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.D))
-                {
-                    ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth + 1);
-                    ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
-                    _animation = "walkEast";
-                    _sensIdle = "S";
+            if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
+            {
+                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
+                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
+                _animation = "walkWest";
+                _sensIdle = "S";
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionPerso.X += VITESSE_PERSO * deltaTime;
+                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                    _positionPerso.X -= VITESSE_PERSO * deltaTime;
+            }
+            else if ((_positionPerso.X < 800 - Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.D))
+            {
+                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth + 1);
+                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
+                _animation = "walkEast";
+                _sensIdle = "S";
 
-                }
-                else if ((_positionPerso.Y > Perso.HAUTEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Z))
-                {
-                    ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-                    ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
-                    _animation = "walkNorth";
-                    _sensIdle = "N";
+                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                    _positionPerso.X += VITESSE_PERSO * deltaTime;
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionPerso.Y -= VITESSE_PERSO * deltaTime;
+            }
+            else if ((_positionPerso.Y > Perso.HAUTEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Z))
+            {
+                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
+                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight);
+                _animation = "walkNorth";
+                _sensIdle = "N";
 
-                    //Console.WriteLine(_mapLayer2.GetTile(tx, ty).GlobalIdentifier);
+                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                    _positionPerso.Y -= VITESSE_PERSO * deltaTime;
 
-                }
-                else if ((_positionPerso.Y < 800 - Perso.HAUTEUR_SPRITE / 2) && keyboardState.IsKeyDown(Keys.S))
-                {
-                    ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
-                    ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 2);
-                    _animation = "walkSouth";
-                    _sensIdle = "S";
+                //Console.WriteLine(_mapLayer2.GetTile(tx, ty).GlobalIdentifier);
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionPerso.Y += VITESSE_PERSO * deltaTime;
+            }
+            else if ((_positionPerso.Y < 800 - Perso.HAUTEUR_SPRITE / 2) && keyboardState.IsKeyDown(Keys.S))
+            {
+                ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth);
+                ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 2);
+                _animation = "walkSouth";
+                _sensIdle = "S";
 
-                    //Console.WriteLine(_mapLayer.GetTile(tx, ty).GlobalIdentifier);
-                }
+                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                    _positionPerso.Y += VITESSE_PERSO * deltaTime;
+
+                //Console.WriteLine(_mapLayer.GetTile(tx, ty).GlobalIdentifier);
+            }
+            else
+            {
+                if (_sensIdle == "N")
+                    _animation = "idleNorth";
                 else
-                {
-                    if (_sensIdle == "N")
-                        _animation = "idleNorth";
-                    else
-                        _animation = "idle";
-                }
-            
+                    _animation = "idle";
+            }
+
             //Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
         }
         private bool IsCollision(ushort x, ushort y, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
@@ -142,6 +146,7 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (_attaque && _isCoolDownEzio)
             {
+                
                 _coolDown = COOLDOWNEZIO;
                 _isCoolDownEzio = false;
                 _attaque = false;
@@ -158,7 +163,6 @@ namespace CHADventure
             }
             _coolDown -= deltaTime;
             Console.WriteLine(_coolDown);
-            Console.WriteLine(_isCoolDownEzio);
 
         }
     }
