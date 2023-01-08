@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
+using MonoGame.Extended.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,7 @@ namespace CHADventure
         // contient les rectangles : position et taille des 3 boutons présents dans la texture 
         private Rectangle[] lesBoutons;
 
+        private AnimatedSprite _logo;
         public ScreenMenu(Game1 game) : base(game)
         {
             _myGame = game;
@@ -34,11 +37,14 @@ namespace CHADventure
         public override void LoadContent()
         {
             _textBoutons = Content.Load<Texture2D>("boutons");
+            SpriteSheet logo = Content.Load<SpriteSheet>("logo/logo.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _logo = new AnimatedSprite(logo);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
         {
-
+            _logo.Play("ecran");
+            _logo.Update(gameTime);
             MouseState _mouseState = Mouse.GetState();
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
@@ -64,6 +70,7 @@ namespace CHADventure
             GraphicsDevice.Clear(Color.Black);
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_textBoutons, new Vector2(0, 0), Color.White);
+            _myGame._spriteBatch.Draw(_logo, new Vector2(400,375));
             _myGame._spriteBatch.End();
 
 
