@@ -92,11 +92,6 @@ namespace CHADventure
             _graphics.ApplyChanges();
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState _mouseState = Mouse.GetState();
-            if (_perso._vie == 0)
-            {
-                _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice,
-                Color.Black));
-            }
 
             if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
             {
