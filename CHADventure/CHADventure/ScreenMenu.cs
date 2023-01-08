@@ -25,10 +25,10 @@ namespace CHADventure
         public ScreenMenu(Game1 game) : base(game)
         {
             _myGame = game;
-            lesBoutons = new Rectangle[3];
-            lesBoutons[0] = new Rectangle(75, 110, 640, 160);
-            lesBoutons[1] = new Rectangle(75, 320, 640, 160);
-            lesBoutons[2] = new Rectangle(75, 528, 640, 160);
+            lesBoutons = new Rectangle[2];
+            lesBoutons[0] = new Rectangle(50, 609, 279, 89);
+            lesBoutons[1] = new Rectangle(471, 609, 279, 89);
+
 
         }
         public override void LoadContent()
@@ -49,12 +49,10 @@ namespace CHADventure
                     {
                         // on change l'état défini dans Game1 en fonction du bouton cliqué
                         if (i == 0)
-                            _myGame.etat = Game1.Etats.Controls;
-                        else if (i == 1)
                             _myGame.etat = Game1.Etats.Play;
                         else
                             _myGame.etat = Game1.Etats.Quit;
-                        break;
+                        
                     }
 
                 }
