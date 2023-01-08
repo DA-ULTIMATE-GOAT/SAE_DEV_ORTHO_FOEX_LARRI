@@ -72,7 +72,7 @@ namespace CHADventure
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_fond, new Vector2(0, 0), Color.White);
             _myGame._spriteBatch.Draw(_textBoutons, new Vector2(0, 0), Color.White);
-            _myGame._spriteBatch.Draw(_logo, new Vector2(400,375));
+            _myGame._spriteBatch.Draw(_logo, new Vector2(400,350));
             _myGame._spriteBatch.End();
 
 
