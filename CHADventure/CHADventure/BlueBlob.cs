@@ -30,7 +30,7 @@ namespace CHADventure
         {
             for (int i = 0; i < lesmobs.Length; i++)
             {
-                BlueBlob[i] = new Vector2(spawn.Next(,),spawn.Next());
+                lesmobs[i] = new Vector2(spawn.Next(288,496),spawn.Next(256,464));
             }
         }
         public override void LoadContent()
