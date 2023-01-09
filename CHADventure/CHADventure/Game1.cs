@@ -17,6 +17,7 @@ namespace CHADventure
         private Perso _perso = new Perso();
         private Entree _entree;
         private ScreenMenu _menu;
+        private Touches _touches;
         private SallePrincipale _sallePrincipale;
         private ParcoursDroit _parcoursDroit;
         private ParcoursGauche _parcoursGauche;
@@ -37,7 +38,7 @@ namespace CHADventure
         public const int HAUTEUR_FENETRE = 800;
         public const int LARGEUR_FENETRE = 800;
 
-        public enum Etats { Menu, Controls, Play, Quit };
+        public enum Etats { Menu, Controls, Play, Quit, Touch};
         public Etats etat;
 
 
@@ -68,6 +69,7 @@ namespace CHADventure
             _entree = new Entree(this); // en leur donnant une référence au Game
             _sallePrincipale = new SallePrincipale(this);
             _menu = new ScreenMenu(this);
+            _touches = new Touches(this);
             _parcoursDroit = new ParcoursDroit(this);
             _parcoursGauche = new ParcoursGauche(this);
             _couloirPrincipale = new CouloirPrincipale(this);
@@ -94,6 +96,18 @@ namespace CHADventure
 
                 else if (this.Etat == Etats.Play)
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
+                else if (this.Etat == Etats.Touch && _menu._peutTouche)
+                {
+                    _screenManager.LoadScreen(_touches, new FadeTransition(GraphicsDevice, Color.Black));
+                    _menu._peutTouche = false;
+                    _menu._peutMenu = true;
+                }
+                else if (this.Etat == Etats.Menu && _menu._peutMenu)
+                {
+                    _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+                    _menu._peutMenu = false;
+                    _menu._peutTouche= true;
+                }
 
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutsortir)

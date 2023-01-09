@@ -18,10 +18,14 @@ namespace CHADventure
         // défini dans Game1
         private Game1 _myGame;
         private Perso _perso = new Perso();
+        private ScreenMenu _menu;
 
         // texture du menu avec 3 boutons
         private Texture2D _textBoutons;
         private Texture2D _fond;
+        private Texture2D _engrenage;
+        public bool _peutTouche = true;
+        public bool _peutMenu = false;
         // contient les rectangles : position et taille des 3 boutons présents dans la texture 
         private Rectangle[] lesBoutons;
 
@@ -29,9 +33,10 @@ namespace CHADventure
         public ScreenMenu(Game1 game) : base(game)
         {
             _myGame = game;
-            lesBoutons = new Rectangle[2];
+            lesBoutons = new Rectangle[3];
             lesBoutons[0] = new Rectangle(50, 609, 279, 89);
             lesBoutons[1] = new Rectangle(471, 609, 279, 89);
+            lesBoutons[2] = new Rectangle(686,45,72,62);
 
 
         }
@@ -39,6 +44,7 @@ namespace CHADventure
         {
             _textBoutons = Content.Load<Texture2D>("boutons");
             _fond = Content.Load<Texture2D>("Fond_Chateau");
+            _engrenage = Content.Load<Texture2D>("Engrenage");
             SpriteSheet logo = Content.Load<SpriteSheet>("logo/logo.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _logo = new AnimatedSprite(logo);
             base.LoadContent();
@@ -62,9 +68,12 @@ namespace CHADventure
                             _perso._positionPerso = new Vector2(400, 672);
                             _perso.InitPosition(_perso._positionPerso);
                         }
-                        else
+                        else if (i == 1)
                             _myGame.etat = Game1.Etats.Quit;
-                        
+                        else
+                        {
+                            _myGame.etat = Game1.Etats.Touch;
+                        }
                     }
 
                 }
@@ -77,7 +86,8 @@ namespace CHADventure
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_fond, new Vector2(0, 0), Color.White);
             _myGame._spriteBatch.Draw(_textBoutons, new Vector2(0, 0), Color.White);
-            _myGame._spriteBatch.Draw(_logo, new Vector2(400,350));
+            _myGame._spriteBatch.Draw(_logo, new Vector2(400, 350));
+            _myGame._spriteBatch.Draw(_engrenage, new Vector2(0, 0), Color.White);
             _myGame._spriteBatch.End();
 
 
