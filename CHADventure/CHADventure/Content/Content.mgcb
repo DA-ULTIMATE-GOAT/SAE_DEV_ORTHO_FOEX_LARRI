@@ -164,25 +164,109 @@
 /processor:TiledMapTilesetProcessor
 /build:map/Entree/Stairs-Bridge.tsx
 
-#begin map/Principale/CombatDroite.tmx
+#begin map/Parcours/Assets.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Assets.png
+
+#begin map/Parcours/Assets2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Assets2.png
+
+#begin map/Parcours/Background_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Background_1.png
+
+#begin map/Parcours/Background_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Background_2.png
+
+#begin map/Parcours/Character_Sprite_Sheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Character_Sprite_Sheet.png
+
+#begin map/Parcours/parcoursdroit.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
-/build:map/Principale/CombatDroite.tmx
+/build:map/Parcours/parcoursdroit.tmx
+
+#begin map/Parcours/Test.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Test.png
+
+#begin map/Parcours/Test_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/Parcours/Test_2.png
+
+#begin map/Parcours/Tiles.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/Parcours/Tiles.tsx
+
+#begin map/Principale/CombatDroit.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/Principale/CombatDroit.tmx
 
 #begin map/Principale/CombatGauche.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:map/Principale/CombatGauche.tmx
-
-#begin map/Principale/CouloirDroit.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:map/Principale/CouloirDroit.tmx
-
-#begin map/Principale/CouloirGauche.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:map/Principale/CouloirGauche.tmx
 
 #begin map/Principale/Decor.png
 /importer:TextureImporter
