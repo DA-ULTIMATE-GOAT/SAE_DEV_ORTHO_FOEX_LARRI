@@ -23,8 +23,6 @@ namespace CHADventure
         private Entree _entree;
         private ScreenMenu _menu;
         public SallePrincipale _sallePrincipale;
-        private CouloirDroit _couloirDroit;
-        private CouloirGauche _couloirGauche;
         private ParcoursDroit _parcoursDroit;
         private ParcoursGauche _parcoursGauche;
         private EnigmeDroite _enigmeDroite;
@@ -72,8 +70,6 @@ namespace CHADventure
             _entree = new Entree(this); // en leur donnant une référence au Game
             _sallePrincipale = new SallePrincipale(this);
             _menu = new ScreenMenu(this);
-            _couloirDroit = new CouloirDroit(this);
-            _couloirGauche = new CouloirGauche(this);
             _parcoursDroit = new ParcoursDroit(this);
             _parcoursGauche = new ParcoursGauche(this);
             _couloirPrincipale = new CouloirPrincipale(this);
