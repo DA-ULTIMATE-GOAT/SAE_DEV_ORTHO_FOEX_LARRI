@@ -96,21 +96,20 @@ namespace CHADventure
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
 
             }
+            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutsortir)
+            {
+                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
+                Color.Black));
+                Console.WriteLine("IL SORT");
+            }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree._peutentrer)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
                 Console.WriteLine("IL ENTRE");
-                _entree._peutentrer = false;
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutsortir)
-            {
-                //base.UnloadContent();
-                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
-                Color.Black));
-                Console.WriteLine("IL SORT");
-                _sallePrincipale._peutsortir = false;
-            }
+            _entree._peutentrer=false;
+            _sallePrincipale._peutsortir = false;
             base.Update(gameTime);
         }
 

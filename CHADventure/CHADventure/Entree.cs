@@ -70,7 +70,6 @@ namespace CHADventure
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
             OuverturePorte(_myGame.tx, _myGame.ty);
-            Console.WriteLine(_peutentrer);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -88,9 +87,8 @@ namespace CHADventure
             _peutentrer = false;
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
-                _peutentrer = true;   
+                _peutentrer = true;
             }
-
         }
         public override void UnloadContent()
         {

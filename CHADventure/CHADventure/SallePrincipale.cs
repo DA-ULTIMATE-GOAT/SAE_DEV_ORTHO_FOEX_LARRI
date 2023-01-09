@@ -59,7 +59,6 @@ namespace CHADventure
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
             Dehors(_myGame.tx, _myGame.ty);
-            Console.WriteLine("                      :" + _peutsortir);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -75,7 +74,6 @@ namespace CHADventure
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 2);
             _peutsortir = false;
-            Console.WriteLine(_mapLayer.GetTile(tx, ty).GlobalIdentifier);
             if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 231)
             {
                 _peutsortir = true;
