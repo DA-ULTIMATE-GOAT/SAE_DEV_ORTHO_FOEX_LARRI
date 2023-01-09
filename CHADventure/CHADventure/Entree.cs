@@ -31,8 +31,8 @@ namespace CHADventure
         public Entree(Game1 game) : base(game)
         {
             _myGame = game;
-            _screenManager = new ScreenManager();
-            Components.Add(_screenManager);
+            //_screenManager = new ScreenManager();
+            //Components.Add(_screenManager);
 
         }
         public override void Initialize()
@@ -63,12 +63,12 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
-            if (keyboardState.IsKeyDown(Keys.E) && OuverturePorte(tx, ty))
+            /*if (keyboardState.IsKeyDown(Keys.E) && OuverturePorte(tx, ty))
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
 
-            }
+            }*/
 
         }
         public override void Draw(GameTime gameTime)

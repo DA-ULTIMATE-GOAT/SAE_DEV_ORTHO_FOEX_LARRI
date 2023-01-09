@@ -49,7 +49,8 @@ namespace CHADventure
             IsMouseVisible = true;
             _screenManager = new ScreenManager();
             Components.Add(_screenManager);
-
+            _screenManager = new ScreenManager();
+            Components.Add(_screenManager);
             Etat = Etats.Menu;
         }
 
@@ -99,7 +100,13 @@ namespace CHADventure
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
 
             }
-            base.Update(gameTime);
+            else if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty))
+            {
+                _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
+                Color.Black));
+            }
+
+                base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
