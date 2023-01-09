@@ -26,9 +26,11 @@ namespace CHADventure
         private float _coolDown = 0;
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
-        
 
-        public void InitPosition(Vector2 _positionPerso)
+        private Game1 _myGame;
+
+
+            public void InitPosition(Vector2 _positionPerso)
         {
             this._positionPerso = _positionPerso;
         }
@@ -151,7 +153,7 @@ namespace CHADventure
                     _animation = "attackEast";
                     _attaque = true;
                 }
-                Console.WriteLine("                            : " + _animation);
+                //Console.WriteLine("                            : " + _animation);
             }
 
             AttaqueCooldown(gameTime);
@@ -179,13 +181,10 @@ namespace CHADventure
                 _isCoolDownEzio = true;
             }
             _coolDown -= deltaTime;
-            Console.WriteLine(_coolDown);
+            //Console.WriteLine(_coolDown);
 
         }
 
-        public void IsDead(GameTime gameTime)
-        {
-
-        }
+        
     }
 }

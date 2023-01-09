@@ -41,8 +41,8 @@ namespace CHADventure
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesSalle1");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles2Salle1");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _perso._ezioSprite = new AnimatedSprite(spriteSheet);
+            SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)

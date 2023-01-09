@@ -17,7 +17,7 @@ namespace CHADventure
         private Perso _perso = new Perso();
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
-        private TiledMapTileLayer _mapLayer; 
+        private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
         private Vector2 _positionPerso;
 
@@ -30,11 +30,11 @@ namespace CHADventure
         public Entree(Game1 game) : base(game)
         {
             _myGame = game;
-            
+
         }
         public override void Initialize()
         {
-            _positionPerso = new Vector2(400,672);
+            _positionPerso = new Vector2(400, 672);
             _perso.InitPosition(_positionPerso);
             base.Initialize();
         }
@@ -44,10 +44,10 @@ namespace CHADventure
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _perso._ezioSprite = new AnimatedSprite(spriteSheet);
+            SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             base.LoadContent();
-            
+
         }
 
         public override void Update(GameTime gameTime)
@@ -59,6 +59,8 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+
+            
         }
         public override void Draw(GameTime gameTime)
         {
@@ -66,7 +68,7 @@ namespace CHADventure
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
-            
+
         }
 
         public bool OuverturePorte(ushort tx, ushort ty)
@@ -79,7 +81,7 @@ namespace CHADventure
                 reponse = true;
             }
             return reponse;
-            
+
         }
         public override void UnloadContent()
         {
