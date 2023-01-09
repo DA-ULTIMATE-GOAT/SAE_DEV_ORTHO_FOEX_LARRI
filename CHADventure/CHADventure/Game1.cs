@@ -100,6 +100,8 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _positionPerso = new Vector2(400, 80);
+                _perso.InitPosition(_positionPerso);
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree._peutentrer)
             {
@@ -108,6 +110,7 @@ namespace CHADventure
             }
             _entree._peutentrer=false;
             _sallePrincipale._peutsortir = false;
+            Console.WriteLine(_positionPerso);
             base.Update(gameTime);
         }
 

@@ -24,7 +24,7 @@ namespace CHADventure
         public Vector2 _positionPerso = new Vector2(400, 672);
         public AnimatedSprite _ezioSprite;
         public String _animation = "idle";
-        private String _sensIdle = "S";
+        public String _sensIdle = "S";
         private float _coolDown = 0;
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;

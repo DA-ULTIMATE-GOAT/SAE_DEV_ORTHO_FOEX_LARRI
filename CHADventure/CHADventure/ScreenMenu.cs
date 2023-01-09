@@ -17,6 +17,7 @@ namespace CHADventure
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est 
         // défini dans Game1
         private Game1 _myGame;
+        private Perso _perso = new Perso();
 
         // texture du menu avec 3 boutons
         private Texture2D _textBoutons;
@@ -56,7 +57,11 @@ namespace CHADventure
                     {
                         // on change l'état défini dans Game1 en fonction du bouton cliqué
                         if (i == 0)
+                        {
                             _myGame.etat = Game1.Etats.Play;
+                            _perso._positionPerso = new Vector2(400, 672);
+                            _perso.InitPosition(_perso._positionPerso);
+                        }
                         else
                             _myGame.etat = Game1.Etats.Quit;
                         

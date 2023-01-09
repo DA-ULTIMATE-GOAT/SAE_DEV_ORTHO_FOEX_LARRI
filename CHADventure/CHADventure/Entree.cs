@@ -37,14 +37,9 @@ namespace CHADventure
         public Entree(Game1 game) : base(game)
         {
             _myGame = game;
-            //_screenManager = new ScreenManager();
-            //Components.Add(_screenManager);
-
         }
         public override void Initialize()
         {
-            _positionPerso = new Vector2(400, 672);
-            _perso.InitPosition(_positionPerso);
             base.Initialize();
         }
         public override void LoadContent()
