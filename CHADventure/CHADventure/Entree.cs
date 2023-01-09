@@ -15,6 +15,7 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso = new Perso();
+        private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
@@ -30,6 +31,8 @@ namespace CHADventure
         public Entree(Game1 game) : base(game)
         {
             _myGame = game;
+            _screenManager = new ScreenManager();
+            Components.Add(_screenManager);
 
         }
         public override void Initialize()
@@ -52,6 +55,7 @@ namespace CHADventure
 
         public override void Update(GameTime gameTime)
         {
+            KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _perso.Attaque(gameTime);
             if (!_perso._attaque)
@@ -59,8 +63,13 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+            if (keyboardState.IsKeyDown(Keys.E) && OuverturePorte(tx, ty))
+            {
+                _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
+                Color.Black));
 
-            
+            }
+
         }
         public override void Draw(GameTime gameTime)
         {

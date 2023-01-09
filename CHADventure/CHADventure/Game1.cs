@@ -89,17 +89,6 @@ namespace CHADventure
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState _mouseState = Mouse.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty) == true)
-            {
-                _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
-                Color.Black));
-
-            }
-            else if (keyboardState.IsKeyDown(Keys.F) && _sallePrincipale.Dehors(tx, ty) == true)
-            {
-                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
-                Color.Black));
-            }
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
                 // Attention, l'état a été mis à jour directement par l'écran en question

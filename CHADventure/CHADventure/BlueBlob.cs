@@ -20,35 +20,23 @@ namespace CHADventure
         public const int HAUTEUR_BLOB = 19;
         public const int VITESSE_BLOB = 90;
         Random spawn = new Random();
-        BlueBlob[] lesmobs = new BlueBlob[3];
 
+        private BlueBlob[] blobs;
         private Vector2 _positionBlob;
         private AnimatedSprite _blueBlob;
         private String _animationBlob = "idle";
-
-        public override void Initialize()
+        private int _nbEnnemis = 0;
+       
+        public void Spawn(GameTime gametime)
         {
-            for (int i = 0; i < lesmobs.Length; i++)
+            if (_nbEnnemis < 3)
             {
-                lesmobs[i] = new Vector2(spawn.Next(288,496),spawn.Next(256,464));
+                for (int i = 0; i < 1; i++)
+                {
+
+                }
             }
         }
-        public override void LoadContent()
-        {
-
-
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-
-        }
-        public override void Draw(GameTime gameTime)
-        {
-            _myGame._spriteBatch.Begin();
-            _myGame._spriteBatch.Draw();
-            _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
-
-        }
     }
+    
 }
