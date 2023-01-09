@@ -229,11 +229,6 @@
 /processor:TiledMapProcessor
 /build:map/Parcours/parcoursdroit.tmx
 
-#begin map/Parcours/parcoursdroit.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:map/Parcours/parcoursdroit.tmx
-
 #begin map/Parcours/Test.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -263,30 +258,15 @@
 /processor:TiledMapTilesetProcessor
 /build:map/Parcours/Tiles.tsx
 
-#begin map/Parcours/Tiles.tsx
-/importer:TiledMapTilesetImporter
-/processor:TiledMapTilesetProcessor
-/build:map/Parcours/Tiles.tsx
-
-#begin map/Principale/CombatDroite.tmx
+#begin map/Principale/CombatDroit.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
-/build:map/Principale/CombatDroite.tmx
+/build:map/Principale/CombatDroit.tmx
 
 #begin map/Principale/CombatGauche.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:map/Principale/CombatGauche.tmx
-
-#begin map/Principale/CouloirDroit.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:map/Principale/CouloirDroit.tmx
-
-#begin map/Principale/CouloirGauche.tmx
-/importer:TiledMapImporter
-/processor:TiledMapProcessor
-/build:map/Principale/CouloirGauche.tmx
 
 #begin map/Principale/Decor.png
 /importer:TextureImporter
