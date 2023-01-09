@@ -19,18 +19,19 @@ namespace CHADventure
         public const int VITESSE_PERSO = 110;
         public const int COOLDOWNEZIO = 1;
 
+        private Game1 _myGame;
+
         public Vector2 _positionPerso = new Vector2(400, 672);
         public AnimatedSprite _ezioSprite;
-        public String _animation= "idle";
+        public String _animation = "idle";
         private String _sensIdle = "S";
         private float _coolDown = 0;
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
 
-        private Game1 _myGame;
 
 
-            public void InitPosition(Vector2 _positionPerso)
+        public void InitPosition(Vector2 _positionPerso)
         {
             this._positionPerso = _positionPerso;
         }
@@ -42,7 +43,7 @@ namespace CHADventure
 
             if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Down))
             {
-                    _animation = "attackSouth";
+                _animation = "attackSouth";
             }
             else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Up))
             {
@@ -106,10 +107,10 @@ namespace CHADventure
             {
                 if (_sensIdle == "N")
                     _animation = "idleNorth";
-                
+
                 else if (_sensIdle == "E")
                     _animation = "idleEast";
-                
+
                 else if (_sensIdle == "W")
                     _animation = "idleWest";
                 else
@@ -165,7 +166,7 @@ namespace CHADventure
 
             if (_attaque && _isCoolDownEzio)
             {
-                
+
                 _coolDown = COOLDOWNEZIO;
                 _isCoolDownEzio = false;
                 _attaque = false;
@@ -185,6 +186,6 @@ namespace CHADventure
 
         }
 
-        
+
     }
 }

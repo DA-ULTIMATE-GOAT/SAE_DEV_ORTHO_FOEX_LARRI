@@ -15,12 +15,18 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso = new Perso();
+        private SallePrincipale _sallePrincipale;
+        private Entree _entree;
+
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
         private Vector2 _positionPerso;
+
+        //changement de scene :
+        public bool _peutentrer = false;
 
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
@@ -63,13 +69,8 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
-            /*if (keyboardState.IsKeyDown(Keys.E) && OuverturePorte(tx, ty))
-            {
-                _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
-                Color.Black));
-
-            }*/
-
+            OuverturePorte(_myGame.tx, _myGame.ty);
+            Console.WriteLine(_peutentrer);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -80,16 +81,15 @@ namespace CHADventure
 
         }
 
-        public bool OuverturePorte(ushort tx, ushort ty)
+        public void OuverturePorte(ushort tx, ushort ty)
         {
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
-            bool reponse = false;
+            _peutentrer = false;
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
-                reponse = true;
+                _peutentrer = true;   
             }
-            return reponse;
 
         }
         public override void UnloadContent()

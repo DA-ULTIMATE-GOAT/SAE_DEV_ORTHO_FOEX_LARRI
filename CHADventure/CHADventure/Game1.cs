@@ -14,25 +14,24 @@ namespace CHADventure
 {
     public class Game1 : Game
     {
-        //pour le changement de scene
         private Perso _perso = new Perso();
-
-        private GraphicsDeviceManager _graphics;
-        public SpriteBatch _spriteBatch;
-        private readonly ScreenManager _screenManager;
         private Entree _entree;
         private ScreenMenu _menu;
-        public SallePrincipale _sallePrincipale;
+        private SallePrincipale _sallePrincipale;
         private ParcoursDroit _parcoursDroit;
         private ParcoursGauche _parcoursGauche;
         private EnigmeDroite _enigmeDroite;
         private EnigmeGauche _enigmeGauche;
         private CouloirPrincipale _couloirPrincipale;
+        private SalleBoss _salleBoss;
+
         private AnimatedSprite _sprite;
         private Vector2 _positionPerso;
-        private ushort tx;
-        private ushort ty;
-        private SalleBoss _salleBoss;
+        private GraphicsDeviceManager _graphics;
+        public SpriteBatch _spriteBatch;
+        private readonly ScreenManager _screenManager;
+        public ushort tx;
+        public ushort ty;
 
         private const int VITESSE_PERSO = 110;
         public const int HAUTEUR_FENETRE = 800;
@@ -47,8 +46,6 @@ namespace CHADventure
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            _screenManager = new ScreenManager();
-            Components.Add(_screenManager);
             _screenManager = new ScreenManager();
             Components.Add(_screenManager);
             Etat = Etats.Menu;
@@ -89,7 +86,6 @@ namespace CHADventure
             _graphics.ApplyChanges();
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState _mouseState = Mouse.GetState();
-
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
                 // Attention, l'état a été mis à jour directement par l'écran en question
@@ -100,13 +96,22 @@ namespace CHADventure
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
 
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _entree.OuverturePorte(tx, ty))
+            else if (keyboardState.IsKeyDown(Keys.E) && _entree._peutentrer)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                Console.WriteLine("IL ENTRE");
+                _entree._peutentrer = false;
             }
-
-                base.Update(gameTime);
+            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutsortir)
+            {
+                //base.UnloadContent();
+                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
+                Color.Black));
+                Console.WriteLine("IL SORT");
+                _sallePrincipale._peutsortir = false;
+            }
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)

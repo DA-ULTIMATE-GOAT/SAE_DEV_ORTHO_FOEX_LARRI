@@ -14,6 +14,8 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso = new Perso();
+        private Entree _entree;
+
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
@@ -21,8 +23,10 @@ namespace CHADventure
         private AnimatedSprite _sprite;
         private Vector2 _positionPerso;
         private String _animation;
-        // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
-        // défini dans Game1
+
+        //changement de scene :
+        public bool _peutsortir = false;
+
         public SallePrincipale(Game1 game) : base(game)
         {
             _myGame = game;
@@ -54,6 +58,8 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+            Dehors(_myGame.tx, _myGame.ty);
+            Console.WriteLine("                      :" + _peutsortir);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -64,16 +70,16 @@ namespace CHADventure
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme                                          // Game1 pour chnager le graphisme
         }
 
-        public bool Dehors(ushort tx, ushort ty)
+        public void Dehors(ushort tx, ushort ty)
         {
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
-            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
-            bool reponse = false;
-            if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 31)
+            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 2);
+            _peutsortir = false;
+            Console.WriteLine(_mapLayer.GetTile(tx, ty).GlobalIdentifier);
+            if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 231)
             {
-                reponse = true;
+                _peutsortir = true;
             }
-            return reponse;
         }
 
     }
