@@ -59,7 +59,7 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
                 _animation = "walkWest";
-                _sensIdle = "S";
+                _sensIdle = "W";
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.X -= VITESSE_PERSO * deltaTime;
@@ -69,7 +69,7 @@ namespace CHADventure
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth + 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
                 _animation = "walkEast";
-                _sensIdle = "S";
+                _sensIdle = "E";
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.X += VITESSE_PERSO * deltaTime;
@@ -104,6 +104,12 @@ namespace CHADventure
             {
                 if (_sensIdle == "N")
                     _animation = "idleNorth";
+                
+                else if (_sensIdle == "E")
+                    _animation = "idleEast";
+                
+                else if (_sensIdle == "W")
+                    _animation = "idleWest";
                 else
                     _animation = "idle";
             }
@@ -174,6 +180,11 @@ namespace CHADventure
             }
             _coolDown -= deltaTime;
             Console.WriteLine(_coolDown);
+
+        }
+
+        public void IsDead(GameTime gameTime)
+        {
 
         }
     }

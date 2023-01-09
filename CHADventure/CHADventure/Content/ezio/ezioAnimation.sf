@@ -15,6 +15,16 @@
       "isLooping": false,
       "frameDuration": 0.1
     },
+    "idleWest": {
+      "frames": [ 4 ],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
+    "idleEast": {
+      "frames": [ 7 ],
+      "isLooping": false,
+      "frameDuration": 0.1
+    },
     "walkSouth": {
       "frames": [ 1, 2 ],
       "isLooping": false,
@@ -65,11 +75,11 @@
       "isLooping": false,
       "frameDuration": 0.1
     },
-	"jumpEast": {
+    "jumpEast": {
       "frames": [ 33, 34, 35 ],
       "isLooping": false,
       "frameDuration": 0.1
-    },
+    }
   }
   
 }
