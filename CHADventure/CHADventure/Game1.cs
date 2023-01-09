@@ -100,13 +100,11 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                Console.WriteLine("IL SORT");
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree._peutentrer)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                Console.WriteLine("IL ENTRE");
             }
             _entree._peutentrer=false;
             _sallePrincipale._peutsortir = false;
