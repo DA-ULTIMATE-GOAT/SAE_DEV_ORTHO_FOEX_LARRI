@@ -25,7 +25,9 @@ namespace CHADventure
         private String _animation;
 
         //changement de scene :
-        public bool _peutsortir = false;
+        public bool _peutSortirDehors = false;
+        public bool _peutSalleDroite = false;
+        public bool _peutSalleGauche = false;
 
         public SallePrincipale(Game1 game) : base(game)
         {
@@ -59,6 +61,9 @@ namespace CHADventure
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
             Dehors(_myGame.tx, _myGame.ty);
+            SallesDroit(_myGame.tx, _myGame.ty);
+            SallesGauche(_myGame.tx, _myGame.ty);
+
         }
         public override void Draw(GameTime gameTime)
         {
@@ -73,10 +78,30 @@ namespace CHADventure
         {
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 2);
-            _peutsortir = false;
+            _peutSortirDehors = false;
             if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 231)
             {
-                _peutsortir = true;
+                _peutSortirDehors = true;
+            }
+        }
+        public void SallesDroit(ushort tx, ushort ty)
+        {
+            tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth + 1);
+            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 1);
+            _peutSalleDroite = false;
+            if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 31)
+            {
+                _peutSalleDroite = true;
+            }
+        }
+        public void SallesGauche(ushort tx, ushort ty)
+        {
+            tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth - 1);
+            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 1);
+            _peutSalleGauche = false;
+            if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 31)
+            {
+                _peutSalleGauche = true;
             }
         }
 

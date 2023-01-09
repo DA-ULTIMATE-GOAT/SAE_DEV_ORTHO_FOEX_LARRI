@@ -21,8 +21,8 @@ namespace CHADventure
         private SallePrincipale _sallePrincipale;
         private ParcoursDroit _parcoursDroit;
         private ParcoursGauche _parcoursGauche;
-        private EnigmeDroite _enigmeDroite;
-        private EnigmeGauche _enigmeGauche;
+        private SalleDroite _salleDroite;
+        private SalleGauche _salleGauche;
         private CouloirPrincipale _couloirPrincipale;
         private SalleBoss _salleBoss;
 
@@ -59,22 +59,22 @@ namespace CHADventure
             _positionPerso = new Vector2(400, 672);
             tx = 0;
             ty = 0;
-            // TODO: Add your initialization logic here
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _entree = new Entree(this); // en leur donnant une référence au Game
+            _entree = new Entree(this);
             _sallePrincipale = new SallePrincipale(this);
             _menu = new ScreenMenu(this);
             _touches = new Touches(this);
             _parcoursDroit = new ParcoursDroit(this);
             _parcoursGauche = new ParcoursGauche(this);
             _couloirPrincipale = new CouloirPrincipale(this);
+            _salleDroite = new SalleDroite(this);
+            _salleGauche = new SalleGauche(this);
             _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
@@ -90,7 +90,6 @@ namespace CHADventure
             MouseState _mouseState = Mouse.GetState();
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
-                // Attention, l'état a été mis à jour directement par l'écran en question
                 if (this.Etat == Etats.Quit)
                     Exit();
 
@@ -110,7 +109,7 @@ namespace CHADventure
                 }
 
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutsortir)
+            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutSortirDehors)
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
@@ -122,9 +121,36 @@ namespace CHADventure
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
+            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutSalleDroite)
+            {
+                _screenManager.LoadScreen(_salleDroite, new FadeTransition(GraphicsDevice,
+                Color.Black));
+                _positionPerso = new Vector2(192,384);
+                _perso.InitPosition(_positionPerso);
+            }
+            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutSalleGauche)
+            {
+                _screenManager.LoadScreen(_salleGauche, new FadeTransition(GraphicsDevice,
+                Color.Black));
+                _positionPerso = new Vector2(608, 448);
+                _perso.InitPosition(_positionPerso);
+            }
+            else if (keyboardState.IsKeyDown(Keys.E) && _salleDroite._peutSallePrincipaleD)
+            {
+                _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
+                Color.Black));
+            }
+            else if (keyboardState.IsKeyDown(Keys.E) && _salleGauche._peutSallePrincipaleG)
+            {
+                _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
+                Color.Black));
+            }
             _entree._peutentrer=false;
-            _sallePrincipale._peutsortir = false;
-            Console.WriteLine(_positionPerso);
+            _sallePrincipale._peutSortirDehors = false;
+            _sallePrincipale._peutSalleDroite = false;
+            _sallePrincipale._peutSalleGauche = false;
+            _salleGauche._peutSallePrincipaleG = false;
+            _salleDroite._peutSallePrincipaleD = false;
             base.Update(gameTime);
         }
 

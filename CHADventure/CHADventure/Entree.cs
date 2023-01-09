@@ -23,7 +23,6 @@ namespace CHADventure
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
-        private Vector2 _positionPerso;
 
         //changement de scene :
         public bool _peutentrer = false;

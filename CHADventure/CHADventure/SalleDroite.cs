@@ -21,28 +21,31 @@ namespace CHADventure
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
-        private Vector2 _positionPerso;
+
 
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
 
-
+        public bool _peutSallePrincipaleD = false;
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
         public SalleDroite(Game1 game) : base(game)
         {
             _myGame = game;
-
-
         }
         public override void Initialize()
         {
-
+            base.Initialize();
         }
         public override void LoadContent()
         {
-
-
+            _tiledMap = Content.Load<TiledMap>("map/Principale/CombatDroit");
+            _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles");
+            _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles2");
+            _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
+            base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
@@ -61,9 +64,18 @@ namespace CHADventure
             _tiledMapRenderer.Draw();
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
-            //_myGame._spriteBatch.Draw();
             _myGame._spriteBatch.End();
 
+        }
+        public void SallesPrincipale(ushort tx, ushort ty)
+        {
+            tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth - 1);
+            ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 1);
+            _peutSallePrincipaleD = false;
+            if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 129)
+            {
+                _peutSallePrincipaleD = true;
+            }
         }
     }
 }
