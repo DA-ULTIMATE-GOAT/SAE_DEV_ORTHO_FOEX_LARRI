@@ -21,14 +21,18 @@ namespace CHADventure
         public const int VITESSE_BLOB = 90;
         Random rndm = new Random();
         public Vector2 _positionBlob;
-        public AnimatedSprite _spriteBlob;
         public String _animationBlob = "idle";
 
 
-        public BlueBlob()
+        public void DeplacementBlob(GameTime gameTime)
         {
-
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _animationBlob = "idle";
         }
+        /* public void Draw(GameTime gameTime)
+         {
+             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
+         }*/
 
     }
 }

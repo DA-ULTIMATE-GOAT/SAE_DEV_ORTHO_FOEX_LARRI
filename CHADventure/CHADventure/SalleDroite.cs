@@ -23,6 +23,7 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
         private BlueBlob[] _tabBlob;
+        public AnimatedSprite _spriteBlob;
         private int _nbBlob;
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
@@ -52,7 +53,7 @@ namespace CHADventure
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             SpriteSheet spriteSheetBlob = Content.Load<SpriteSheet>("mob/BlueBlob/blueBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _blueBlob._spriteBlob = new AnimatedSprite(spriteSheetBlob);
+            _spriteBlob = new AnimatedSprite(spriteSheetBlob);
             base.LoadContent();
         }
 
@@ -66,8 +67,8 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
-            _blueBlob._spriteBlob.Play("idle");
-            _blueBlob._spriteBlob.Update(gameTime);
+            _spriteBlob.Play(_blueBlob._animationBlob);
+            _spriteBlob.Update(gameTime);
             Spawn();
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
@@ -78,8 +79,8 @@ namespace CHADventure
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _myGame._spriteBatch.Draw(_blueBlob._spriteBlob, _blueBlob._positionBlob);
-                //_tabBlob.
+                _myGame._spriteBatch.Draw(_spriteBlob, _blueBlob._positionBlob);
+                _myGame._spriteBatch.Draw(_spriteBlob, _tabBlob[i]._positionBlob);
             }
             _myGame._spriteBatch.End();
 
@@ -101,6 +102,7 @@ namespace CHADventure
                 for (int i = 0; i < 1; i++)
                 {
                     _tabBlob[i] = new BlueBlob();
+                    _nbBlob++;
                 }
             }
         }
