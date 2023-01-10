@@ -26,6 +26,7 @@ namespace CHADventure
         private int _nbBlob;
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
+        Random rndm = new Random();
 
         public bool _peutSallePrincipaleD = false;
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
@@ -36,6 +37,7 @@ namespace CHADventure
         }
         public override void Initialize()
         {
+            _blueBlob._positionBlob = new Vector2(rndm.Next(288, 496), rndm.Next(256, 464));
             _perso._positionPerso = new Vector2(200, 400);
             _perso.InitPosition(_perso._positionPerso);
             _nbBlob = 0;
@@ -49,6 +51,8 @@ namespace CHADventure
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
+            SpriteSheet spriteSheetBlob = Content.Load<SpriteSheet>("mob/BlueBlob/blueBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _blueBlob._spriteBlob = new AnimatedSprite(spriteSheetBlob);
             base.LoadContent();
         }
 
@@ -62,6 +66,8 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+            _blueBlob._spriteBlob.Play("idle");
+            _blueBlob._spriteBlob.Update(gameTime);
             Spawn();
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
@@ -72,6 +78,7 @@ namespace CHADventure
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
+                _myGame._spriteBatch.Draw(_blueBlob._spriteBlob, _blueBlob._positionBlob);
                 //_tabBlob.
             }
             _myGame._spriteBatch.End();
