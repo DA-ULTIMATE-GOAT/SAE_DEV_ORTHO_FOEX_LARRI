@@ -41,7 +41,7 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            _coeur.PositionCoeur1 = new Vector2(25,25);
+            _coeur.PositionCoeur1 = new Vector2(58,35);
 
             base.Initialize();
         }
@@ -66,7 +66,7 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _perso.Attaque(gameTime);
             _coeur.AnimationCoeur(gameTime);
-            _coeur.CoeurSprite.Play("idle");
+            _coeur.CoeurSprite.Play("troisCoeurs");
             _coeur.CoeurSprite.Update(deltaTime);
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);

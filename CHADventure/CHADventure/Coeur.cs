@@ -32,7 +32,7 @@ namespace CHADventure
 
         public void AnimationCoeur(GameTime gameTime)
         {
-           _animation = "idle";
+           _animation = "troisCoeurs";
         }
     }
 

@@ -23,6 +23,7 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
         private AnimatedSprite _sprite;
+        private Coeur _coeur = new Coeur();
         private Vector2 _positionPerso;
         private String _animation;
 
@@ -37,7 +38,8 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            _positionPerso = new Vector2(400, 500);
+            _coeur.PositionCoeur1 = new Vector2(58, 35);
+            _positionPerso = new Vector2(400, 600);
             _perso.InitPosition(_positionPerso);
             base.Initialize();
         }
@@ -50,12 +52,17 @@ namespace CHADventure
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
+            SpriteSheet spriteSheetCoeur = Content.Load<SpriteSheet>("coeur/Coeur.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _coeur.CoeurSprite = new AnimatedSprite(spriteSheetCoeur);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _perso.Attaque(gameTime);
+            _coeur.AnimationCoeur(gameTime);
+            _coeur.CoeurSprite.Play("troisCoeurs");
+            _coeur.CoeurSprite.Update(deltaTime);
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
@@ -68,9 +75,11 @@ namespace CHADventure
         }
         public override void Draw(GameTime gameTime)
         {
+
             _myGame.GraphicsDevice.Clear(Color.Black); // on utilise la reference vers
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
+            _myGame._spriteBatch.Draw(_coeur.CoeurSprite, _coeur.PositionCoeur1);
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme                                          // Game1 pour chnager le graphisme
         }
