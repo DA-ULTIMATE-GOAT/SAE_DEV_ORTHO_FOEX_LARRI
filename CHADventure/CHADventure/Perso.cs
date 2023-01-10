@@ -30,7 +30,6 @@ namespace CHADventure
         public bool _attaque = false;
 
 
-
         public void InitPosition(Vector2 _positionPerso)
         {
             this._positionPerso = _positionPerso;
@@ -188,6 +187,7 @@ namespace CHADventure
             //Console.WriteLine(_coolDown);
 
         }
+
 
 
     }

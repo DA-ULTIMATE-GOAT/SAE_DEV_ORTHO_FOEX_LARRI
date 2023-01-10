@@ -15,6 +15,7 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso = new Perso();
+        private Coeur _coeur = new Coeur();
         private SallePrincipale _sallePrincipale;
         private Entree _entree;
 
@@ -23,6 +24,7 @@ namespace CHADventure
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
+
 
         //changement de scene :
         public bool _peutentrer = false;
@@ -49,7 +51,10 @@ namespace CHADventure
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
+            SpriteSheet spriteSheetCoeur = Content.Load<SpriteSheet>("coeur/Coeur.sf", new MonoGame.Extended.Serialization.JsonContentLoader()) ;
+            _coeur.CoeurSprite = new AnimatedSprite(spriteSheetCoeur);
             base.LoadContent();
+            
 
         }
 
@@ -58,6 +63,7 @@ namespace CHADventure
             KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _perso.Attaque(gameTime);
+            _coeur.AnimationCoeur(gameTime);
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
@@ -70,6 +76,7 @@ namespace CHADventure
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
+            _myGame._spriteBatch.Draw(_coeur.CoeurSprite, _coeur.PositionCoeur1);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
 
         }
