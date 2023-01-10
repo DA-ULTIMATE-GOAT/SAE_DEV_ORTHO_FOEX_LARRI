@@ -16,14 +16,14 @@ namespace CHADventure
         private Game1 _myGame;
         private BlueBlob _blueBlob = new BlueBlob();
         private Perso _perso = new Perso();
-        private SallePrincipale _sallePrincipale; 
+        private SallePrincipale _sallePrincipale;
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
-
-
+        private BlueBlob[] _tabBlob;
+        private int _nbBlob;
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
 
@@ -38,6 +38,7 @@ namespace CHADventure
         {
             _perso._positionPerso = new Vector2(200, 400);
             _perso.InitPosition(_perso._positionPerso);
+            _nbBlob = 0;
             base.Initialize();
         }
         public override void LoadContent()
@@ -61,6 +62,7 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+            Spawn();
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
         public override void Draw(GameTime gameTime)
@@ -68,6 +70,10 @@ namespace CHADventure
             _tiledMapRenderer.Draw();
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
+            for (int i = 0; i < _tabBlob.Length; i++)
+            {
+                //_tabBlob.
+            }
             _myGame._spriteBatch.End();
 
         }
@@ -79,6 +85,16 @@ namespace CHADventure
             if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 35)
             {
                 _peutSallePrincipaleD = true;
+            }
+        }
+        public void Spawn()
+        {
+            if (_nbBlob < 3)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    _tabBlob[i] = new BlueBlob();
+                }
             }
         }
     }

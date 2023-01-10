@@ -8,11 +8,11 @@ using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
-using MonoGame.Extended.Timers;
+
 
 namespace CHADventure
 {
-    public class BlueBlob
+    public class BlueBlob : Game
     {
         private Game1 _myGame;
         public const int TAILLE_FENETRE = 800;
@@ -20,28 +20,38 @@ namespace CHADventure
         public const int HAUTEUR_BLOB = 19;
         public const int VITESSE_BLOB = 90;
         Random rndm = new Random();
-        public BlueBlob[,] _tabBlob;
         public Vector2 _positionBlob;
         public AnimatedSprite _spriteBlob;
         public String _animationBlob = "idle";
-        private int _nbEnnemis = 0;
-       
-        public void Spawn(GameTime gametime)
+
+
+        public BlueBlob()
         {
-            if (_nbEnnemis < 3)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        _tabBlob[i,j] = new BlueBlob();
-                        _tabBlob[i,j]._positionBlob = new Vector2(rndm.Next(288, 496), rndm.Next(256, 464));
-                        _tabBlob[i,j]._animationBlob = new String(_animationBlob);
-                        _nbEnnemis++;
-                    }
-                }
-            }
+
+        }
+
+        protected override void Initialize()
+        {
+            _positionBlob = new Vector2(rndm.Next(288, 496), rndm.Next(256, 464));
+            base.Initialize();
+        }
+
+        protected override void LoadContent()
+        {
+            SpriteSheet spriteSheetBlob = Content.Load<SpriteSheet>("mob/BlueBlob/blueBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            _spriteBlob = new AnimatedSprite(spriteSheetBlob);
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            _spriteBlob.Play("idle");
+            _spriteBlob.Update(gameTime);
+            base.Update(gameTime);
+        }
+
+        protected override void Draw(GameTime gameTime)
+        {
+            _myGame._spriteBatch.Draw(_spriteBlob, _positionBlob);
         }
     }
-    
 }
