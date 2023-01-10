@@ -69,7 +69,10 @@ namespace CHADventure
             _perso._ezioSprite.Update(deltaTime);
             _spriteBlob.Play(_blueBlob._animationBlob);
             _spriteBlob.Update(gameTime);
-            Spawn();
+            if (_nbBlob < 3)
+            {
+                Spawn();
+            }
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
         public override void Draw(GameTime gameTime)
@@ -97,14 +100,11 @@ namespace CHADventure
         }
         public void Spawn()
         {
-            if (_nbBlob < 3)
-            {
                 for (int i = 0; i < 1; i++)
                 {
                     _tabBlob[i] = new BlueBlob();
                     _nbBlob++;
                 }
-            }
         }
     }
 }
