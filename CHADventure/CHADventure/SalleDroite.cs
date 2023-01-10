@@ -16,6 +16,7 @@ namespace CHADventure
         private Game1 _myGame;
         private BlueBlob _blueBlob = new BlueBlob();
         private Perso _perso = new Perso();
+        private SallePrincipale _sallePrincipale; 
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
@@ -35,6 +36,8 @@ namespace CHADventure
         }
         public override void Initialize()
         {
+            _perso._positionPerso = new Vector2(200, 400);
+            _perso.InitPosition(_perso._positionPerso);
             base.Initialize();
         }
         public override void LoadContent()
@@ -58,6 +61,7 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+            SallesPrincipale(_myGame.tx, _myGame.ty);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -72,7 +76,7 @@ namespace CHADventure
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth - 1);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 1);
             _peutSallePrincipaleD = false;
-            if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 129)
+            if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 35)
             {
                 _peutSallePrincipaleD = true;
             }

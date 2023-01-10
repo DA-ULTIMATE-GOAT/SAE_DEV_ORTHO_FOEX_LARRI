@@ -39,6 +39,8 @@ namespace CHADventure
         }
         public override void Initialize()
         {
+            _perso._positionPerso = new Vector2(608, 400);
+            _perso.InitPosition(_perso._positionPerso);
             base.Initialize();
         }
         public override void LoadContent()
@@ -77,7 +79,7 @@ namespace CHADventure
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth + 1);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 1);
             _peutSallePrincipaleG = false;
-            if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 130)
+            if (_mapLayer.GetTile(tx, ty).GlobalIdentifier == 31)
             {
                 _peutSallePrincipaleG = true;
             }

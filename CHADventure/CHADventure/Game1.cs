@@ -113,34 +113,28 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _positionPerso = new Vector2(400, 80);
-                _perso.InitPosition(_positionPerso);
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree._peutentrer)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutSalleDroite)
+            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _sallePrincipale._peutSalleDroite)
             {
                 _screenManager.LoadScreen(_salleDroite, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _positionPerso = new Vector2(192,384);
-                _perso.InitPosition(_positionPerso);
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _sallePrincipale._peutSalleGauche)
+            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _sallePrincipale._peutSalleGauche)
             {
                 _screenManager.LoadScreen(_salleGauche, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _positionPerso = new Vector2(608, 448);
-                _perso.InitPosition(_positionPerso);
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _salleDroite._peutSallePrincipaleD)
+            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _salleDroite._peutSallePrincipaleD)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
             }
-            else if (keyboardState.IsKeyDown(Keys.E) && _salleGauche._peutSallePrincipaleG)
+            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _salleGauche._peutSallePrincipaleG)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));

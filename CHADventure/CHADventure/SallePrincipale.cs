@@ -15,6 +15,8 @@ namespace CHADventure
         private Game1 _myGame;
         private Perso _perso = new Perso();
         private Entree _entree;
+        private SalleDroite _salleDroite;
+        private SalleGauche _salleGauche;
 
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
@@ -36,7 +38,6 @@ namespace CHADventure
         public override void Initialize()
         {
             _positionPerso = new Vector2(400, 500);
-            _animation = "idle";
             _perso.InitPosition(_positionPerso);
             base.Initialize();
         }
