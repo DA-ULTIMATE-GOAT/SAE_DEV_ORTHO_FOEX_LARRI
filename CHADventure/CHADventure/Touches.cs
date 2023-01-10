@@ -41,6 +41,7 @@ namespace CHADventure
         }
         public override void Update(GameTime gameTime)
         {
+            _myGame.etat = Game1.Etats.Touch;
             MouseState _mouseState = Mouse.GetState();
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {

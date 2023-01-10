@@ -37,6 +37,7 @@ namespace CHADventure
             lesBoutons[0] = new Rectangle(50, 609, 279, 89);
             lesBoutons[1] = new Rectangle(471, 609, 279, 89);
             lesBoutons[2] = new Rectangle(686,45,72,62);
+            
 
 
         }
@@ -54,6 +55,7 @@ namespace CHADventure
             _logo.Play("ecran");
             _logo.Update(gameTime);
             MouseState _mouseState = Mouse.GetState();
+            _myGame.etat = Game1.Etats.Menu;
             if (_mouseState.LeftButton == ButtonState.Pressed)
             {
                 for (int i = 0; i < lesBoutons.Length; i++)
