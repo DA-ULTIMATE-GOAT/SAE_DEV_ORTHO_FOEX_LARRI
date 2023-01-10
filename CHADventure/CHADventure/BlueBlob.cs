@@ -56,7 +56,7 @@ namespace CHADventure
 
                 //Console.WriteLine("Est");
             }
-            else if (_positionBlob.X < _perso._positionPerso.X)
+            if (_positionBlob.X < _perso._positionPerso.X)
             {
                 ushort tx = (ushort)(_positionBlob.X / _tiledMap.TileWidth - 1);
                 ushort ty = (ushort)(_positionBlob.Y / _tiledMap.TileHeight + 1);
@@ -66,7 +66,7 @@ namespace CHADventure
                     _positionBlob.X -= _vitesse * deltaTime;
                 //Console.WriteLine("West");
             }
-            /*if (_positionBlob.Y < _perso._positionPerso.Y)
+            if (_positionBlob.Y < _perso._positionPerso.Y)
             {
                 ushort tx = (ushort)(_positionBlob.X / _tiledMap.TileWidth);
                 ushort ty = (ushort)(_positionBlob.Y / _tiledMap.TileHeight);
@@ -85,7 +85,7 @@ namespace CHADventure
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionBlob.Y += _vitesse * deltaTime;
                 Console.WriteLine("Sud");
-            }*/
+            }
             Console.WriteLine($"{_positionBlob.X} + {_positionBlob.Y}");
         }
         public void Draw(SpriteBatch spritebatch)
