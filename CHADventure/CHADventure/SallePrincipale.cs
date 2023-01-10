@@ -13,7 +13,7 @@ namespace CHADventure
     public class SallePrincipale : GameScreen
     {
         private Game1 _myGame;
-        private Perso _perso = new Perso();
+        private Perso _perso;
         private Entree _entree;
         private SalleDroite _salleDroite;
         private SalleGauche _salleGauche;
@@ -23,7 +23,7 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
         private AnimatedSprite _sprite;
-        private Coeur _coeur = new Coeur();
+        private Coeur _coeur;
         private Vector2 _positionPerso;
         private String _animation;
 
@@ -35,6 +35,8 @@ namespace CHADventure
         public SallePrincipale(Game1 game) : base(game)
         {
             _myGame = game;
+            _perso = new Perso();
+            _coeur = new Coeur();
         }
         public override void Initialize()
         {

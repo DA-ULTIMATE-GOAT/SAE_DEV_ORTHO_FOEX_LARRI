@@ -14,8 +14,8 @@ namespace CHADventure
     public class SalleDroite : GameScreen
     {
         private Game1 _myGame;
-        private BlueBlob _blueBlob = new BlueBlob();
-        private Perso _perso = new Perso();
+        private BlueBlob _blueBlob;
+        private Perso _perso;
         private SallePrincipale _sallePrincipale;
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
@@ -36,14 +36,15 @@ namespace CHADventure
         public SalleDroite(Game1 game) : base(game)
         {
             _myGame = game;
+            _perso = new Perso();
+            _blueBlob = new BlueBlob();
         }
         public override void Initialize()
         {       
-            //_blueBlob.Initialize();
             _perso._positionPerso = new Vector2(200, 400);
             _perso.InitPosition(_perso._positionPerso);
             _nbBlob = 0;
-            _tabBlob = new BlueBlob[3];
+            _tabBlob = new BlueBlob[1];
             for(int i = 0; i < _tabBlob.Length; i++)
             {
                 _tabBlob[i] = new BlueBlob();
@@ -74,25 +75,24 @@ namespace CHADventure
             _perso.Attaque(gameTime);
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
-            _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _tabBlob[i].DeplacementBlob(gameTime);
-                
+                _tabBlob[i].DeplacementBlob(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             }
+            _tiledMapRenderer.Update(gameTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
         public override void Draw(GameTime gameTime)
         {
             _tiledMapRenderer.Draw();
             _myGame._spriteBatch.Begin();
-            _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
                 _tabBlob[i].Draw(_myGame._spriteBatch);
             }
+            _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             _myGame._spriteBatch.End();
 
         }

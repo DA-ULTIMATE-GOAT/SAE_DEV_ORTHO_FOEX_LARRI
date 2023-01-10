@@ -14,7 +14,7 @@ namespace CHADventure
 {
     public class Game1 : Game
     {
-        private Perso _perso = new Perso();
+        private Perso _perso;
         private Entree _entree;
         private ScreenMenu _menu;
         private Touches _touches;
@@ -54,6 +54,7 @@ namespace CHADventure
 
         protected override void Initialize()
         {
+            _perso = new Perso();
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _sprite = new AnimatedSprite(spriteSheet);
             _positionPerso = new Vector2(400, 672);

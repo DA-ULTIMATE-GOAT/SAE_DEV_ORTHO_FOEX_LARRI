@@ -66,8 +66,8 @@ namespace CHADventure
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.X -= VITESSE_PERSO * deltaTime;
-                Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
-                Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
             }
             else if ((_positionPerso.X < 800 - Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.D))
             {
@@ -78,8 +78,8 @@ namespace CHADventure
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.X += VITESSE_PERSO * deltaTime;
-                Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
-                Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
             }
             else if ((_positionPerso.Y > Perso.HAUTEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Z))
             {
@@ -90,8 +90,8 @@ namespace CHADventure
 
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.Y -= VITESSE_PERSO * deltaTime;
-                Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
-                Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
 
             }
             else if ((_positionPerso.Y < 800 - Perso.HAUTEUR_SPRITE / 2) && keyboardState.IsKeyDown(Keys.S))
@@ -104,8 +104,8 @@ namespace CHADventure
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionPerso.Y += VITESSE_PERSO * deltaTime;
 
-                Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
-                Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 1 " + _mapLayer.GetTile(tx, ty).GlobalIdentifier);
+                //Console.WriteLine("LAYER 2                   :" + _mapLayer2.GetTile(tx, ty).GlobalIdentifier);
             }
             else
             {

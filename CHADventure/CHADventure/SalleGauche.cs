@@ -14,8 +14,8 @@ namespace CHADventure
     public class SalleGauche : GameScreen
     {
         private Game1 _myGame;
-        private Perso _perso = new Perso(); 
-        private BlueBlob _blueBlob = new BlueBlob();
+        private Perso _perso;
+        private BlueBlob _blueBlob;
         private SallePrincipale _sallePrincipale;
         private Entree _entree;
 
@@ -36,6 +36,8 @@ namespace CHADventure
         public SalleGauche(Game1 game) : base(game)
         {
             _myGame = game;
+            _perso = new Perso();
+            _blueBlob = new BlueBlob();
         }
         public override void Initialize()
         {

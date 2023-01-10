@@ -14,8 +14,8 @@ namespace CHADventure
     public class Entree : GameScreen
     {
         private Game1 _myGame;
-        private Perso _perso = new Perso();
-        private Coeur _coeur = new Coeur();
+        private Perso _perso;
+        private Coeur _coeur;
         private SallePrincipale _sallePrincipale;
         private Entree _entree;
 
@@ -41,6 +41,8 @@ namespace CHADventure
         }
         public override void Initialize()
         {
+            _perso = new Perso();
+            _coeur = new Coeur();
             _coeur.PositionCoeur1 = new Vector2(58,35);
 
             base.Initialize();
