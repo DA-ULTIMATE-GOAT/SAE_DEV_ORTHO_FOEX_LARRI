@@ -30,6 +30,7 @@ namespace CHADventure
         Random rndm = new Random();
 
         public bool _peutSallePrincipaleD = false;
+       
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
         public SalleDroite(Game1 game) : base(game)
@@ -37,11 +38,16 @@ namespace CHADventure
             _myGame = game;
         }
         public override void Initialize()
-        {
-            _blueBlob._positionBlob = new Vector2(rndm.Next(288, 496), rndm.Next(256, 464));
+        {       
+            _blueBlob.Initialize();
             _perso._positionPerso = new Vector2(200, 400);
             _perso.InitPosition(_perso._positionPerso);
             _nbBlob = 0;
+            _tabBlob = new BlueBlob[3];
+            for(int i = 0; i < _tabBlob.Length; i++)
+            {
+                _tabBlob[i] = new BlueBlob();
+            }
             base.Initialize();
         }
         public override void LoadContent()
@@ -52,8 +58,12 @@ namespace CHADventure
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
-            SpriteSheet spriteSheetBlob = Content.Load<SpriteSheet>("mob/BlueBlob/blueBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _spriteBlob = new AnimatedSprite(spriteSheetBlob);
+            for (int i = 0; i < _tabBlob.Length; i++)
+            {
+                _tabBlob[i] = new BlueBlob();
+                _tabBlob[i].LoadContent(_myGame);
+                _tabBlob[i].Initialize();
+            }
             base.LoadContent();
         }
 
@@ -67,11 +77,10 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
-            _spriteBlob.Play(_blueBlob._animationBlob);
-            _spriteBlob.Update(gameTime);
-            if (_nbBlob < 3)
+            for (int i = 0; i < _tabBlob.Length; i++)
             {
-                Spawn();
+                _tabBlob[i].DeplacementBlob(gameTime);
+                
             }
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
@@ -82,8 +91,7 @@ namespace CHADventure
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _myGame._spriteBatch.Draw(_spriteBlob, _blueBlob._positionBlob);
-                _myGame._spriteBatch.Draw(_spriteBlob, _tabBlob[i]._positionBlob);
+                _tabBlob[i].Draw(_myGame._spriteBatch);
             }
             _myGame._spriteBatch.End();
 
@@ -102,8 +110,8 @@ namespace CHADventure
         {
                 for (int i = 0; i < 1; i++)
                 {
-                    _tabBlob[i] = new BlueBlob();
-                    _nbBlob++;
+                    this._tabBlob[i] = new BlueBlob();
+                    this._nbBlob++;
                 }
         }
     }

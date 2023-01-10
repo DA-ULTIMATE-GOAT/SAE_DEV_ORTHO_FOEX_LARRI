@@ -20,6 +20,7 @@ namespace CHADventure
         public const int COOLDOWNEZIO = 1;
 
         private Game1 _myGame;
+        private Entree _entree;
 
         public Vector2 _positionPerso = new Vector2(400, 672);
         public AnimatedSprite _ezioSprite;
