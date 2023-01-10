@@ -39,7 +39,7 @@ namespace CHADventure
         }
         public override void Initialize()
         {       
-            _blueBlob.Initialize();
+            //_blueBlob.Initialize();
             _perso._positionPerso = new Vector2(200, 400);
             _perso.InitPosition(_perso._positionPerso);
             _nbBlob = 0;
@@ -61,8 +61,8 @@ namespace CHADventure
             for (int i = 0; i < _tabBlob.Length; i++)
             {
                 _tabBlob[i] = new BlueBlob();
-                _tabBlob[i].LoadContent(_myGame);
                 _tabBlob[i].Initialize();
+                _tabBlob[i].LoadContent(_myGame);
             }
             base.LoadContent();
         }

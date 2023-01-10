@@ -28,7 +28,7 @@ namespace CHADventure
         
         public void Initialize()
         {
-            _positionBlob = new Vector2(400,400);
+            _positionBlob = new Vector2(rndm.Next(288,496),rndm.Next(256,464));
             _vitesse = VITESSE_BLOB;
         }
         public void LoadContent(Game1 game)
@@ -41,7 +41,6 @@ namespace CHADventure
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _animationBlob = "idle";
-            //_positionBlob = new Vector2(400, 400);
         }
         public void Draw(SpriteBatch spritebatch)
          {
