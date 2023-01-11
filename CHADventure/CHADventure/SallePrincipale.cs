@@ -63,7 +63,6 @@ namespace CHADventure
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _perso.Attaque(gameTime);
             _coeur.AnimationCoeur(gameTime);
             _coeur.CoeurSprite.Play("troisCoeurs");
             _coeur.CoeurSprite.Update(deltaTime);

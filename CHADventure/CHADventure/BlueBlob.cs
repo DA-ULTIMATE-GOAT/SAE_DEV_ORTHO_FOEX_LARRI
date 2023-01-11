@@ -88,6 +88,9 @@ namespace CHADventure
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionBlob.Y += _vitesse * deltaTime;
             }
+            APorter(_positionBlob);
+            
+
         }
         public void Draw(SpriteBatch spritebatch)
          {
@@ -111,7 +114,10 @@ namespace CHADventure
             position.Y = Math.Abs(Perso._positionPerso.Y - PositionBlob.Y);
 
             if (position.X <= 12 && position.Y <= 12)
+            {
                 touche = true;
+                Console.WriteLine("EstActive");
+            }
             return touche;
 
         }

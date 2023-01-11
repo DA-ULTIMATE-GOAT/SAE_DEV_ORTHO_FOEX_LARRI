@@ -79,10 +79,14 @@ namespace CHADventure
 
         public override void Update(GameTime gameTime)
         {
-            KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _perso.Attaque(gameTime);
+            KeyboardState keyboardState = Keyboard.GetState();
+            for (int i = 0; i < _tabBlob.Length; i++)
+            {
+                _perso.Attaque(gameTime, _tabBlob[i]);
+            }
             if (!_perso._attaque)
+                if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);

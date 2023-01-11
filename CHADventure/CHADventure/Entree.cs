@@ -71,7 +71,6 @@ namespace CHADventure
         {
             KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _perso.Attaque(gameTime);
             
             _coeur.AnimationCoeur(gameTime);
             _coeur.CoeurSprite.Play("troisCoeurs");

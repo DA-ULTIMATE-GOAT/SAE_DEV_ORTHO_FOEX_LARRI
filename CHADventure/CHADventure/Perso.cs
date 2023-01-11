@@ -42,6 +42,7 @@ namespace CHADventure
         public void DeplacementPerso(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _coolDown -= deltaTime;
             KeyboardState keyboardState = Keyboard.GetState();
             if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Down))
             {
@@ -133,7 +134,7 @@ namespace CHADventure
                 return true;
             return false;
         }
-        public void Attaque(GameTime gameTime)
+        public void Attaque(GameTime gameTime, BlueBlob blueblob)
         {
             KeyboardState keyboardState = Keyboard.GetState();
             if (!(_coolDown > 0))
@@ -161,12 +162,42 @@ namespace CHADventure
                 //Console.WriteLine("                            : " + _animation);
             }
 
-            AttaqueCooldown(gameTime);
+            AttaqueCooldown(gameTime, blueblob);
         }
 
-        public void AttaqueCooldown(GameTime gameTime)
+        public void Attaque(GameTime gameTime, RedBlob redBlob)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            KeyboardState keyboardState = Keyboard.GetState();
+            if (!(_coolDown > 0))
+            {
+                if (keyboardState.IsKeyDown(Keys.Down))
+                {
+                    _animation = "attackSouth";
+                    _attaque = true;
+                }
+                else if (keyboardState.IsKeyDown(Keys.Up))
+                {
+                    _animation = "attackNorth";
+                    _attaque = true;
+                }
+                else if (keyboardState.IsKeyDown(Keys.Left))
+                {
+                    _animation = "attackWest";
+                    _attaque = true;
+                }
+                else if (keyboardState.IsKeyDown(Keys.Right))
+                {
+                    _animation = "attackEast";
+                    _attaque = true;
+                }
+                //Console.WriteLine("                            : " + _animation);
+            }
+
+            AttaqueCooldown(gameTime, redBlob);
+        }
+
+        public void AttaqueCooldown(GameTime gameTime, BlueBlob blueBlob)
+        {
 
             if (_attaque && _isCoolDownEzio)
             {
@@ -185,19 +216,68 @@ namespace CHADventure
                 _attaque = false;
                 _isCoolDownEzio = true;
             }
-            _coolDown -= deltaTime;
+            
+
             //Console.WriteLine(_coolDown);
+            APorter(_positionPerso, blueBlob);
 
         }
 
-        private bool APorter(Vector2 position)
+        public void AttaqueCooldown(GameTime gameTime, RedBlob redBlob)
+        {
+
+            if (_attaque && _isCoolDownEzio)
+            {
+
+                _coolDown = COOLDOWNEZIO;
+                _isCoolDownEzio = false;
+                _attaque = false;
+            }
+            else if (_coolDown <= 0)
+            {
+                _attaque = false;
+                _isCoolDownEzio = true;
+            }
+            else
+            {
+                _attaque = false;
+                _isCoolDownEzio = true;
+            }
+
+
+            //Console.WriteLine(_coolDown);
+            APorter(_positionPerso, redBlob);
+
+        }
+
+        private bool APorter(Vector2 position, BlueBlob _blueBlob)
         {
             bool touche = false;
             position.X = Math.Abs(_blueBlob.PositionBlob.X - _positionPerso.X);
             position.Y = Math.Abs(_blueBlob.PositionBlob.Y - _positionPerso.Y);
 
             if (position.X <=  30 && position.Y <= 30)
+            {
                 touche = true;
+                Console.WriteLine("EstActive3");
+            }
+           
+            return touche;
+
+        }
+
+        private bool APorter(Vector2 position, RedBlob _redBlob)
+        {
+            bool touche = false;
+            position.X = Math.Abs(_redBlob.PositionBlob.X - _positionPerso.X);
+            position.Y = Math.Abs(_redBlob.PositionBlob.Y - _positionPerso.Y);
+
+            if (position.X <= 30 && position.Y <= 30)
+            {
+                touche = true;
+                Console.WriteLine("EstActive3");
+            }
+
             return touche;
 
         }
