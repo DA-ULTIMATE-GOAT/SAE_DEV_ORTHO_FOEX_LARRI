@@ -15,6 +15,7 @@ namespace CHADventure
     {
         private Game1 _myGame;
         private Perso _perso;
+        private Coeur _coeur;
         private BlueBlob _blueBlob;
         private SallePrincipale _sallePrincipale;
         private Entree _entree;
@@ -38,6 +39,7 @@ namespace CHADventure
             _myGame = game;
             _perso = new Perso();
             _blueBlob = new BlueBlob();
+            _coeur = new Coeur();
         }
         public override void Initialize()
         {
@@ -47,12 +49,14 @@ namespace CHADventure
         }
         public override void LoadContent()
         {
+            _coeur.Initialize();
             _tiledMap = Content.Load<TiledMap>("map/Principale/CombatGauche");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
+            _coeur.LoadContent(_myGame);
             base.LoadContent();
         }
 
@@ -66,6 +70,11 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+
+            _coeur.AnimationCoeur(gameTime);
+            _coeur.CoeurSprite.Play("troisCoeurs");
+            _coeur.CoeurSprite.Update(deltaTime);
+
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
         public override void Draw(GameTime gameTime)
@@ -73,6 +82,7 @@ namespace CHADventure
             _tiledMapRenderer.Draw();
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
+            _coeur.Draw(_myGame._spriteBatch);
             _myGame._spriteBatch.End();
 
         }

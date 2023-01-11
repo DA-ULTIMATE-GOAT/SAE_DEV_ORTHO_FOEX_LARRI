@@ -16,6 +16,8 @@ namespace CHADventure
         private Game1 _myGame;
         private BlueBlob _blueBlob;
         private Perso _perso;
+        private Coeur _coeur;
+
         private SallePrincipale _sallePrincipale;
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
@@ -38,6 +40,7 @@ namespace CHADventure
             _myGame = game;
             _perso = new Perso();
             _blueBlob = new BlueBlob();
+            _coeur = new Coeur();
         }
         public override void Initialize()
         {       
@@ -53,6 +56,7 @@ namespace CHADventure
         }
         public override void LoadContent()
         {
+            _coeur.Initialize();
             _tiledMap = Content.Load<TiledMap>("map/Principale/CombatDroit");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles2");
@@ -65,6 +69,7 @@ namespace CHADventure
                 _tabBlob[i].Initialize();
                 _tabBlob[i].LoadContent(_myGame);
             }
+            _coeur.LoadContent(_myGame);
             base.LoadContent();
         }
 
@@ -81,6 +86,10 @@ namespace CHADventure
             {
                 _tabBlob[i].DeplacementBlob(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             }
+            _coeur.AnimationCoeur(gameTime);
+            _coeur.CoeurSprite.Play("troisCoeurs");
+            _coeur.CoeurSprite.Update(deltaTime);
+
             _tiledMapRenderer.Update(gameTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
@@ -93,6 +102,7 @@ namespace CHADventure
                 _tabBlob[i].Draw(_myGame._spriteBatch);
             }
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
+            _coeur.Draw(_myGame._spriteBatch);
             _myGame._spriteBatch.End();
 
         }
