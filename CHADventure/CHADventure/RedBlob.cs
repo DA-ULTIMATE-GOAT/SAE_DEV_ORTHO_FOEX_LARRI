@@ -86,7 +86,6 @@ namespace CHADventure
                 if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                     _positionBlob.Y += _vitesse * deltaTime;
             }
-            Console.WriteLine($"{_positionBlob.X} + {_positionBlob.Y}");
         }
         public void Draw(SpriteBatch spritebatch)
         {
