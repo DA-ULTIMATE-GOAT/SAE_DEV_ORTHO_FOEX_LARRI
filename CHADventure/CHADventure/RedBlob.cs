@@ -48,8 +48,7 @@ namespace CHADventure
         }
         public void Update(GameTime gameTime)
         {
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            reloadAttack += elapsed;
+
             Console.WriteLine(Attaque(gameTime, _perso));
         }
 
@@ -130,8 +129,10 @@ namespace CHADventure
 
         public bool Attaque(GameTime gameTime, Perso perso)
         {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            reloadAttack += elapsed;
             bool attaque = false;
-            if (APorter(perso._positionPerso))
+            if (APorter(perso._positionPerso) && reloadAttack >= 1000)
             {
                 attaque = true;
                 reloadAttack = 0; 

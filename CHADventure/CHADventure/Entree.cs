@@ -34,6 +34,7 @@ namespace CHADventure
         public const int TAILLE_TUILE = 16;
 
         public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
+        public Coeur Coeur { get => _coeur; set => _coeur = value; }
 
 
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
@@ -45,7 +46,7 @@ namespace CHADventure
         public override void Initialize()
         {
             _perso = new Perso();
-            _coeur = new Coeur();
+            Coeur = new Coeur();
 
             _perso._positionPerso = PositionPerso;
 
@@ -53,7 +54,7 @@ namespace CHADventure
         }
         public override void LoadContent()
         {
-            _coeur.Initialize();
+            Coeur.Initialize();
             _tiledMap = Content.Load<TiledMap>("map/Entree/ExterieurMap");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
@@ -61,7 +62,7 @@ namespace CHADventure
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
 
-            _coeur.LoadContent(_myGame);
+            Coeur.LoadContent(_myGame);
             base.LoadContent();
             
 
@@ -72,9 +73,9 @@ namespace CHADventure
             KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             
-            _coeur.AnimationCoeur(gameTime);
-            _coeur.CoeurSprite.Play(_coeur.AnimationCoeur(gameTime));
-            _coeur.CoeurSprite.Update(deltaTime);
+            Coeur.AnimationCoeur(gameTime);
+            Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
+            Coeur.CoeurSprite.Update(deltaTime);
             
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
@@ -88,7 +89,7 @@ namespace CHADventure
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
-            _coeur.Draw(_myGame._spriteBatch);
+            Coeur.Draw(_myGame._spriteBatch);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
 
         }

@@ -110,14 +110,16 @@ namespace CHADventure
 
         private bool APorter(Vector2 position)
         {
+            Vector2 emplacement;
             bool touche = false;
-            position.X = Math.Abs(Perso._positionPerso.X - PositionBlob.X);
-            position.Y = Math.Abs(Perso._positionPerso.Y - PositionBlob.Y);
+            emplacement.X = Math.Abs(position.X - _positionBlob.X);
+            emplacement.Y = Math.Abs(position.Y - _positionBlob.Y);
 
-            if (position.X <= 12 && position.Y <= 12)
+
+
+            if (emplacement.X <= 12 && emplacement.Y <= 12)
             {
                 touche = true;
-                Console.WriteLine("EstActive");
             }
             return touche;
 
@@ -126,13 +128,14 @@ namespace CHADventure
 
         public bool Attaque(GameTime gameTime, Perso perso)
         {
-            bool attaque = false;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             reloadAttack += elapsed;
-            if (APorter(perso._positionPerso) && reloadAttack > 1000)
+            bool attaque = false;
+            if (APorter(perso._positionPerso) && reloadAttack >= 1000)
             {
                 attaque = true;
                 reloadAttack = 0;
+                Console.WriteLine("EstActive2");
             }
             return attaque;
         }

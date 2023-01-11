@@ -38,6 +38,7 @@ namespace CHADventure
         public bool _peutSallePrincipaleG = false;
 
         public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
+        public Coeur Coeur { get => _coeur; set => _coeur = value; }
 
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
@@ -46,7 +47,7 @@ namespace CHADventure
             _myGame = game;
             _perso = new Perso();
             _redBlob = new RedBlob(_perso);
-            _coeur = new Coeur();
+            Coeur = new Coeur();
         }
         public override void Initialize()
         {
@@ -60,7 +61,7 @@ namespace CHADventure
         }
         public override void LoadContent()
         {
-            _coeur.Initialize();
+            Coeur.Initialize();
             _tiledMap = Content.Load<TiledMap>("map/Principale/CombatGauche");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles2");
@@ -73,7 +74,7 @@ namespace CHADventure
                 _tabBlob[i].Initialize();
                 _tabBlob[i].LoadContent(_myGame);
             }
-            _coeur.LoadContent(_myGame);
+            Coeur.LoadContent(_myGame);
             base.LoadContent();
         }
 
@@ -86,7 +87,7 @@ namespace CHADventure
                 _perso.Attaque(gameTime, _tabBlob[i]);
                 if (_tabBlob[i].Attaque(gameTime, _perso))
                 {
-                    _coeur.Pv -= 1;
+                    Coeur.Pv -= 1;
                 }
 
             }
@@ -100,9 +101,9 @@ namespace CHADventure
             {
                 _tabBlob[i].DeplacementBlob(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             }
-            _coeur.AnimationCoeur(gameTime);
-            _coeur.CoeurSprite.Play(_coeur.AnimationCoeur(gameTime));
-            _coeur.CoeurSprite.Update(deltaTime);
+            Coeur.AnimationCoeur(gameTime);
+            Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
+            Coeur.CoeurSprite.Update(deltaTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
             _redBlob.Update(gameTime);
 
@@ -116,7 +117,7 @@ namespace CHADventure
                 _tabBlob[i].Draw(_myGame._spriteBatch);
             }
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
-            _coeur.Draw(_myGame._spriteBatch);
+            Coeur.Draw(_myGame._spriteBatch);
             _myGame._spriteBatch.End();
 
         }
