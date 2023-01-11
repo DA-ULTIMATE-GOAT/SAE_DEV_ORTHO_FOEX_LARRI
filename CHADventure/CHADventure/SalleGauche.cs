@@ -29,6 +29,8 @@ namespace CHADventure
         private Vector2 _positionPerso;
         Random rndm = new Random();
 
+
+
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
 
@@ -43,7 +45,7 @@ namespace CHADventure
         {
             _myGame = game;
             _perso = new Perso();
-            _redBlob = new RedBlob();
+            _redBlob = new RedBlob(_perso);
             _coeur = new Coeur();
         }
         public override void Initialize()
@@ -52,7 +54,7 @@ namespace CHADventure
             _tabBlob = new RedBlob[1];
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _tabBlob[i] = new RedBlob();
+                _tabBlob[i] = new RedBlob(_perso);
             }
             base.Initialize();
         }
@@ -67,7 +69,7 @@ namespace CHADventure
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _tabBlob[i] = new RedBlob();
+                _tabBlob[i] = new RedBlob(_perso);
                 _tabBlob[i].Initialize();
                 _tabBlob[i].LoadContent(_myGame);
             }
