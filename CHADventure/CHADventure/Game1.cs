@@ -93,12 +93,16 @@ namespace CHADventure
                     Exit();
 
                 else if (this.Etat == Etats.Play)
+                {
                     _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
+                    _entree.PositionPerso = new Vector2(400, 672);
+                }
                 else if (this.Etat == Etats.Touch && _menu._peutTouche)
                 {
                     _screenManager.LoadScreen(_touches, new FadeTransition(GraphicsDevice, Color.Black));
                     _menu._peutTouche = false;
                     _menu._peutMenu = true;
+
                 }
                 else if (this.Etat == Etats.Menu && _menu._peutMenu)
                 {
@@ -112,31 +116,37 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _entree.PositionPerso = new Vector2(400, 66);
             }
             else if (keyboardState.IsKeyDown(Keys.E) && _entree._peutentrer)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _sallePrincipale.PositionPerso = new Vector2(400, 600);
             }
-            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _sallePrincipale._peutSalleDroite)
+            else if (_sallePrincipale._peutSalleDroite)
             {
                 _screenManager.LoadScreen(_salleDroite, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _salleDroite.PositionPerso = new Vector2(174, 377);
             }
-            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _sallePrincipale._peutSalleGauche)
+            else if ( _sallePrincipale._peutSalleGauche)
             {
                 _screenManager.LoadScreen(_salleGauche, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _salleGauche.PositionPerso = new Vector2(624, 400);
             }
-            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _salleDroite._peutSallePrincipaleD)
+            else if (_salleDroite._peutSallePrincipaleD)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _sallePrincipale.PositionPerso = new Vector2(751, 202);
             }
-            else if (/*keyboardState.IsKeyDown(Keys.E) &&*/ _salleGauche._peutSallePrincipaleG)
+            else if (_salleGauche._peutSallePrincipaleG)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _sallePrincipale.PositionPerso = new Vector2(38, 202);
             }
             _entree._peutentrer=false;
             _sallePrincipale._peutSortirDehors = false;

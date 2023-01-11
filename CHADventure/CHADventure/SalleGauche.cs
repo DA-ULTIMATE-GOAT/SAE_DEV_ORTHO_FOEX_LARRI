@@ -25,12 +25,15 @@ namespace CHADventure
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
+        private Vector2 _positionPerso;
 
 
         //changement de scene :
         public bool _peutSallePrincipaleG = false;
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
+
+        public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
 
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
@@ -43,8 +46,7 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            _perso._positionPerso = new Vector2(608, 400);
-            _perso.InitPosition(_perso._positionPerso);
+            _perso._positionPerso = PositionPerso;
             base.Initialize();
         }
         public override void LoadContent()

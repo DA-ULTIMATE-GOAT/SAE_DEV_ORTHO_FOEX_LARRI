@@ -32,6 +32,8 @@ namespace CHADventure
         public bool _peutSalleDroite = false;
         public bool _peutSalleGauche = false;
 
+        public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
+
         public SallePrincipale(Game1 game) : base(game)
         {
             _myGame = game;
@@ -40,8 +42,9 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            _positionPerso = new Vector2(400, 600);
-            _perso.InitPosition(_positionPerso);
+            _perso._positionPerso = PositionPerso;
+
+
             base.Initialize();
         }
 

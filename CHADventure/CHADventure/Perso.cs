@@ -22,7 +22,7 @@ namespace CHADventure
         private Game1 _myGame;
         private Entree _entree;
 
-        public Vector2 _positionPerso = new Vector2(400, 672);
+        public Vector2 _positionPerso;
         public AnimatedSprite _ezioSprite;
         public String _animation = "idle";
         public String _sensIdle = "S";

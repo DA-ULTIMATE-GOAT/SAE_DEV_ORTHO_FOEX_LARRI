@@ -29,10 +29,13 @@ namespace CHADventure
         private int _nbBlob;
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
+        private Vector2 _positionPerso;
         Random rndm = new Random();
 
         public bool _peutSallePrincipaleD = false;
-       
+
+        public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
+
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
         // défini dans Game1
         public SalleDroite(Game1 game) : base(game)
@@ -43,9 +46,8 @@ namespace CHADventure
             _coeur = new Coeur();
         }
         public override void Initialize()
-        {       
-            _perso._positionPerso = new Vector2(200, 400);
-            _perso.InitPosition(_perso._positionPerso);
+        {
+            _perso._positionPerso = PositionPerso;
             _nbBlob = 0;
             _tabBlob = new BlueBlob[1];
             for(int i = 0; i < _tabBlob.Length; i++)
