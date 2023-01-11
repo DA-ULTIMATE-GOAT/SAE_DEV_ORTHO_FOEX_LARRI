@@ -22,9 +22,9 @@ namespace CHADventure
         public const int VITESSE_MAX_BLOB = 70;
         public const int VITESSE_MIN_BLOB = 50;
         Random rndm = new Random();
-        public Vector2 _positionBlob;
-        public AnimatedSprite _spriteBlob;
-        public String _animationBlob = "idle";
+        private Vector2 _positionBlob;
+        private AnimatedSprite _spriteBlob;
+        private String _animationBlob = "idle";
         private int _vitesse;
 
         

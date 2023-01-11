@@ -26,7 +26,6 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer2;
         private BlueBlob[] _tabBlob;
         public AnimatedSprite _spriteBlob;
-        private int _nbBlob;
         public const int VITESSE_PERSO = 110;
         public const int TAILLE_TUILE = 16;
         private Vector2 _positionPerso;
@@ -48,7 +47,6 @@ namespace CHADventure
         public override void Initialize()
         {
             _perso._positionPerso = PositionPerso;
-            _nbBlob = 0;
             _tabBlob = new BlueBlob[1];
             for(int i = 0; i < _tabBlob.Length; i++)
             {
@@ -117,14 +115,6 @@ namespace CHADventure
             {
                 _peutSallePrincipaleD = true;
             }
-        }
-        public void Spawn()
-        {
-                for (int i = 0; i < 1; i++)
-                {
-                    this._tabBlob[i] = new BlueBlob();
-                    this._nbBlob++;
-                }
         }
     }
 }
