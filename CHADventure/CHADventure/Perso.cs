@@ -30,7 +30,6 @@ namespace CHADventure
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
 
-
         public void InitPosition(Vector2 _positionPerso)
         {
             this._positionPerso = _positionPerso;
@@ -40,7 +39,6 @@ namespace CHADventure
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
-
             if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Down))
             {
                 _animation = "attackSouth";
