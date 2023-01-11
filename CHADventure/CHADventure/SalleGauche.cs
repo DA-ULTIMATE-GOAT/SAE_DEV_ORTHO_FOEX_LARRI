@@ -51,7 +51,7 @@ namespace CHADventure
         public override void Initialize()
         {
             _perso._positionPerso = PositionPerso;
-            _tabBlob = new RedBlob[1];
+            _tabBlob = new RedBlob[3];
             for (int i = 0; i < _tabBlob.Length; i++)
             {
                 _tabBlob[i] = new RedBlob(_perso);

@@ -102,5 +102,17 @@ namespace CHADventure
                 return true;
             return false;
         }
+
+        private bool APorter(Vector2 position)
+        {
+            bool touche = false;
+            position.X = Math.Abs(Perso._positionPerso.X - _positionBlob.X);
+            position.Y = Math.Abs(Perso._positionPerso.Y - _positionBlob.Y);
+
+            if(position.X <= 2 && position.Y <= 2)
+                touche = true;
+            return touche;
+
+        }
     }
 }

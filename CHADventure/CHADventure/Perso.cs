@@ -23,6 +23,7 @@ namespace CHADventure
         private Entree _entree;
 
         public Vector2 _positionPerso;
+        private BlueBlob _blueBlob;
         public AnimatedSprite _ezioSprite;
         public String _animation = "idle";
         public String _sensIdle = "S";
@@ -30,8 +31,11 @@ namespace CHADventure
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
 
+        public BlueBlob BlueBlob { get => _blueBlob; set => _blueBlob = value; }
+
         public void InitPosition(Vector2 _positionPerso)
         {
+            
             this._positionPerso = _positionPerso;
         }
 
@@ -184,6 +188,18 @@ namespace CHADventure
             }
             _coolDown -= deltaTime;
             //Console.WriteLine(_coolDown);
+
+        }
+
+        private bool APorter(Vector2 position)
+        {
+            bool touche = false;
+            position.X = Math.Abs(_blueBlob.PositionBlob.X - _positionPerso.X);
+            position.Y = Math.Abs(_blueBlob.PositionBlob.Y - _positionPerso.Y);
+
+            if (position.X <= 2 && position.Y <= 2)
+                touche = true;
+            return touche;
 
         }
 
