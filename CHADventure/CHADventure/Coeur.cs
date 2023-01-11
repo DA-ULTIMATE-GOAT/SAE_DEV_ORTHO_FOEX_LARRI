@@ -24,9 +24,11 @@ namespace CHADventure
         private Vector2 _positionCoeur;
         private AnimatedSprite _coeurSprite;
         private String _animation;
+        private BlueBlob blueBlob;
 
 
         public AnimatedSprite CoeurSprite { get => _coeurSprite; set => _coeurSprite = value; }
+        public int Pv { get => pv; set => pv = value; }
 
         public void Initialize()
         {
@@ -44,15 +46,15 @@ namespace CHADventure
         }
         public string AnimationCoeur(GameTime gameTime)
         {
-            if (pv == 3)
+            if (Pv == 3)
             {
                 _animation = "troisCoeurs";
             }
-            else if (pv == 2)
+            else if (Pv == 2)
             {
                 _animation = "deuxCoeur";
             }
-            else if (pv == 1)
+            else if (Pv == 1)
             {
                 _animation = "unCoeur";
             }

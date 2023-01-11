@@ -46,6 +46,12 @@ namespace CHADventure
             SpriteSheet spriteSheetBlob = game.Content.Load<SpriteSheet>("mob/RedBlob/redBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _spriteBlob = new AnimatedSprite(spriteSheetBlob);
         }
+        public void Update(GameTime gameTime)
+        {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            reloadAttack += elapsed;
+            Console.WriteLine(Attaque(gameTime, _perso));
+        }
 
         public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
         {
@@ -107,11 +113,14 @@ namespace CHADventure
 
         private bool APorter(Vector2 position)
         {
+            Vector2 emplacement;
             bool touche = false;
-            position.X = Math.Abs(Perso._positionPerso.X - PositionBlob.X);
-            position.Y = Math.Abs(Perso._positionPerso.Y - PositionBlob.Y);
+            emplacement.X = Math.Abs(position.X - _positionBlob.X);
+            emplacement.Y = Math.Abs(position.Y - _positionBlob.Y);
 
-            if(position.X <= 2 && position.Y <= 2)
+      
+
+            if(emplacement.X <= 12 && emplacement.Y <= 12)
             {
                 touche = true;
             }
@@ -119,15 +128,13 @@ namespace CHADventure
 
         }
 
-        public bool Attaque(GameTime gameTime)
+        public bool Attaque(GameTime gameTime, Perso perso)
         {
             bool attaque = false;
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            reloadAttack += elapsed;
-            if (APorter(PositionBlob) && reloadAttack > 1000)
+            if (APorter(perso._positionPerso))
             {
                 attaque = true;
-                reloadAttack = 0;
+                reloadAttack = 0; 
                 Console.WriteLine("EstActive2");
             }
             return attaque;

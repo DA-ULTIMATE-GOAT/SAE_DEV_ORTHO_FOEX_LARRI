@@ -124,12 +124,12 @@ namespace CHADventure
         }
 
 
-        public bool Attaque(GameTime gameTime)
+        public bool Attaque(GameTime gameTime, Perso perso)
         {
             bool attaque = false;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             reloadAttack += elapsed;
-            if (APorter(PositionBlob) && reloadAttack > 1000)
+            if (APorter(perso._positionPerso) && reloadAttack > 1000)
             {
                 attaque = true;
                 reloadAttack = 0;

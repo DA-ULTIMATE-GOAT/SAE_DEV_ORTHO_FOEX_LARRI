@@ -84,6 +84,11 @@ namespace CHADventure
             for (int i = 0; i < _tabBlob.Length; i++)
             {
                 _perso.Attaque(gameTime, _tabBlob[i]);
+                if (_tabBlob[i].Attaque(gameTime, _perso))
+                {
+                    _coeur.Pv -= 1;
+                }
+
             }
             if (!_perso._attaque)
                 if (!_perso._attaque)
@@ -99,6 +104,8 @@ namespace CHADventure
             _coeur.CoeurSprite.Play(_coeur.AnimationCoeur(gameTime));
             _coeur.CoeurSprite.Update(deltaTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
+            _redBlob.Update(gameTime);
+
         }
         public override void Draw(GameTime gameTime)
         {
