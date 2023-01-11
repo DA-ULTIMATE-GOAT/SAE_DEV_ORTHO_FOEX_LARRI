@@ -18,18 +18,27 @@ namespace CHADventure
         public const int HAUTEUR_SPRITE = 33;
         public const int LARGEUR_SPRITE = 33;
 
-        private Vector2 _positionCoeur1 = new Vector2(10, 10);
-        private Vector2 _positionCoeur2 = new Vector2(10 + LARGEUR_SPRITE, 10);
-        private Vector2 _positionCoeur3 =new Vector2(10+ 2* LARGEUR_SPRITE, 10);
+        private Vector2 _positionCoeur;
         private AnimatedSprite _coeurSprite;
         private String _animation;
 
 
         public AnimatedSprite CoeurSprite { get => _coeurSprite; set => _coeurSprite = value; }
-        public Vector2 PositionCoeur1 { get => _positionCoeur1; set => _positionCoeur1 = value; }
-        public Vector2 PositionCoeur2 { get => _positionCoeur2; set => _positionCoeur2 = value; }
-        public Vector2 PositionCoeur3 { get => _positionCoeur3; set => _positionCoeur3 = value; }
 
+        public void Initialize()
+        {
+            _positionCoeur = new Vector2(58, 35);
+        }
+        public void LoadContent(Game1 game)
+        {
+            SpriteSheet spriteSheetCoeur = game.Content.Load<SpriteSheet>("coeur/Coeur.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            CoeurSprite = new AnimatedSprite(spriteSheetCoeur);
+        }
+
+        public void Draw(SpriteBatch spritebatch)
+        {
+            spritebatch.Draw(this._coeurSprite, this._positionCoeur);
+        }
         public void AnimationCoeur(GameTime gameTime)
         {
            _animation = "troisCoeurs";

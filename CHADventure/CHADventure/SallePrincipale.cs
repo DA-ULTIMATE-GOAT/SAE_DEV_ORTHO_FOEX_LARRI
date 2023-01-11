@@ -40,7 +40,6 @@ namespace CHADventure
         }
         public override void Initialize()
         {
-            _coeur.PositionCoeur1 = new Vector2(58, 35);
             _positionPerso = new Vector2(400, 600);
             _perso.InitPosition(_positionPerso);
             base.Initialize();
@@ -48,14 +47,14 @@ namespace CHADventure
 
         public override void LoadContent()
         {
+            _coeur.Initialize();
             _tiledMap = Content.Load<TiledMap>("map/Principale/mapcentral");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesSalle1");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles2Salle1");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
-            SpriteSheet spriteSheetCoeur = Content.Load<SpriteSheet>("coeur/Coeur.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
-            _coeur.CoeurSprite = new AnimatedSprite(spriteSheetCoeur);
+            _coeur.LoadContent(_myGame);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
@@ -81,7 +80,7 @@ namespace CHADventure
             _myGame.GraphicsDevice.Clear(Color.Black); // on utilise la reference vers
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
-            _myGame._spriteBatch.Draw(_coeur.CoeurSprite, _coeur.PositionCoeur1);
+            _coeur.Draw(_myGame._spriteBatch);
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme                                          // Game1 pour chnager le graphisme
         }
