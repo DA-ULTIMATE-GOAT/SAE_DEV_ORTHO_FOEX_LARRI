@@ -41,7 +41,8 @@ namespace CHADventure
         {
             _myGame = game;
             _perso = new Perso();
-            _blueBlob = new BlueBlob();
+            _blueBlob = new BlueBlob(_perso);
+            
             _coeur = new Coeur();
         }
         public override void Initialize()
@@ -50,7 +51,7 @@ namespace CHADventure
             _tabBlob = new BlueBlob[1];
             for(int i = 0; i < _tabBlob.Length; i++)
             {
-                _tabBlob[i] = new BlueBlob();
+                _tabBlob[i] = new BlueBlob(_perso);
             }
             base.Initialize();
         }
@@ -65,7 +66,7 @@ namespace CHADventure
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _tabBlob[i] = new BlueBlob();
+                _tabBlob[i] = new BlueBlob(_perso);
                 _tabBlob[i].Initialize();
                 _tabBlob[i].LoadContent(_myGame);
             }
@@ -75,6 +76,8 @@ namespace CHADventure
 
         public override void Update(GameTime gameTime)
         {
+            
+
             KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _perso.Attaque(gameTime);
