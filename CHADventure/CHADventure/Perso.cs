@@ -120,7 +120,7 @@ namespace CHADventure
                 else
                     _animation = "idle";
             }
-            //Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
+            Console.WriteLine($"{_positionPerso.X} + {_positionPerso.Y}");
         }
         private bool IsCollision(ushort x, ushort y, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
         {

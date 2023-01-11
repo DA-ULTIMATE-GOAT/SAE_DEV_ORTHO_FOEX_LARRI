@@ -45,47 +45,7 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _spriteBlob.Play(_animationBlob);
             _spriteBlob.Update(gameTime);
-            if (_positionBlob.X > _perso._positionPerso.X)
-            {
-                ushort tx = (ushort)(_positionBlob.X / _tiledMap.TileWidth + 1);
-                ushort ty = (ushort)(_positionBlob.Y / _tiledMap.TileHeight + 1);
-                _animationBlob = "walkEast";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.X += _vitesse * deltaTime;
-
-                //Console.WriteLine("Est");
-            }
-            if (_positionBlob.X < _perso._positionPerso.X)
-            {
-                ushort tx = (ushort)(_positionBlob.X / _tiledMap.TileWidth - 1);
-                ushort ty = (ushort)(_positionBlob.Y / _tiledMap.TileHeight + 1);
-                _animationBlob = "walkWest";
-
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.X -= _vitesse * deltaTime;
-                //Console.WriteLine("West");
-            }
-            if (_positionBlob.Y < _perso._positionPerso.Y)
-            {
-                ushort tx = (ushort)(_positionBlob.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(_positionBlob.Y / _tiledMap.TileHeight);
-                _animationBlob = "walkNorth";
-
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.Y -= _vitesse * deltaTime;
-                Console.WriteLine("Nord");
-            }
-            if (_positionBlob.Y > _perso._positionPerso.Y)
-            {
-                ushort tx = (ushort)(_positionBlob.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(_positionBlob.Y / _tiledMap.TileHeight+2);
-                _animationBlob = "walkSouth";
-
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.Y += _vitesse * deltaTime;
-                Console.WriteLine("Sud");
-            }
             Console.WriteLine($"{_positionBlob.X} + {_positionBlob.Y}");
         }
         public void Draw(SpriteBatch spritebatch)
