@@ -26,6 +26,7 @@ namespace CHADventure
         private AnimatedSprite _spriteBlob;
         private String _animationBlob = "idle";
         private int _vitesse;
+        private float reloadAttack;
 
         public BlueBlob(Perso cible)
         {
@@ -120,6 +121,20 @@ namespace CHADventure
             }
             return touche;
 
+        }
+
+
+        public bool Attaque(GameTime gameTime)
+        {
+            bool attaque = false;
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            reloadAttack += elapsed;
+            if (APorter(PositionBlob) && reloadAttack > 1000)
+            {
+                attaque = true;
+                reloadAttack = 0;
+            }
+            return attaque;
         }
 
 

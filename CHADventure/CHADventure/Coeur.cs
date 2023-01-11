@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -18,6 +19,8 @@ namespace CHADventure
         public const int HAUTEUR_SPRITE = 33;
         public const int LARGEUR_SPRITE = 33;
 
+
+        private int pv = 3;
         private Vector2 _positionCoeur;
         private AnimatedSprite _coeurSprite;
         private String _animation;
@@ -39,9 +42,23 @@ namespace CHADventure
         {
             spritebatch.Draw(this._coeurSprite, this._positionCoeur);
         }
-        public void AnimationCoeur(GameTime gameTime)
+        public string AnimationCoeur(GameTime gameTime)
         {
-           _animation = "troisCoeurs";
+            if (pv == 3)
+            {
+                _animation = "troisCoeurs";
+            }
+            else if (pv == 2)
+            {
+                _animation = "deuxCoeur";
+            }
+            else if (pv == 1)
+            {
+                _animation = "unCoeur";
+            }
+            else
+                _animation = "zeroCoeur";
+            return _animation;
         }
     }
 

@@ -259,7 +259,6 @@ namespace CHADventure
             if (position.X <=  30 && position.Y <= 30)
             {
                 touche = true;
-                Console.WriteLine("EstActive3");
             }
            
             return touche;
@@ -275,7 +274,7 @@ namespace CHADventure
             if (position.X <= 30 && position.Y <= 30)
             {
                 touche = true;
-                Console.WriteLine("EstActive3");
+                touche = true;
             }
 
             return touche;

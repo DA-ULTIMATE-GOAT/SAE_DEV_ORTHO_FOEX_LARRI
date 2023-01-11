@@ -25,6 +25,7 @@ namespace CHADventure
         private Vector2 _positionBlob;
         private AnimatedSprite _spriteBlob;
         private String _animationBlob = "idle";
+        private float reloadAttack;
         private int _vitesse;
 
         public RedBlob(Perso cible)
@@ -113,10 +114,23 @@ namespace CHADventure
             if(position.X <= 2 && position.Y <= 2)
             {
                 touche = true;
-                Console.WriteLine("EstActive2");
             }
             return touche;
 
+        }
+
+        public bool Attaque(GameTime gameTime)
+        {
+            bool attaque = false;
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            reloadAttack += elapsed;
+            if (APorter(PositionBlob) && reloadAttack > 1000)
+            {
+                attaque = true;
+                reloadAttack = 0;
+                Console.WriteLine("EstActive2");
+            }
+            return attaque;
         }
     }
 }

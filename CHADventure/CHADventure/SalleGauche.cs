@@ -96,7 +96,7 @@ namespace CHADventure
                 _tabBlob[i].DeplacementBlob(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             }
             _coeur.AnimationCoeur(gameTime);
-            _coeur.CoeurSprite.Play("troisCoeurs");
+            _coeur.CoeurSprite.Play(_coeur.AnimationCoeur(gameTime));
             _coeur.CoeurSprite.Update(deltaTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
