@@ -20,7 +20,7 @@ namespace CHADventure
         public const int LARGEUR_BLOB = 25;
         public const int HAUTEUR_BLOB = 19;
         public const int VITESSE_MAX_BLOB = 50;
-        public const int VITESSE_MIN_BLOB = 30;
+        public const int VITESSE_MIN_BLOB = 35;
         Random rndm = new Random();
         private Vector2 _positionBlob;
         private AnimatedSprite _spriteBlob;

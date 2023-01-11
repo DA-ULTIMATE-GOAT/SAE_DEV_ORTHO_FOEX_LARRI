@@ -197,7 +197,7 @@ namespace CHADventure
             position.X = Math.Abs(_blueBlob.PositionBlob.X - _positionPerso.X);
             position.Y = Math.Abs(_blueBlob.PositionBlob.Y - _positionPerso.Y);
 
-            if (position.X <= 2 && position.Y <= 2)
+            if (position.X <=  30 && position.Y <= 30)
                 touche = true;
             return touche;
 
