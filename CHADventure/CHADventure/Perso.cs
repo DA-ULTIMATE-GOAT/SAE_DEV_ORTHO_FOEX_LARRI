@@ -107,7 +107,8 @@ namespace CHADventure
             else
             {
                 _animation = "attack";
-                Console.WriteLine("oui");
+                Console.WriteLine("oui"); 
+                Console.WriteLine("dqqqqqqqqqqqqqqqqqqqqqqqoui");
             }
            
         }
