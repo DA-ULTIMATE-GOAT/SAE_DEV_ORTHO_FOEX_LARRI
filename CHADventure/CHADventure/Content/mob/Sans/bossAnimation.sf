@@ -1,12 +1,12 @@
 {
   "textureAtlas": {
-    "texture": "FakeSansFini.png",
+    "texture": "Landi.png",
     "regionWidth": 201,
     "regionHeight": 201
   },
   "cycles": {
     "idle": {
-      "frames": [0],
+      "frames": [0 , 1],
       "isLooping": false,
       "frameDuration": 0.1
     },

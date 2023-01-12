@@ -19,6 +19,7 @@ namespace CHADventure
 
         //private GraphicsDeviceManager _graphics;
         private SallePrincipale _sallePrincipale;
+        private Boss _boss;
         private Entree _entree;
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
@@ -40,6 +41,7 @@ namespace CHADventure
         {
 
             _myGame = game;
+            _boss = new Boss(_perso);
             _perso = new Perso();
             Coeur = new Coeur();
         }
@@ -71,7 +73,7 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
-
+            _boss.DeplacementBoss(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             Coeur.AnimationCoeur(gameTime);
             Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
             Coeur.CoeurSprite.Update(deltaTime);

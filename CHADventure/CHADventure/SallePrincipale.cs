@@ -61,8 +61,8 @@ namespace CHADventure
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             _entree.Coeur.LoadContent(_myGame);
-            _sound = Content.Load<Song>("Sound/SalleP/interieurChateau");
-            MediaPlayer.Play(_sound);
+            //_sound = Content.Load<Song>("Sound/SalleP/interieurChateau");
+            //MediaPlayer.Play(_sound);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)

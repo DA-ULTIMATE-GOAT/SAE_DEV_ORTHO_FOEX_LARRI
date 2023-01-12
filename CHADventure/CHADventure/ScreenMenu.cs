@@ -51,7 +51,7 @@ namespace CHADventure
             SpriteSheet logo = Content.Load<SpriteSheet>("logo/logo.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _logo = new AnimatedSprite(logo);
             //_sound = Content.Load<Song>("Sound/Menu/Menu");
-            MediaPlayer.Play(_sound);
+            //MediaPlayer.Play(_sound);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
