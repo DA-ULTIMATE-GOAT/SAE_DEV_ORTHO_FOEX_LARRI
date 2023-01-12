@@ -6,6 +6,7 @@ using MonoGame.Extended.Screens;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using Microsoft.Xna.Framework.Media;
 using System;
 
 namespace CHADventure
@@ -26,6 +27,7 @@ namespace CHADventure
         private Coeur _coeur;
         private Vector2 _positionPerso;
         private String _animation;
+        private Song _sound;
 
         //changement de scene :
         public bool _peutSortirDehors = false;
@@ -58,6 +60,8 @@ namespace CHADventure
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             _coeur.LoadContent(_myGame);
+            _sound = Content.Load<Song>("Sound/SalleP/interieurChateau");
+            MediaPlayer.Play(_sound);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)

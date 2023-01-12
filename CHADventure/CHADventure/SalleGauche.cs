@@ -8,6 +8,7 @@ using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using Microsoft.Xna.Framework.Media;
 
 namespace CHADventure
 {
@@ -28,6 +29,7 @@ namespace CHADventure
         private RedBlob[] _tabBlob;
         private Vector2 _positionPerso;
         Random rndm = new Random();
+        private Song _sound;
 
 
 
@@ -74,6 +76,8 @@ namespace CHADventure
                 _tabBlob[i].Initialize();
                 _tabBlob[i].LoadContent(_myGame);
             }
+            _sound = Content.Load<Song>("Sound/SalleDG/CombatouBoss");
+            MediaPlayer.Play(_sound);
             Coeur.LoadContent(_myGame);
             base.LoadContent();
         }
