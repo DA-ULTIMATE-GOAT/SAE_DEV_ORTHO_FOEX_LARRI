@@ -50,7 +50,7 @@ namespace CHADventure
         public override void Initialize()
         {
             _perso._positionPerso = PositionPerso;
-            _tabBlob = new RedBlob[3];
+            _tabBlob = new RedBlob[5];
             for (int i = 0; i < _tabBlob.Length; i++)
             {
                 _tabBlob[i] = new RedBlob(_perso);
@@ -103,11 +103,10 @@ namespace CHADventure
             }
             if (!_perso._attaque)
                 if (!_perso._attaque)
-                _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
-            _tiledMapRenderer.Update(gameTime);
-            _perso.Attack(gameTime);
+            _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
+            _tiledMapRenderer.Update(gameTime);
             for (int i = 0; i < _tabBlob.Length; i++)
             {
                 _tabBlob[i].DeplacementBlob(gameTime, _tiledMap, _mapLayer, _mapLayer2);
