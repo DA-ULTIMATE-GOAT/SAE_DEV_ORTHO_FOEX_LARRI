@@ -8,7 +8,6 @@ using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
-using Microsoft.Xna.Framework.Media;
 
 namespace CHADventure
 {
@@ -31,7 +30,6 @@ namespace CHADventure
         public const int TAILLE_TUILE = 16;
         private Vector2 _positionPerso;
         Random rndm = new Random();
-        private Song _sound;
 
         public bool _peutSallePrincipaleD = false;
 
@@ -102,8 +100,6 @@ namespace CHADventure
             Coeur.AnimationCoeur(gameTime);
             Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
             Coeur.CoeurSprite.Update(deltaTime);
-            _sound = Content.Load<Song>("Sound/SalleDG/CombatouBoss");
-            MediaPlayer.Play(_sound);
             _tiledMapRenderer.Update(gameTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
