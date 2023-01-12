@@ -330,6 +330,45 @@
 /processor:TiledMapTilesetProcessor
 /build:map/Principale/Tiles.tsx
 
+#begin map/SalleBoss/Props.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/SalleBoss/Props.png
+
+#begin map/SalleBoss/Props.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/SalleBoss/Props.tsx
+
+#begin map/SalleBoss/SalleBoss.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:map/SalleBoss/SalleBoss.tmx
+
+#begin map/SalleBoss/TilesMapBoss.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:map/SalleBoss/TilesMapBoss.png
+
+#begin map/SalleBoss/TilesMapBoss.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:map/SalleBoss/TilesMapBoss.tsx
+
 #begin mob/BlueBlob/BlueBlobFini.png
 /importer:TextureImporter
 /processor:TextureProcessor
