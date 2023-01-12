@@ -12,7 +12,7 @@ namespace CHADventure
         public const int HAUTEUR_SPRITE = 33;
         public const int LARGEUR_SPRITE = 33;
 
-        private int pv = 3;
+        private uint pv = 3;
         private Vector2 _positionCoeur;
         private AnimatedSprite _coeurSprite;
         private String _animation;
@@ -21,7 +21,7 @@ namespace CHADventure
 
 
         public AnimatedSprite CoeurSprite { get => _coeurSprite; set => _coeurSprite = value; }
-        public int Pv { get => pv; set => pv = value; }
+        public uint Pv { get => pv; set => pv = value; }
         public string Animation { get => _animation; set => _animation = value; }
 
         public void Initialize()

@@ -165,11 +165,8 @@ namespace CHADventure
             if (Pv == 0)
             {
                 _animationBlob = "death";
-                if (_timer >= 600)
-                {
-                    isDead = true;
-                    _animationBlob = "death";
-                }
+                isDead = true;
+                
             }
             return _animationBlob;
 

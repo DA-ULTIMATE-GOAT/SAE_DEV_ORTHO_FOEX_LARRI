@@ -135,10 +135,11 @@ namespace CHADventure
                 _salleGauche.PositionPerso = new Vector2(624, 400);
                 _coeur = _salleGauche.Coeur;
             }
-            else if (keyboardState.IsKeyDown(Keys.P))
+            else if (keyboardState.IsKeyDown(Keys.R) && _screenGameOver.ReturnMenu(gameTime))
             {
-                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
-                _entree.PositionPerso = new Vector2(400, 672);
+                _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+                _salleGauche.Coeur.Pv = 3;
+                _salleDroite.Coeur.Pv = 3;
             }
             else if (_salleDroite._peutSallePrincipaleD)
             {
@@ -153,11 +154,9 @@ namespace CHADventure
                 _sallePrincipale.PositionPerso = new Vector2(38, 202);
             }
             else if (_salleGauche.Coeur.Pv == 0 || _salleDroite.Coeur.Pv == 0)
-            {
                 _screenManager.LoadScreen(_screenGameOver, new FadeTransition(GraphicsDevice,
                 Color.Black));
-                _estMort = true;
-            }
+            /*
             if (_estMort)
             {
 
@@ -169,7 +168,7 @@ namespace CHADventure
                     _salleDroite.Coeur.Pv = 3;
                     Console.WriteLine("EstMort");
                 }
-            }
+            }*/
 
             if (keyboardState.IsKeyDown(Keys.B))
             {

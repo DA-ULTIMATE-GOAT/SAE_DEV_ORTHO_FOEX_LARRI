@@ -58,7 +58,7 @@ namespace CHADventure
             bool retour = false;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _timer += elapsed;
-            if (_timer >= 5000)
+            if (_timer >= 2000)
             {
                 retour = true;
                 _timer = 0;
