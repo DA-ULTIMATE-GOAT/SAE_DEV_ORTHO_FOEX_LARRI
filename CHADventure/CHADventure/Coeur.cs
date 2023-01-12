@@ -19,7 +19,6 @@ namespace CHADventure
         public const int HAUTEUR_SPRITE = 33;
         public const int LARGEUR_SPRITE = 33;
 
-
         private int pv = 3;
         private Vector2 _positionCoeur;
         private AnimatedSprite _coeurSprite;

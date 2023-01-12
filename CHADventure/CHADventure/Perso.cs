@@ -143,22 +143,31 @@ namespace CHADventure
                 if (keyboardState.IsKeyDown(Keys.Down))
                 {
                     _animation = "attackSouth";
-                    _attaque = true;
+                   
+                    if(Direction(_blueBlob.PositionBlob,blueblob) == "B")
+                        _attaque = true;
+                   
                 }
                 else if (keyboardState.IsKeyDown(Keys.Up))
                 {
                     _animation = "attackNorth";
-                    _attaque = true;
+
+                    if (Direction(_blueBlob.PositionBlob, blueblob) == "H")
+                        _attaque = true;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Left))
                 {
                     _animation = "attackWest";
-                    _attaque = true;
+
+                    if (Direction(_blueBlob.PositionBlob, blueblob) == "G")
+                        _attaque = true;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Right))
                 {
                     _animation = "attackEast";
-                    _attaque = true;
+
+                    if (Direction(_blueBlob.PositionBlob, blueblob) == "D")
+                        _attaque = true;
                 }
                 //Console.WriteLine("                            : " + _animation);
             }
@@ -171,26 +180,28 @@ namespace CHADventure
             KeyboardState keyboardState = Keyboard.GetState();
             if (!(_coolDown > 0))
             {
-                if (keyboardState.IsKeyDown(Keys.Down) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.Y >= _positionPerso.Y)
+                if (keyboardState.IsKeyDown(Keys.Down))
                 {
-                    _animation = "attackSouth";
-                    _attaque = true;
+
+                    if (Direction(_blueBlob.PositionBlob, redBlob) == "B")
+                        _attaque = true;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Up) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.Y <= _positionPerso.Y)
+                else if (keyboardState.IsKeyDown(Keys.Up))
                 {
-                    _animation = "attackNorth";
-                    _attaque = true;
+
+                    if (Direction(_blueBlob.PositionBlob, redBlob) == "H")
+                        _attaque = true;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Left) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.X <= _positionPerso.X)
+                else if (keyboardState.IsKeyDown(Keys.Left))
                 {
-                    _animation = "attackWest";
-                    _attaque = true;
+                    if (Direction(_blueBlob.PositionBlob, redBlob) == "G")
+                        _attaque = true;
                 }
-                /*else if (keyboardState.IsKeyDown(Keys.Right) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.X >= _positionPerso.X)
+                else if (keyboardState.IsKeyDown(Keys.Right))
                 {
-                    _animation = "attackEast";
-                    _attaque = true;
-                }*/
+                    if (Direction(_blueBlob.PositionBlob, redBlob) == "D")
+                        _attaque = true;
+                }
                 //Console.WriteLine("                            : " + _animation);
             }
 
@@ -251,11 +262,12 @@ namespace CHADventure
 
         }
 
-        private bool APorter(Vector2 position, BlueBlob _blueBlob)
+        public bool APorter(Vector2 position, BlueBlob _blueBlob)
         {
+            Vector2 emplacement;
             bool touche = false;
-            position.X = Math.Abs(_blueBlob.PositionBlob.X - _positionPerso.X);
-            position.Y = Math.Abs(_blueBlob.PositionBlob.Y - _positionPerso.Y);
+            emplacement.X = Math.Abs(position.X - _positionPerso.X);
+            emplacement.Y = Math.Abs(position.Y - _positionPerso.Y);
 
             if (position.X <=  30 && position.Y <= 30)
             {
@@ -266,11 +278,12 @@ namespace CHADventure
 
         }
 
-        private bool APorter(Vector2 position, RedBlob _redBlob)
+        public bool APorter(Vector2 position, RedBlob _redBlob)
         {
+            Vector2 emplacement;
             bool touche = false;
-            position.X = Math.Abs(_redBlob.PositionBlob.X - _positionPerso.X);
-            position.Y = Math.Abs(_redBlob.PositionBlob.Y - _positionPerso.Y);
+            emplacement.X = Math.Abs(position.X - _positionPerso.X);
+            emplacement.Y = Math.Abs(position.Y - _positionPerso.Y);
 
             if (position.X <= 30 && position.Y <= 30)
             {
@@ -279,6 +292,58 @@ namespace CHADventure
             }
 
             return touche;
+
+        }
+
+        public string Direction(Vector2 position, BlueBlob blueBlob)
+        {
+            if (APorter(position, blueBlob))
+            {
+                if (blueBlob.PositionBlob.X > position.X)
+                {
+                    return "D";
+                }
+                else if (blueBlob.PositionBlob.X < position.X)
+                {
+                    return "G";
+                }
+                else if (blueBlob.PositionBlob.Y > position.Y)
+                {
+                    return "B";
+                }
+                else
+                    return "H";
+            }
+            else
+            {
+                return "";
+            }
+                
+        }
+
+        public string Direction(Vector2 position, RedBlob redBlob)
+        {
+            if (APorter(position, redBlob))
+            {
+                if (redBlob.PositionBlob.X > position.X)
+                {
+                    return "D";
+                }
+                else if (redBlob.PositionBlob.X < position.X)
+                {
+                    return "G";
+                }
+                else if (redBlob.PositionBlob.Y > position.Y)
+                {
+                    return "B";
+                }
+                else
+                    return "H";
+            }
+            else
+            {
+                return "";
+            }
 
         }
 

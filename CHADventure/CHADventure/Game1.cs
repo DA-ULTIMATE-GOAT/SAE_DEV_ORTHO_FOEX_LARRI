@@ -43,6 +43,7 @@ namespace CHADventure
 
         public enum Etats { Menu, Controls, Play, Quit, Touch};
         public Etats etat;
+        public bool _estMort=false;
 
 
         public Game1()
@@ -140,6 +141,7 @@ namespace CHADventure
                 _screenManager.LoadScreen(_salleGauche, new FadeTransition(GraphicsDevice,
                 Color.Black));
                 _salleGauche.PositionPerso = new Vector2(624, 400);
+                _coeur = _salleGauche.Coeur;
             }
             else if (_salleDroite._peutSallePrincipaleD)
             {
@@ -157,13 +159,20 @@ namespace CHADventure
             {
                 _screenManager.LoadScreen(_screenGameOver, new FadeTransition(GraphicsDevice,
                 Color.Black));
+                _estMort = true;
+            }
+            if (_estMort)
+            {
 
                 if (_screenGameOver.ReturnMenu(gameTime))
                 {
                     _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+                    _estMort = false;
+                    _salleGauche.Coeur = new Coeur();
                 }
             }
-            
+
+
             _entree._peutentrer=false;
             _sallePrincipale._peutSortirDehors = false;
             _sallePrincipale._peutSalleDroite = false;

@@ -16,6 +16,11 @@ namespace CHADventure
         private float _timer;
         private Game1 _myGame;
         private Perso _perso;
+        private SalleDroite _salleDroite;
+        private SalleGauche _salleGauche;
+        private Coeur _coeur;
+
+  
 
 
         public bool _peutSallePrincipaleD = false;
@@ -27,7 +32,9 @@ namespace CHADventure
         {
             _myGame = game;
             _perso = new Perso();
- 
+            _salleGauche = new SalleGauche(game);
+            _coeur = new Coeur();
+
 
         }
         public override void LoadContent()
@@ -60,7 +67,9 @@ namespace CHADventure
             {
                 _timer = 0;
                 retour = true;
+                _salleGauche.Coeur = new Coeur();
             }
+            _salleGauche.Coeur = new Coeur();
             return retour;
             
         }
