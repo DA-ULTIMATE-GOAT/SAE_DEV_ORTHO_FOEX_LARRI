@@ -186,11 +186,11 @@ namespace CHADventure
                     _animation = "attackWest";
                     _attaque = true;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Right) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.X >= _positionPerso.X)
+                /*else if (keyboardState.IsKeyDown(Keys.Right) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.X >= _positionPerso.X)
                 {
                     _animation = "attackEast";
                     _attaque = true;
-                }
+                }*/
                 //Console.WriteLine("                            : " + _animation);
             }
 
