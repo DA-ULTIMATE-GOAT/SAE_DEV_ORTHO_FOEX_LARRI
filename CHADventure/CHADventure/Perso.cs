@@ -147,6 +147,7 @@ namespace CHADventure
             {
                 _cd = 0;
                 degats = true;
+                _animation = "attack";
                 Console.WriteLine("Marche2");
             }
             return degats;

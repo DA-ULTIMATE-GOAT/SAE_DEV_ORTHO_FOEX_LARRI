@@ -10,11 +10,6 @@
       "isLooping": false,
       "frameDuration": 0.1
     },
-    "idleNorth": {
-      "frames": [ 9 ],
-      "isLooping": false,
-      "frameDuration": 0.1
-    },
     "idleWest": {
       "frames": [ 4 ],
       "isLooping": false,
@@ -25,10 +20,15 @@
       "isLooping": false,
       "frameDuration": 0.1
     },
-    "walkSouth": {
-      "frames": [ 1, 2 ],
+    "idleNorth": {
+      "frames": [ 9 ],
       "isLooping": false,
-      "frameDuration": 0.2
+      "frameDuration": 0.1
+    },
+    "walkSouth": {
+      "frames": [ 1, 2],
+      "isLooping": false,
+      "frameDuration": 0.3
     },
     "walkWest": {
       "frames": [ 3, 4, 5, 4 ],
@@ -41,42 +41,17 @@
       "frameDuration": 0.1
     },
     "walkNorth": {
-      "frames": [ 10, 11 ],
+      "frames": [ 10, 11],
       "isLooping": false,
-      "frameDuration": 0.2
+      "frameDuration": 0.3
     },
-    "attackSouth": {
-      "frames": [ 12, 13, 14, 13 ],
-      "isLooping": false,
-      "frameDuration": 0.1
-    },
-    "attackWest": {
-      "frames": [ 15, 16, 17, 16 ],
-      "isLooping": false,
-      "frameDuration": 0.1
-    },
-    "attackEast": {
-      "frames": [ 18, 19, 20, 19 ],
-      "isLooping": false,
-      "frameDuration": 0.1
-    },
-    "attackNorth": {
-      "frames": [ 21, 22, 23, 22 ],
+    "attack": {
+      "frames": [ 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 12 ],
       "isLooping": false,
       "frameDuration": 0.1
     },
     "death": {
       "frames": [ 24, 25, 26, 27, 28, 29 ],
-      "isLooping": false,
-      "frameDuration": 0.1
-    },
-    "jumpWest": {
-      "frames": [ 30, 31, 32 ],
-      "isLooping": false,
-      "frameDuration": 0.1
-    },
-    "jumpEast": {
-      "frames": [ 33, 34, 35 ],
       "isLooping": false,
       "frameDuration": 0.1
     }
