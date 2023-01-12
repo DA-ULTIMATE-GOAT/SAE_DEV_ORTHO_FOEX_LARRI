@@ -153,7 +153,7 @@ namespace CHADventure
                 Color.Black));
                 _sallePrincipale.PositionPerso = new Vector2(38, 202);
             }
-            else if (keyboardState.IsKeyDown(Keys.P) || _perso._animation == "death")
+            else if (keyboardState.IsKeyDown(Keys.P) || _coeur.Animation == "zeroCoeur")
             {
                 _screenManager.LoadScreen(_screenGameOver, new FadeTransition(GraphicsDevice,
                 Color.Black));
