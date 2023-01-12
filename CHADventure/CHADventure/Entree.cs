@@ -1,11 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
-using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
@@ -14,12 +10,7 @@ namespace CHADventure
 {
     public class Entree : GameScreen
     {
-
-        public const int VITESSE_PERSO = 110;
-        public const int TAILLE_TUILE = 16;
-
-
-        private Game1 _myGame;
+        private Game1 _myGame;    // Initialization des variables
         private Perso _perso;
         private Coeur _coeur;
         private TiledMap _tiledMap;

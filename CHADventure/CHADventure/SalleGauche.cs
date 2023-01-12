@@ -27,11 +27,6 @@ namespace CHADventure
         private Vector2 _positionPerso;
         Random rndm = new Random();
 
-
-
-        public const int VITESSE_PERSO = 110;
-        public const int TAILLE_TUILE = 16;
-
         //changement de scene :
         public bool _peutSallePrincipaleG = false;
 

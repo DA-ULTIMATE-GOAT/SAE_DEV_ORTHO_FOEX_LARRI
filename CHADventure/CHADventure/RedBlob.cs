@@ -14,14 +14,15 @@ namespace CHADventure
 {
     public class RedBlob
     {
-        private Game1 _myGame;
-        private Perso _perso;
-        public const int TAILLE_FENETRE = 800;
+        public const int TAILLE_FENETRE = 800;  //Initialization des constantes du RedBlob
         public const int LARGEUR_BLOB = 25;
         public const int HAUTEUR_BLOB = 19;
         public const int VITESSE_MAX_BLOB = 50;
         public const int VITESSE_MIN_BLOB = 35;
-        Random rndm = new Random();
+        
+        private Game1 _myGame;
+        private Perso _perso;
+        private Random rndm = new Random();
         private Vector2 _positionBlob;
         private AnimatedSprite _spriteBlob;
         private String _animationBlob = "idle";

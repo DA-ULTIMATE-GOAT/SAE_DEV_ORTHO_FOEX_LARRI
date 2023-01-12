@@ -14,13 +14,13 @@ namespace CHADventure
 {
     public class Perso
     {
-        public const int HAUTEUR_SPRITE = 72;
+        public const int HAUTEUR_SPRITE = 72; //Initialization des constantes du Perso
         public const int LARGEUR_SPRITE = 92;
         public const int VITESSE_PERSO = 110;
         public const int COOLDOWNEZIO = 1;
 
-        public Vector2 _positionPerso;
-        private BlueBlob _blueBlob;
+        public Vector2 _positionPerso;      //Initialization des variables du Perso
+        private BlueBlob _blueBlob; 
         private RedBlob _redBlob;
         public AnimatedSprite _ezioSprite;
         public String _animation = "idle";
@@ -41,9 +41,9 @@ namespace CHADventure
             this._positionPerso = _positionPerso;
         }
 
-        public void DeplacementPerso(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
+        public void DeplacementPerso(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)  // Méthode pour les déplacement du perso en fonction des colisions
         {
-            if (!Attack(gameTime))
+            if (!Attack(gameTime)) // si le perso n'attaque pas alors il peut lancer une direction
             {
                 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 _coolDown -= deltaTime;
@@ -89,7 +89,7 @@ namespace CHADventure
                     if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
                         _positionPerso.Y += VITESSE_PERSO * deltaTime;
                 }
-                else
+                else // si le personnage de bouge pas il reste fixe en gardant sa dernière direction
                 {
                     if (_sensIdle == "N")
                         _animation = "idleNorth";
@@ -104,13 +104,13 @@ namespace CHADventure
                 }
 
             }
-            else
+            else // le perso attaque
             {
-                _animation = "attack";
+                _animation = "attack"; 
             }
            
         }
-        private bool IsCollision(ushort x, ushort y, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
+        private bool IsCollision(ushort x, ushort y, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2) // méthode pour les collisions en fonction de la couche de tuiles 
         {
             // définition de tile qui peut être null (?)
             TiledMapTile? tile;
@@ -121,7 +121,7 @@ namespace CHADventure
             return false;
         }
     
-        public bool Degats(Vector2 position, BlueBlob blueBlob, GameTime gameTime)
+        public bool Degats(Vector2 position, BlueBlob blueBlob, GameTime gameTime) // méthode qui retourne un booléen pour savoir si on applique des dégats au Blob bleu
         {
 
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -136,7 +136,7 @@ namespace CHADventure
             return degats;
         }
 
-        public bool Degats(Vector2 position, RedBlob redBlob, GameTime gameTime)
+        public bool Degats(Vector2 position, RedBlob redBlob, GameTime gameTime) // méthode qui retourne un booléen pour savoir si on applique des dégats au Blob rouge
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _cd += elapsed;
@@ -149,7 +149,7 @@ namespace CHADventure
             }
             return degats;
         }
-        public bool APorter(Vector2 position, BlueBlob _blueBlob)
+        public bool APorter(Vector2 position, BlueBlob _blueBlob) // méthode qui retourne un booléen pour savoir si le personnage est a porté du Blob bleu
         {
             Vector2 emplacement;
             bool touche = false;
@@ -161,11 +161,11 @@ namespace CHADventure
                 touche = true;
             }
            
-            return touche;
+            return touche;.
 
         }
 
-        public bool APorter(Vector2 position, RedBlob _redBlob)
+        public bool APorter(Vector2 position, RedBlob _redBlob) // méthode qui retourne un booléen pour savoir si le personnage est a porté du Blob rouge
         {
             Vector2 emplacement;
             bool touche = false;
@@ -181,7 +181,7 @@ namespace CHADventure
 
         }
 
-        public bool Attack(GameTime gameTime)
+        public bool Attack(GameTime gameTime) // méthode qui retourne un booléen qui nous sert a savoir si le perso est entrain d'attaquer ou pas
         {
             bool attack = false;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
