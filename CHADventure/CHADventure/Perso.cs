@@ -41,9 +41,9 @@ namespace CHADventure
             this._positionPerso = _positionPerso;
         }
 
-        public void DeplacementPerso(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2, Vector2 position, RedBlob redBlob, BlueBlob blueBlob)
+        public void DeplacementPerso(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
         {
-            if (!Attack(gameTime) && !Degats(position, redBlob, gameTime) && !Degats(position, blueBlob, gameTime))
+            if (!Attack(gameTime))
             {
                 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 _coolDown -= deltaTime;
