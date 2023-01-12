@@ -26,11 +26,13 @@ namespace CHADventure
         private String _animation;
         private BlueBlob blueBlob;
         private Perso _perso;
+        private bool _mort = false;
 
 
         public AnimatedSprite CoeurSprite { get => _coeurSprite; set => _coeurSprite = value; }
         public int Pv { get => pv; set => pv = value; }
         public string Animation { get => _animation; set => _animation = value; }
+        public bool Mort1 { get => _mort; set => _mort = value; }
 
         public void Initialize()
         {
@@ -67,14 +69,13 @@ namespace CHADventure
 
         public bool Mort(GameTime gameTime)
         {
-            bool mort = false;
             if (AnimationCoeur(gameTime) == "zeroCoeur")
             {
                 _perso._animation = "death";
-                mort = true;
+                Mort1 = true;
             }
 
-            return mort;
+            return Mort1;
         }
 
     }
