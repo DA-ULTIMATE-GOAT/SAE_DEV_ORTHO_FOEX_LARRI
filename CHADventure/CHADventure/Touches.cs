@@ -17,8 +17,6 @@ namespace CHADventure
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est 
         // défini dans Game1
         private Game1 _myGame;
-        private Perso _perso = new Perso();
-        private ScreenMenu _menu;
 
         // texture du menu avec 3 boutons
         public Texture2D _engrenage;

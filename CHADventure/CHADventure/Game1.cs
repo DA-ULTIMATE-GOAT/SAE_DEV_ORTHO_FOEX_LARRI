@@ -25,6 +25,7 @@ namespace CHADventure
         private SalleGauche _salleGauche;
         private CouloirPrincipale _couloirPrincipale;
         private SalleBoss _salleBoss;
+        private ScreenGameOver _screenGameOver;
 
         private AnimatedSprite _sprite;
         private Vector2 _positionPerso;
@@ -74,6 +75,7 @@ namespace CHADventure
             _salleDroite = new SalleDroite(this);
             _salleGauche = new SalleGauche(this);
             _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+            _screenGameOver = new ScreenGameOver(this);
         }
 
         protected override void Update(GameTime gameTime)
@@ -148,6 +150,16 @@ namespace CHADventure
                 Color.Black));
                 _sallePrincipale.PositionPerso = new Vector2(38, 202);
             }
+            else if (keyboardState.IsKeyDown(Keys.P))
+            {
+                _screenManager.LoadScreen(_screenGameOver, new FadeTransition(GraphicsDevice,
+                Color.Black));
+            }
+            else if (_screenGameOver.ReturnMenu(gameTime))
+            {
+                _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+            }
+            
             _entree._peutentrer=false;
             _sallePrincipale._peutSortirDehors = false;
             _sallePrincipale._peutSalleDroite = false;
