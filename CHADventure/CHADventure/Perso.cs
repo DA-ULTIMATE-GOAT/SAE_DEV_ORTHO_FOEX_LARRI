@@ -21,14 +21,18 @@ namespace CHADventure
 
         public Vector2 _positionPerso;
         private BlueBlob _blueBlob;
+        private BlueBlob _redBlob;
         public AnimatedSprite _ezioSprite;
         public String _animation = "idle";
         public String _sensIdle = "S";
         private float _coolDown = 0;
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
+        private Coeur _coeur;
 
         public BlueBlob BlueBlob { get => _blueBlob; set => _blueBlob = value; }
+        public BlueBlob RedBlob { get => _redBlob; set => _redBlob = value; }
+        public Coeur Coeur { get => _coeur; set => _coeur = value; }
 
         public void InitPosition(Vector2 _positionPerso)
         {
@@ -167,22 +171,22 @@ namespace CHADventure
             KeyboardState keyboardState = Keyboard.GetState();
             if (!(_coolDown > 0))
             {
-                if (keyboardState.IsKeyDown(Keys.Down))
+                if (keyboardState.IsKeyDown(Keys.Down) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.Y >= _positionPerso.Y)
                 {
                     _animation = "attackSouth";
                     _attaque = true;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Up))
+                else if (keyboardState.IsKeyDown(Keys.Up) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.Y <= _positionPerso.Y)
                 {
                     _animation = "attackNorth";
                     _attaque = true;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Left))
+                else if (keyboardState.IsKeyDown(Keys.Left) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.X <= _positionPerso.X)
                 {
                     _animation = "attackWest";
                     _attaque = true;
                 }
-                else if (keyboardState.IsKeyDown(Keys.Right))
+                else if (keyboardState.IsKeyDown(Keys.Right) && APorter(_positionPerso, redBlob) && RedBlob.PositionBlob.X >= _positionPerso.X)
                 {
                     _animation = "attackEast";
                     _attaque = true;

@@ -15,6 +15,7 @@ namespace CHADventure
         private Texture2D _gameover;
         private float _timer;
         private Game1 _myGame;
+        private Perso _perso;
 
 
         public bool _peutSallePrincipaleD = false;
@@ -25,6 +26,7 @@ namespace CHADventure
         public ScreenGameOver(Game1 game) : base(game)
         {
             _myGame = game;
+            _perso = new Perso();
  
 
         }

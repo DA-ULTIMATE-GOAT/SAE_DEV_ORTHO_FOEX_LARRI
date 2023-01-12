@@ -25,6 +25,7 @@ namespace CHADventure
         private AnimatedSprite _coeurSprite;
         private String _animation;
         private BlueBlob blueBlob;
+        private Perso _perso;
 
 
         public AnimatedSprite CoeurSprite { get => _coeurSprite; set => _coeurSprite = value; }
@@ -62,6 +63,19 @@ namespace CHADventure
                 _animation = "zeroCoeur";
             return _animation;
         }
+
+        public bool Mort(GameTime gameTime)
+        {
+            bool mort = false;
+            if (AnimationCoeur(gameTime) == "zeroCoeur")
+            {
+                _perso._animation = "death";
+                mort = true;
+            }
+
+            return mort;
+        }
+
     }
 
     
