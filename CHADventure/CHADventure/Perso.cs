@@ -139,6 +139,7 @@ namespace CHADventure
             if (APorter(redBlob.PositionBlob, redBlob) && keyboardState.IsKeyDown(Keys.Space))
             {
                 degats = true;
+                _animation = "attack";
                 Console.WriteLine("Marche2");
             }
             return degats;
