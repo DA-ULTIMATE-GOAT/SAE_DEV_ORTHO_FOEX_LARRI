@@ -17,6 +17,7 @@ namespace CHADventure
         private Perso _perso;
         private Coeur _coeur;
 
+        //private GraphicsDeviceManager _graphics;
         private SallePrincipale _sallePrincipale;
         private Entree _entree;
         private readonly ScreenManager _screenManager;
@@ -37,6 +38,7 @@ namespace CHADventure
         // défini dans Game1
         public SalleBoss(Game1 game) : base(game)
         {
+
             _myGame = game;
             _perso = new Perso();
             Coeur = new Coeur();
@@ -49,7 +51,7 @@ namespace CHADventure
         public override void LoadContent()
         {
             Coeur.Initialize();
-            _tiledMap = Content.Load<TiledMap>("map/SalleBoss/SalleBoss.tmx");
+            _tiledMap = Content.Load<TiledMap>("map/SalleBoss/SalleBoss");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("Obstacles");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
@@ -60,8 +62,12 @@ namespace CHADventure
 
         public override void Update(GameTime gameTime)
         {
+
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            if (!_perso._attaque)
+                if (!_perso._attaque)
+                    _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
@@ -69,6 +75,7 @@ namespace CHADventure
             Coeur.AnimationCoeur(gameTime);
             Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
             Coeur.CoeurSprite.Update(deltaTime);
+
 
         }
         public override void Draw(GameTime gameTime)
@@ -80,5 +87,6 @@ namespace CHADventure
             _myGame._spriteBatch.End();
 
         }
+
     }
 }
