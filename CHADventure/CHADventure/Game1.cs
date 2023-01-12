@@ -16,6 +16,7 @@ namespace CHADventure
     public class Game1 : Game
     {
         private Perso _perso;
+        private Coeur _coeur;
         private Entree _entree;
         private ScreenMenu _menu;
         private Touches _touches;
@@ -56,6 +57,7 @@ namespace CHADventure
 
         protected override void Initialize()
         {
+            _coeur = new Coeur();
             _perso = new Perso();
             _positionPerso = new Vector2(400, 672);
             tx = 0;
@@ -151,14 +153,15 @@ namespace CHADventure
                 Color.Black));
                 _sallePrincipale.PositionPerso = new Vector2(38, 202);
             }
-            else if (keyboardState.IsKeyDown(Keys.P))
+            else if (keyboardState.IsKeyDown(Keys.P) || _coeur.Animation == "zeroCoeur")
             {
                 _screenManager.LoadScreen(_screenGameOver, new FadeTransition(GraphicsDevice,
                 Color.Black));
-            }
-            else if (_screenGameOver.ReturnMenu(gameTime))
-            {
-                _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+
+                if (_screenGameOver.ReturnMenu(gameTime))
+                {
+                    _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
+                }
             }
             
             _entree._peutentrer=false;

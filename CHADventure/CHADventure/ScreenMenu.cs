@@ -20,7 +20,6 @@ namespace CHADventure
         private Game1 _myGame;
         private Perso _perso = new Perso();
         private ScreenMenu _menu;
-        private Song _sound;
 
         // texture du menu avec 3 boutons
         private Texture2D _textBoutons;
@@ -28,6 +27,7 @@ namespace CHADventure
         private Texture2D _engrenage;
         public bool _peutTouche = true;
         public bool _peutMenu = false;
+        private Song _sound;
         // contient les rectangles : position et taille des 3 boutons présents dans la texture 
         private Rectangle[] lesBoutons;
 
@@ -50,8 +50,8 @@ namespace CHADventure
             _engrenage = Content.Load<Texture2D>("Engrenage");
             SpriteSheet logo = Content.Load<SpriteSheet>("logo/logo.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _logo = new AnimatedSprite(logo);
-            _sound = Content.Load<Song>("Sound/Menu/Menu2");
-            
+            _sound = Content.Load<Song>("Sound/Menu/Menu");
+            MediaPlayer.Play(_sound);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)

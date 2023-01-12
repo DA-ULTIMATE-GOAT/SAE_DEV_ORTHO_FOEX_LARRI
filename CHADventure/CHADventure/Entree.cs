@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
@@ -25,7 +26,7 @@ namespace CHADventure
         private TiledMapTileLayer _mapLayer;
         private TiledMapTileLayer _mapLayer2;
         private Vector2 _positionPerso;
-
+        //private Song _sound;
 
         //changement de scene :
         public bool _peutentrer = false;
@@ -61,7 +62,8 @@ namespace CHADventure
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
-
+            //_sound = Content.Load<Song>("Sound/Menu/Menu");
+            //MediaPlayer.Play(_sound);
             Coeur.LoadContent(_myGame);
             base.LoadContent();
             

@@ -429,29 +429,29 @@
 /processorParam:Quality=Best
 /build:Sound/Ezio/Ezio_Sound.wav
 
-#begin Sound/Menu/Menu.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Sound/Menu/Menu.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Sound/Menu/Menu.wav
+/build:Sound/Menu/Menu.mp3
 
-#begin Sound/Menu/Menu2.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Sound/Menu/Menu2.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Sound/Menu/Menu2.wav
+/build:Sound/Menu/Menu2.mp3
 
-#begin Sound/SalleDG/CombatouBoss.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Sound/SalleDG/CombatouBoss.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Sound/SalleDG/CombatouBoss.wav
+/build:Sound/SalleDG/CombatouBoss.mp3
 
-#begin Sound/SalleP/interieurChateau.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin Sound/SalleP/interieurChateau.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:Sound/SalleP/interieurChateau.wav
+/build:Sound/SalleP/interieurChateau.mp3
 
 #begin Touches fond.png
 /importer:TextureImporter
