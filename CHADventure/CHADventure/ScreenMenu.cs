@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Sprites;
@@ -19,6 +20,7 @@ namespace CHADventure
         private Game1 _myGame;
         private Perso _perso = new Perso();
         private ScreenMenu _menu;
+        private Song _sound;
 
         // texture du menu avec 3 boutons
         private Texture2D _textBoutons;
@@ -48,6 +50,8 @@ namespace CHADventure
             _engrenage = Content.Load<Texture2D>("Engrenage");
             SpriteSheet logo = Content.Load<SpriteSheet>("logo/logo.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _logo = new AnimatedSprite(logo);
+            _sound = Content.Load<Song>("Sound/Menu/Menu2");
+            
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
