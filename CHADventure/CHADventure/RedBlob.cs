@@ -27,7 +27,7 @@ namespace CHADventure
         private String _animationBlob = "idle";
         private float reloadAttack;
         private int _vitesse;
-        private int pv;
+        private int pv = 2;
 
         public RedBlob(Perso cible)
         {
@@ -59,43 +59,47 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _spriteBlob.Play(_animationBlob);
             _spriteBlob.Update(gameTime);
-            if (PositionBlob.X > Perso._positionPerso.X)
+            if(Pv == 2 || Pv == 1)
             {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth + 1);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
-                _animationBlob = "walkEast";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.X -= _vitesse * deltaTime;
-            }
-            if (PositionBlob.X < Perso._positionPerso.X)
-            {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth - 1);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
-                _animationBlob = "walkWest";
+                if (PositionBlob.X > Perso._positionPerso.X)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth + 1);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
+                    _animationBlob = "walkEast";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.X += _vitesse * deltaTime;
-            }
-            if (PositionBlob.Y > Perso._positionPerso.Y)
-            {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight);
-                _animationBlob = "walkNorth";
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.X -= _vitesse * deltaTime;
+                }
+                if (PositionBlob.X < Perso._positionPerso.X)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth - 1);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
+                    _animationBlob = "walkWest";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.Y -= _vitesse * deltaTime;
-            }
-            if (PositionBlob.Y < Perso._positionPerso.Y)
-            {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 2);
-                _animationBlob = "walkSouth";
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.X += _vitesse * deltaTime;
+                }
+                if (PositionBlob.Y > Perso._positionPerso.Y)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight);
+                    _animationBlob = "walkNorth";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.Y += _vitesse * deltaTime;
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.Y -= _vitesse * deltaTime;
+                }
+                if (PositionBlob.Y < Perso._positionPerso.Y)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 2);
+                    _animationBlob = "walkSouth";
+
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.Y += _vitesse * deltaTime;
+                }
+                APorter(PositionBlob);
             }
-            APorter(PositionBlob);
         }
         public void Draw(SpriteBatch spritebatch)
         {

@@ -87,11 +87,16 @@ namespace CHADventure
 
                 if(_perso.Degats(_redBlob.PositionBlob, _tabBlob[i], gameTime))
                 {
-                    _redBlob.Pv -= 1;
+                    _tabBlob[i].Pv -= 1;
                 }
                 if (_tabBlob[i].Attaque(gameTime, _perso))
                 {
                     Coeur.Pv -= 1;
+                }
+                if (_tabBlob[i].Pv == 0)
+                {
+                    //_redBlob.Mort(gameTime);
+                   _tabBlob[i].Mort(gameTime);
                 }
 
             }

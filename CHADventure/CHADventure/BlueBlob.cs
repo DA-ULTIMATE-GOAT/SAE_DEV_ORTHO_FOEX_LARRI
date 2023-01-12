@@ -95,12 +95,6 @@ namespace CHADventure
                 }
                 APorter(_positionBlob);
             }
-            else if(Pv == 0)
-            {
-
-                _animationBlob = "death";
-            }
-            
 
         }
         public void Draw(SpriteBatch spritebatch)
