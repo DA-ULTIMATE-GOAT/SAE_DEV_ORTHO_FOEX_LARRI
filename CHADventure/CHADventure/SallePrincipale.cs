@@ -40,7 +40,8 @@ namespace CHADventure
         {
             _myGame = game;
             _perso = new Perso();
-            _coeur = new Coeur();
+            _entree = new Entree(game);
+            _entree.Coeur = new Coeur();
         }
         public override void Initialize()
         {
@@ -52,14 +53,14 @@ namespace CHADventure
 
         public override void LoadContent()
         {
-            _coeur.Initialize();
+            _entree.Coeur.Initialize();
             _tiledMap = Content.Load<TiledMap>("map/Principale/mapcentral");
             _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesSalle1");
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles2Salle1");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
-            _coeur.LoadContent(_myGame);
+            _entree.Coeur.LoadContent(_myGame);
             _sound = Content.Load<Song>("Sound/SalleP/interieurChateau");
             MediaPlayer.Play(_sound);
             base.LoadContent();
@@ -67,9 +68,9 @@ namespace CHADventure
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _coeur.AnimationCoeur(gameTime);
-            _coeur.CoeurSprite.Play(_coeur.AnimationCoeur(gameTime));
-            _coeur.CoeurSprite.Update(deltaTime);
+            _entree.Coeur.AnimationCoeur(gameTime);
+            _entree.Coeur.CoeurSprite.Play(_entree.Coeur.AnimationCoeur(gameTime));
+            _entree.Coeur.CoeurSprite.Update(deltaTime);
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
@@ -86,7 +87,7 @@ namespace CHADventure
             _myGame.GraphicsDevice.Clear(Color.Black); // on utilise la reference vers
             _tiledMapRenderer.Draw(); // on utilise la reference vers
             _myGame._spriteBatch.Begin();
-            _coeur.Draw(_myGame._spriteBatch);
+            _entree.Coeur.Draw(_myGame._spriteBatch);
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             _myGame._spriteBatch.End(); // Game1 pour changer le graphisme                                          // Game1 pour chnager le graphisme
         }

@@ -15,31 +15,26 @@ namespace CHADventure
 {
     public class Game1 : Game
     {
-        private Perso _perso;
+        public const int HAUTEUR_FENETRE = 800;
+        public const int LARGEUR_FENETRE = 800;
+
         private Coeur _coeur;
         private Entree _entree;
         private ScreenMenu _menu;
         private Touches _touches;
         private SallePrincipale _sallePrincipale;
-        private ParcoursDroit _parcoursDroit;
-        private ParcoursGauche _parcoursGauche;
         private SalleDroite _salleDroite;
         private SalleGauche _salleGauche;
-        private CouloirPrincipale _couloirPrincipale;
         private SalleBoss _salleBoss;
         private ScreenGameOver _screenGameOver;
 
-        private AnimatedSprite _sprite;
-        private Vector2 _positionPerso;
+
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         private readonly ScreenManager _screenManager;
         public ushort tx;
         public ushort ty;
 
-        private const int VITESSE_PERSO = 110;
-        public const int HAUTEUR_FENETRE = 800;
-        public const int LARGEUR_FENETRE = 800;
 
         public enum Etats { Menu, Controls, Play, Quit, Touch};
         public Etats etat;
@@ -59,8 +54,6 @@ namespace CHADventure
         protected override void Initialize()
         {
             _coeur = new Coeur();
-            _perso = new Perso();
-            _positionPerso = new Vector2(400, 672);
             tx = 0;
             ty = 0;
             base.Initialize();
@@ -73,9 +66,7 @@ namespace CHADventure
             _sallePrincipale = new SallePrincipale(this);
             _menu = new ScreenMenu(this);
             _touches = new Touches(this);
-            _parcoursDroit = new ParcoursDroit(this);
-            _parcoursGauche = new ParcoursGauche(this);
-            _couloirPrincipale = new CouloirPrincipale(this);
+ 
             _salleDroite = new SalleDroite(this);
             _salleGauche = new SalleGauche(this);
             _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));

@@ -21,7 +21,7 @@ namespace CHADventure
 
         public Vector2 _positionPerso;
         private BlueBlob _blueBlob;
-        private BlueBlob _redBlob;
+        private RedBlob _redBlob;
         public AnimatedSprite _ezioSprite;
         public String _animation = "idle";
         public String _sensIdle = "S";
@@ -31,7 +31,7 @@ namespace CHADventure
         private Coeur _coeur;
 
         public BlueBlob BlueBlob { get => _blueBlob; set => _blueBlob = value; }
-        public BlueBlob RedBlob { get => _redBlob; set => _redBlob = value; }
+        public RedBlob RedBlob { get => _redBlob; set => _redBlob = value; }
         public Coeur Coeur { get => _coeur; set => _coeur = value; }
 
         public void InitPosition(Vector2 _positionPerso)
@@ -144,7 +144,7 @@ namespace CHADventure
                 {
                     _animation = "attackSouth";
                    
-                    if(Direction(_blueBlob.PositionBlob,blueblob) == "B")
+                    if(Direction(_positionPerso,blueblob) == "B")
                         _attaque = true;
                    
                 }
@@ -152,21 +152,21 @@ namespace CHADventure
                 {
                     _animation = "attackNorth";
 
-                    if (Direction(_blueBlob.PositionBlob, blueblob) == "H")
+                    if (Direction(_positionPerso, blueblob) == "H")
                         _attaque = true;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Left))
                 {
                     _animation = "attackWest";
 
-                    if (Direction(_blueBlob.PositionBlob, blueblob) == "G")
+                    if (Direction(_positionPerso, blueblob) == "G")
                         _attaque = true;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Right))
                 {
                     _animation = "attackEast";
 
-                    if (Direction(_blueBlob.PositionBlob, blueblob) == "D")
+                    if (Direction(_positionPerso, blueblob) == "D")
                         _attaque = true;
                 }
                 //Console.WriteLine("                            : " + _animation);
@@ -182,25 +182,40 @@ namespace CHADventure
             {
                 if (keyboardState.IsKeyDown(Keys.Down))
                 {
+                    _animation = "attackSouth";
 
-                    if (Direction(_blueBlob.PositionBlob, redBlob) == "B")
+                    if (Direction(_positionPerso, redBlob) == "B")
                         _attaque = true;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Up))
                 {
+                    _animation = "attackNorth";
 
-                    if (Direction(_blueBlob.PositionBlob, redBlob) == "H")
+                    if (Direction(_positionPerso, redBlob) == "H")
                         _attaque = true;
                 }
                 else if (keyboardState.IsKeyDown(Keys.Left))
                 {
-                    if (Direction(_blueBlob.PositionBlob, redBlob) == "G")
+
+                    if (Direction(_positionPerso, redBlob) == "G")
+                    {
+                        _animation = "attackWest";
                         _attaque = true;
+                    }
+                    else
+                        _animation = "attackWest";
+
                 }
                 else if (keyboardState.IsKeyDown(Keys.Right))
                 {
-                    if (Direction(_blueBlob.PositionBlob, redBlob) == "D")
+
+                    if (Direction(_positionPerso, redBlob) == "D")
+                    {
                         _attaque = true;
+                        _animation = "attackEast";
+                    }
+                    else
+                        _animation = "attackEast";
                 }
                 //Console.WriteLine("                            : " + _animation);
             }
