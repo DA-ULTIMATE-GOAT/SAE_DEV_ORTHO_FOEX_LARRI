@@ -79,7 +79,7 @@ namespace CHADventure
             _screenGameOver = new ScreenGameOver(this);
         }
 
-        protected override void Update(GameTime gameTime, SoundEffect soundEffect)
+        protected override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
