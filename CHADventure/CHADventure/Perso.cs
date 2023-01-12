@@ -19,9 +19,6 @@ namespace CHADventure
         public const int VITESSE_PERSO = 110;
         public const int COOLDOWNEZIO = 1;
 
-        private Game1 _myGame;
-        private Entree _entree;
-
         public Vector2 _positionPerso;
         private BlueBlob _blueBlob;
         public AnimatedSprite _ezioSprite;

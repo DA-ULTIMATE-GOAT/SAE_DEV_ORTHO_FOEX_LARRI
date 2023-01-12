@@ -8,6 +8,7 @@ using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using Microsoft.Xna.Framework.Audio;
 
 
 namespace CHADventure
@@ -78,7 +79,7 @@ namespace CHADventure
             _screenGameOver = new ScreenGameOver(this);
         }
 
-        protected override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime, SoundEffect soundEffect)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
