@@ -110,7 +110,6 @@ namespace CHADventure
             Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
             Coeur.CoeurSprite.Update(deltaTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
-            _redBlob.Update(gameTime);
 
         }
         public override void Draw(GameTime gameTime)

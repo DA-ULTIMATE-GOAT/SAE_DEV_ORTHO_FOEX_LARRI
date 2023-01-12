@@ -55,12 +55,12 @@ namespace CHADventure
 
         public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2) // Cette méthodes permet au blob de se diriger vers le joueur
         {
-            if(isDead == false) // si le blob meurs arrête toutes ses déplacements
+            if(isDead == false) // si le blob n'est pas mort
             {
                 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 _spriteBlob.Play(_animationBlob);
                 _spriteBlob.Update(gameTime);
-                if (Pv == 2 || Pv == 1)
+                if (Pv == 2 || Pv == 1) // si les pv des blob sont égale a 1 ou a 2, il peut alors se déplacer
                 {
                     if (PositionBlob.X > Perso._positionPerso.X)
                     {
@@ -105,9 +105,9 @@ namespace CHADventure
 
         }
 
-        public void Draw(SpriteBatch spritebatch)
-         {
-            if (isDead == false) // si le blob meurs 
+        public void Draw(SpriteBatch spritebatch) // Draw le blob
+        {
+            if (isDead == false) // si le blob n'est pas mort
                 spritebatch.Draw(this._spriteBlob, this.PositionBlob);
             
          }
@@ -122,7 +122,7 @@ namespace CHADventure
             return false;
         }
 
-        private bool APorter(Vector2 position)
+        private bool APorter(Vector2 position) // Vérifie si le perso est a porté du blob
         {
             Vector2 emplacement;
             bool touche = false;
@@ -140,7 +140,7 @@ namespace CHADventure
         }
 
 
-        public bool Attaque(GameTime gameTime, Perso perso)
+        public bool Attaque(GameTime gameTime, Perso perso) // si le perso est a porté du blob alors le blob attaque
         {
             bool attaque = false;
             if (isDead == false)
@@ -156,7 +156,7 @@ namespace CHADventure
             return attaque;
         }
 
-        public string Mort(GameTime gameTime)
+        public string Mort(GameTime gameTime) // Vérifie si le blob est mort ou pas
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _timer += elapsed;

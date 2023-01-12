@@ -20,7 +20,7 @@ namespace CHADventure
         public const int VITESSE_MAX_BLOB = 50;
         public const int VITESSE_MIN_BLOB = 35;
         
-        private Game1 _myGame;
+        private Game1 _myGame;                  //Initialization des variables de Blueblob
         private Perso _perso;
         private Random rndm = new Random();
         private Vector2 _positionBlob;
@@ -41,30 +41,25 @@ namespace CHADventure
         public Vector2 PositionBlob { get => _positionBlob; set => _positionBlob = value; }
         public int Pv { get => pv; set => pv = value; }
 
-        public void Initialize()
+        public void Initialize() //Initialise un point d'apparition des blobs dans une zone ainsi que leur vitesse grace a un random
         {
             PositionBlob = new Vector2(rndm.Next(288, 496), rndm.Next(256, 464));
             _vitesse = rndm.Next(VITESSE_MIN_BLOB, VITESSE_MAX_BLOB);
         }
-        public void LoadContent(Game1 game)
+        public void LoadContent(Game1 game) //Load le sprite du blob
         {
             SpriteSheet spriteSheetBlob = game.Content.Load<SpriteSheet>("mob/RedBlob/redBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _spriteBlob = new AnimatedSprite(spriteSheetBlob);
         }
-        public void Update(GameTime gameTime)
-        {
 
-            Console.WriteLine(Attaque(gameTime, _perso));
-        }
-
-        public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
+        public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2) // Cette méthodes permet au blob de se diriger vers le joueur
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _spriteBlob.Play(_animationBlob);
             _spriteBlob.Update(gameTime);
-            if(isDead == false)
+            if(isDead == false) // si le blob n'est pas mort
             {
-                if (Pv == 2 || Pv == 1)
+                if (Pv == 2 || Pv == 1) // si les pv des blob sont égale a 1 ou a 2, il peut alors se déplacer
                 {
 
                     if (PositionBlob.X > Perso._positionPerso.X)
@@ -108,9 +103,9 @@ namespace CHADventure
 
             }
         }
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw(SpriteBatch spritebatch) // Draw le blob
         {
-            if(isDead == false)
+            if(isDead == false) // si le blob n'est pas mort
             {
                 spritebatch.Draw(this._spriteBlob, this.PositionBlob);
             }
@@ -126,7 +121,7 @@ namespace CHADventure
             return false;
         }
 
-        private bool APorter(Vector2 position)
+        private bool APorter(Vector2 position) // Vérifie si le perso est a porté du blob
         {
             Vector2 emplacement;
             bool touche = false;
@@ -143,7 +138,7 @@ namespace CHADventure
 
         }
 
-        public bool Attaque(GameTime gameTime, Perso perso)
+        public bool Attaque(GameTime gameTime, Perso perso) // si le perso est a porté du blob alors le blob attaque
         {
             bool attaque = false;
             if (isDead == false)
@@ -159,7 +154,7 @@ namespace CHADventure
             return attaque;
         }
 
-        public string Mort(GameTime gameTime)
+        public string Mort(GameTime gameTime) // Vérifie si le blob est mort ou pas
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _timer += elapsed;
