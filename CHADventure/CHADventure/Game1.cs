@@ -146,7 +146,7 @@ namespace CHADventure
                 Color.Black));
                 _sallePrincipale.PositionPerso = new Vector2(38, 202);
             }
-            else if (keyboardState.IsKeyDown(Keys.P) || _coeur.Pv == 0)
+            else if (_salleGauche.Coeur.Pv == 0 || _salleDroite.Coeur.Pv == 0)
             {
                 _screenManager.LoadScreen(_screenGameOver, new FadeTransition(GraphicsDevice,
                 Color.Black));
@@ -159,7 +159,8 @@ namespace CHADventure
                 {
                     _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
                     _estMort = false;
-                    _salleGauche.Coeur = new Coeur();
+                    _salleGauche.Coeur.Pv = 3;
+                    _salleDroite.Coeur.Pv = 3;
                 }
             }
 

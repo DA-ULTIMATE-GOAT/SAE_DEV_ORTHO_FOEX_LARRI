@@ -33,6 +33,7 @@ namespace CHADventure
             _myGame = game;
             _perso = new Perso();
             _salleGauche = new SalleGauche(game);
+            _salleDroite = new SalleDroite(game);
             _coeur = new Coeur();
 
 
@@ -63,13 +64,11 @@ namespace CHADventure
             bool retour = false;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _timer += elapsed;
-            if (_timer >= 5000)
+            if (_timer >= 5000 && retour == false)
             {
                 _timer = 0;
                 retour = true;
-                _salleGauche.Coeur = new Coeur();
             }
-            _salleGauche.Coeur = new Coeur();
             return retour;
             
         }
