@@ -27,6 +27,7 @@ namespace CHADventure
         private String _animationBlob = "idle";
         private float reloadAttack;
         private int _vitesse;
+        private int pv;
 
         public RedBlob(Perso cible)
         {
@@ -35,6 +36,7 @@ namespace CHADventure
 
         public Perso Perso { get => _perso; set => _perso = value; }
         public Vector2 PositionBlob { get => _positionBlob; set => _positionBlob = value; }
+        public int Pv { get => pv; set => pv = value; }
 
         public void Initialize()
         {
@@ -139,5 +141,16 @@ namespace CHADventure
             }
             return attaque;
         }
+
+        public string Mort(GameTime gameTime)
+        {
+            if (Pv == 0)
+            {
+                return _animationBlob = "death";
+            }
+            return _animationBlob;
+
+        }
+
     }
 }

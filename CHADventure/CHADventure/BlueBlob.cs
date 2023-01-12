@@ -26,6 +26,7 @@ namespace CHADventure
         private AnimatedSprite _spriteBlob;
         private String _animationBlob = "idle";
         private int _vitesse;
+        private int pv = 2;
         private float reloadAttack;
 
         public BlueBlob(Perso cible)
@@ -41,6 +42,7 @@ namespace CHADventure
         }
         public Perso Perso { get => _perso; set => _perso = value; }
         public Vector2 PositionBlob { get => _positionBlob; set => _positionBlob = value; }
+        public int Pv { get => pv; set => pv = value; }
 
         public void LoadContent(Game1 game)
         {
@@ -53,43 +55,51 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _spriteBlob.Play(_animationBlob);
             _spriteBlob.Update(gameTime);
-            if (PositionBlob.X > Perso._positionPerso.X)
+            if (Pv == 2 || Pv == 1)
             {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth + 1);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
-                _animationBlob = "walkEast";
+                if (PositionBlob.X > Perso._positionPerso.X)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth + 1);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
+                    _animationBlob = "walkEast";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.X -= _vitesse * deltaTime;
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.X -= _vitesse * deltaTime;
+                }
+                if (PositionBlob.X < Perso._positionPerso.X)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth - 1);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
+                    _animationBlob = "walkWest";
+
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.X += _vitesse * deltaTime;
+                }
+                if (PositionBlob.Y > Perso._positionPerso.Y)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight);
+                    _animationBlob = "walkNorth";
+
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.Y -= _vitesse * deltaTime;
+                }
+                if (PositionBlob.Y < Perso._positionPerso.Y)
+                {
+                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
+                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 2);
+                    _animationBlob = "walkSouth";
+
+                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                        _positionBlob.Y += _vitesse * deltaTime;
+                }
+                APorter(_positionBlob);
             }
-            if (PositionBlob.X < Perso._positionPerso.X)
+            else if(Pv == 0)
             {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth - 1);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
-                _animationBlob = "walkWest";
 
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.X += _vitesse * deltaTime;
+                _animationBlob = "death";
             }
-            if (PositionBlob.Y > Perso._positionPerso.Y)
-            {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight);
-                _animationBlob = "walkNorth";
-
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.Y -= _vitesse * deltaTime;
-            }
-            if (PositionBlob.Y < Perso._positionPerso.Y)
-            {
-                ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
-                ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 2);
-                _animationBlob = "walkSouth";
-
-                if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                    _positionBlob.Y += _vitesse * deltaTime;
-            }
-            APorter(_positionBlob);
             
 
         }
@@ -139,6 +149,15 @@ namespace CHADventure
             return attaque;
         }
 
+        public string Mort(GameTime gameTime)
+        {
+            if (Pv == 0)
+            {
+                return _animationBlob = "death";
+            }
+            return _animationBlob;
+            
+        }
 
     }
 }

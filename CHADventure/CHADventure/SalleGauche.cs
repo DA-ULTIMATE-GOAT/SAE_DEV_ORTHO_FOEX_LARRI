@@ -73,6 +73,7 @@ namespace CHADventure
                 _tabBlob[i].LoadContent(_myGame);
             }
             Coeur.LoadContent(_myGame);
+
             base.LoadContent();
         }
 
@@ -84,7 +85,10 @@ namespace CHADventure
             for (int i = 0; i < _tabBlob.Length; i++)
             {
 
-                _perso.Degats(_redBlob.PositionBlob, _tabBlob[i]);
+                if(_perso.Degats(_redBlob.PositionBlob, _tabBlob[i], gameTime))
+                {
+                    _redBlob.Pv -= 1;
+                }
                 if (_tabBlob[i].Attaque(gameTime, _perso))
                 {
                     Coeur.Pv -= 1;

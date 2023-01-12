@@ -29,6 +29,7 @@ namespace CHADventure
         public bool _isCoolDownEzio = true;
         public bool _attaque = false;
         private Coeur _coeur;
+        private float _cd;
 
         public BlueBlob BlueBlob { get => _blueBlob; set => _blueBlob = value; }
         public RedBlob RedBlob { get => _redBlob; set => _redBlob = value; }
@@ -120,24 +121,31 @@ namespace CHADventure
             return false;
         }
     
-        public bool Degats(Vector2 position, BlueBlob blueBlob)
+        public bool Degats(Vector2 position, BlueBlob blueBlob, GameTime gameTime)
         {
+
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            _cd += elapsed;
             KeyboardState keyboardState = Keyboard.GetState();
             bool degats = false;
-            if(APorter(blueBlob.PositionBlob, blueBlob) && keyboardState.IsKeyDown(Keys.Space))
+            if(APorter(blueBlob.PositionBlob, blueBlob) && keyboardState.IsKeyDown(Keys.Space) && _cd >= 2000)
             {
+                _cd = 0;
                 degats = true;
                 Console.WriteLine("Marche");
             }
             return degats;
         }
 
-        public bool Degats(Vector2 position, RedBlob redBlob)
+        public bool Degats(Vector2 position, RedBlob redBlob, GameTime gameTime)
         {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            _cd += elapsed;
             KeyboardState keyboardState = Keyboard.GetState();
             bool degats = false;
-            if (APorter(redBlob.PositionBlob, redBlob) && keyboardState.IsKeyDown(Keys.Space))
+            if (APorter(redBlob.PositionBlob, redBlob) && keyboardState.IsKeyDown(Keys.Space) && _cd >= 2000)
             {
+                _cd = 0;
                 degats = true;
                 Console.WriteLine("Marche2");
             }

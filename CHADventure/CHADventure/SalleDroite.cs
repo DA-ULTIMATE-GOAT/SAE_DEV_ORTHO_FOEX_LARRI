@@ -83,7 +83,9 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _perso.Degats(_blueBlob.PositionBlob, _tabBlob[i]);
+                if(_perso.Degats(_blueBlob.PositionBlob, _tabBlob[i], gameTime)){
+                    _blueBlob.Pv -= 1;
+                }
                 if (_tabBlob[i].Attaque(gameTime, _perso))
                 {
                     Coeur.Pv -= 1;

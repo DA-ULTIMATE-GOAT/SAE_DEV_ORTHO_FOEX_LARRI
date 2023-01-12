@@ -135,6 +135,11 @@ namespace CHADventure
                 _salleGauche.PositionPerso = new Vector2(624, 400);
                 _coeur = _salleGauche.Coeur;
             }
+            else if (keyboardState.IsKeyDown(Keys.P))
+            {
+                _screenManager.LoadScreen(_entree, new FadeTransition(GraphicsDevice, Color.Black));
+                _entree.PositionPerso = new Vector2(400, 672);
+            }
             else if (_salleDroite._peutSallePrincipaleD)
             {
                 _screenManager.LoadScreen(_sallePrincipale, new FadeTransition(GraphicsDevice,
@@ -171,6 +176,7 @@ namespace CHADventure
                 _screenManager.LoadScreen(_salleBoss, new FadeTransition(GraphicsDevice, Color.Black));
                 _salleBoss.PositionPerso = new Vector2(400, 704);
             }
+
             _entree._peutentrer=false;
             _sallePrincipale._peutSortirDehors = false;
             _sallePrincipale._peutSalleDroite = false;
