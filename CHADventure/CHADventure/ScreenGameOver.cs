@@ -25,11 +25,12 @@ namespace CHADventure
         public ScreenGameOver(Game1 game) : base(game)
         {
             _myGame = game;
+ 
 
         }
         public override void LoadContent()
         {
-            _gameover = Content.Load<Texture2D>("GameOver.png");
+            _gameover = Content.Load<Texture2D>("GameOver/GameOver");
             base.LoadContent();
         }
 
