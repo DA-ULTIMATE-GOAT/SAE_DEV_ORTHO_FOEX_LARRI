@@ -1,8 +1,8 @@
 {
   "textureAtlas": {
-    "texture": "EzioFini.png",
+    "texture": "EzioFini2.png",
     "regionWidth": 92,
-    "regionHeight": 72
+    "regionHeight": 73
   },
   "cycles": {
     "idle": {
