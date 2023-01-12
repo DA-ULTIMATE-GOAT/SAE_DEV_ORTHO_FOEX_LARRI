@@ -35,7 +35,7 @@ namespace CHADventure
         public Coeur Coeur { get => _coeur; set => _coeur = value; }
 
 
-        // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui est
+        // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui esthg
         // défini dans Game1
         public Entree(Game1 game) : base(game)
         {
