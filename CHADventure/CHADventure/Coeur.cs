@@ -1,15 +1,8 @@
 ﻿using System;
-using System.ComponentModel.Design;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
-using MonoGame.Extended.Screens;
-using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
-using MonoGame.Extended.Tiled;
-using MonoGame.Extended.Tiled.Renderers;
-using MonoGame.Extended.Timers;
 
 namespace CHADventure
 {
@@ -23,6 +16,8 @@ namespace CHADventure
         private Vector2 _positionCoeur;
         private AnimatedSprite _coeurSprite;
         private String _animation;
+        private BlueBlob blueBlob;
+        private Perso _perso;
 
 
         public AnimatedSprite CoeurSprite { get => _coeurSprite; set => _coeurSprite = value; }
@@ -61,8 +56,6 @@ namespace CHADventure
                 Animation = "zeroCoeur";
             return Animation;
         }
-
-
 
     }
 

@@ -131,11 +131,10 @@ namespace CHADventure
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             reloadAttack += elapsed;
             bool attaque = false;
-            if (APorter(perso._positionPerso) && reloadAttack >= 1000)
+            if (APorter(perso._positionPerso) && reloadAttack >= 1500)
             {
                 attaque = true;
                 reloadAttack = 0;
-                Console.WriteLine("EstActive2");
             }
             return attaque;
         }

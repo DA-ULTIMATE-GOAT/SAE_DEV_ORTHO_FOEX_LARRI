@@ -1,13 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
-using MonoGame.Extended.Screens.Transitions;
-using MonoGame.Extended.Sprites;
-using MonoGame.Extended.Tiled;
-using MonoGame.Extended.Tiled.Renderers;
 namespace CHADventure
 {
     public class ScreenGameOver : GameScreen
@@ -64,14 +58,14 @@ namespace CHADventure
             bool retour = false;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             _timer += elapsed;
-            if (_timer >= 5000 && retour == false)
+            if (_timer >= 5000)
             {
-                _timer = 0;
                 retour = true;
+                _timer = 0;
             }
             return retour;
             
         }
 
     }
-    }
+}

@@ -1,10 +1,8 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
-using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
@@ -82,9 +80,11 @@ namespace CHADventure
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();
+     
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                _perso.Attaque(gameTime, _tabBlob[i]);
+
+                _perso.Degats(_redBlob.PositionBlob, _tabBlob[i]);
                 if (_tabBlob[i].Attaque(gameTime, _perso))
                 {
                     Coeur.Pv -= 1;

@@ -45,23 +45,7 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             _coolDown -= deltaTime;
             KeyboardState keyboardState = Keyboard.GetState();
-            if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Down))
-            {
-                _animation = "attackSouth";
-            }
-            else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Up))
-            {
-                _animation = "attackNorth";
-            }
-            else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Right))
-            {
-                _animation = "attackEast";
-            }
-            else if (_coolDown > 0.6 && keyboardState.IsKeyDown(Keys.Left))
-            {
-                _animation = "attackWest";
-            }
-            else if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
+            if ((_positionPerso.X > Perso.LARGEUR_SPRITE / 4) && keyboardState.IsKeyDown(Keys.Q))
             {
                 ushort tx = (ushort)(_positionPerso.X / _tiledMap.TileWidth - 1);
                 ushort ty = (ushort)(_positionPerso.Y / _tiledMap.TileHeight + 1);
@@ -135,148 +119,30 @@ namespace CHADventure
                 return true;
             return false;
         }
-        public void Attaque(GameTime gameTime, BlueBlob blueblob)
+    
+        public bool Degats(Vector2 position, BlueBlob blueBlob)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            if (!(_coolDown > 0))
+            bool degats = false;
+            if(APorter(blueBlob.PositionBlob, blueBlob) && keyboardState.IsKeyDown(Keys.Space))
             {
-                if (keyboardState.IsKeyDown(Keys.Down))
-                {
-                    _animation = "attackSouth";
-                   
-                    if(Direction(_positionPerso,blueblob) == "B")
-                        _attaque = true;
-                   
-                }
-                else if (keyboardState.IsKeyDown(Keys.Up))
-                {
-                    _animation = "attackNorth";
-
-                    if (Direction(_positionPerso, blueblob) == "H")
-                        _attaque = true;
-                }
-                else if (keyboardState.IsKeyDown(Keys.Left))
-                {
-                    _animation = "attackWest";
-
-                    if (Direction(_positionPerso, blueblob) == "G")
-                        _attaque = true;
-                }
-                else if (keyboardState.IsKeyDown(Keys.Right))
-                {
-                    _animation = "attackEast";
-
-                    if (Direction(_positionPerso, blueblob) == "D")
-                        _attaque = true;
-                }
-                //Console.WriteLine("                            : " + _animation);
+                degats = true;
+                Console.WriteLine("Marche");
             }
-
-            AttaqueCooldown(gameTime, blueblob);
+            return degats;
         }
 
-        public void Attaque(GameTime gameTime, RedBlob redBlob)
+        public bool Degats(Vector2 position, RedBlob redBlob)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            if (!(_coolDown > 0))
+            bool degats = false;
+            if (APorter(redBlob.PositionBlob, redBlob) && keyboardState.IsKeyDown(Keys.Space))
             {
-                if (keyboardState.IsKeyDown(Keys.Down))
-                {
-                    _animation = "attackSouth";
-
-                    if (Direction(_positionPerso, redBlob) == "B")
-                        _attaque = true;
-                }
-                else if (keyboardState.IsKeyDown(Keys.Up))
-                {
-                    _animation = "attackNorth";
-
-                    if (Direction(_positionPerso, redBlob) == "H")
-                        _attaque = true;
-                }
-                else if (keyboardState.IsKeyDown(Keys.Left))
-                {
-
-                    if (Direction(_positionPerso, redBlob) == "G")
-                    {
-                        _animation = "attackWest";
-                        _attaque = true;
-                    }
-                    else
-                        _animation = "attackWest";
-
-                }
-                else if (keyboardState.IsKeyDown(Keys.Right))
-                {
-
-                    if (Direction(_positionPerso, redBlob) == "D")
-                    {
-                        _attaque = true;
-                        _animation = "attackEast";
-                    }
-                    else
-                        _animation = "attackEast";
-                }
-                //Console.WriteLine("                            : " + _animation);
+                degats = true;
+                Console.WriteLine("Marche2");
             }
-
-            AttaqueCooldown(gameTime, redBlob);
+            return degats;
         }
-
-        public void AttaqueCooldown(GameTime gameTime, BlueBlob blueBlob)
-        {
-
-            if (_attaque && _isCoolDownEzio)
-            {
-
-                _coolDown = COOLDOWNEZIO;
-                _isCoolDownEzio = false;
-                _attaque = false;
-            }
-            else if (_coolDown <= 0)
-            {
-                _attaque = false;
-                _isCoolDownEzio = true;
-            }
-            else
-            {
-                _attaque = false;
-                _isCoolDownEzio = true;
-            }
-            
-
-            //Console.WriteLine(_coolDown);
-            APorter(_positionPerso, blueBlob);
-
-        }
-
-        public void AttaqueCooldown(GameTime gameTime, RedBlob redBlob)
-        {
-
-            if (_attaque && _isCoolDownEzio)
-            {
-
-                _coolDown = COOLDOWNEZIO;
-                _isCoolDownEzio = false;
-                _attaque = false;
-            }
-            else if (_coolDown <= 0)
-            {
-                _attaque = false;
-                _isCoolDownEzio = true;
-            }
-            else
-            {
-                _attaque = false;
-                _isCoolDownEzio = true;
-            }
-
-
-            //Console.WriteLine(_coolDown);
-            APorter(_positionPerso, redBlob);
-
-        }
-
         public bool APorter(Vector2 position, BlueBlob _blueBlob)
         {
             Vector2 emplacement;
@@ -284,7 +150,7 @@ namespace CHADventure
             emplacement.X = Math.Abs(position.X - _positionPerso.X);
             emplacement.Y = Math.Abs(position.Y - _positionPerso.Y);
 
-            if (position.X <=  30 && position.Y <= 30)
+            if (emplacement.X <=  100 && emplacement.Y <= 100)
             {
                 touche = true;
             }
@@ -300,65 +166,12 @@ namespace CHADventure
             emplacement.X = Math.Abs(position.X - _positionPerso.X);
             emplacement.Y = Math.Abs(position.Y - _positionPerso.Y);
 
-            if (position.X <= 30 && position.Y <= 30)
-            {
-                touche = true;
+            if (emplacement.X <= 100 && emplacement.Y <= 100)
+            { 
                 touche = true;
             }
 
             return touche;
-
-        }
-
-        public string Direction(Vector2 position, BlueBlob blueBlob)
-        {
-            if (APorter(position, blueBlob))
-            {
-                if (blueBlob.PositionBlob.X > position.X)
-                {
-                    return "D";
-                }
-                else if (blueBlob.PositionBlob.X < position.X)
-                {
-                    return "G";
-                }
-                else if (blueBlob.PositionBlob.Y > position.Y)
-                {
-                    return "B";
-                }
-                else
-                    return "H";
-            }
-            else
-            {
-                return "";
-            }
-                
-        }
-
-        public string Direction(Vector2 position, RedBlob redBlob)
-        {
-            if (APorter(position, redBlob))
-            {
-                if (redBlob.PositionBlob.X > position.X)
-                {
-                    return "D";
-                }
-                else if (redBlob.PositionBlob.X < position.X)
-                {
-                    return "G";
-                }
-                else if (redBlob.PositionBlob.Y > position.Y)
-                {
-                    return "B";
-                }
-                else
-                    return "H";
-            }
-            else
-            {
-                return "";
-            }
 
         }
 

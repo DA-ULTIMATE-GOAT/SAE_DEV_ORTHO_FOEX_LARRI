@@ -73,7 +73,6 @@ namespace CHADventure
             Coeur.AnimationCoeur(gameTime);
             Coeur.CoeurSprite.Play(Coeur.AnimationCoeur(gameTime));
             Coeur.CoeurSprite.Update(deltaTime);
-            
             if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);

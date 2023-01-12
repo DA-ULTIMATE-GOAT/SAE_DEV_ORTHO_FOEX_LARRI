@@ -161,6 +161,7 @@ namespace CHADventure
                     _estMort = false;
                     _salleGauche.Coeur.Pv = 3;
                     _salleDroite.Coeur.Pv = 3;
+                    Console.WriteLine("EstMort");
                 }
             }
 
