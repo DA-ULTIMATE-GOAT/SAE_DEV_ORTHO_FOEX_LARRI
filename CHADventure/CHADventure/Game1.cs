@@ -69,6 +69,7 @@ namespace CHADventure
  
             _salleDroite = new SalleDroite(this);
             _salleGauche = new SalleGauche(this);
+            _salleBoss = new SalleBoss(this);
             _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
             _screenGameOver = new ScreenGameOver(this);
         }
@@ -165,7 +166,11 @@ namespace CHADventure
                 }
             }
 
-
+            if (keyboardState.IsKeyDown(Keys.B))
+            {
+                _screenManager.LoadScreen(_salleBoss, new FadeTransition(GraphicsDevice, Color.Black));
+                _salleBoss.PositionPerso = new Vector2(400, 704);
+            }
             _entree._peutentrer=false;
             _sallePrincipale._peutSortirDehors = false;
             _sallePrincipale._peutSalleDroite = false;
