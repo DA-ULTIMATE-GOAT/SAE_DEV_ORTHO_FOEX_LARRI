@@ -20,7 +20,7 @@ namespace CHADventure
         public const int VITESSE_MAX_BLOB = 40;
         public const int VITESSE_MIN_BLOB = 25;
 
-        private Game1 _myGame;
+        private Game1 _myGame;                  //Initialization des variables de Blueblob
         private Perso _perso;
         private Random rndm = new Random();
         private Vector2 _positionBlob;
@@ -34,10 +34,10 @@ namespace CHADventure
 
         public BlueBlob(Perso cible)
         {
-            this.Perso = cible;
+            this.Perso = cible; 
         }
 
-        public void Initialize()
+        public void Initialize()    //Initialise un point d'apparition des blobs dans une zone ainsi que leur vitesse grace a un random
         {
            
             PositionBlob = new Vector2(rndm.Next(288,496),rndm.Next(256,464));
@@ -47,15 +47,15 @@ namespace CHADventure
         public Vector2 PositionBlob { get => _positionBlob; set => _positionBlob = value; }
         public int Pv { get => pv; set => pv = value; }
 
-        public void LoadContent(Game1 game)
+        public void LoadContent(Game1 game) //Load le sprite du blob
         {
             SpriteSheet spriteSheetBlob = game.Content.Load<SpriteSheet>("mob/BlueBlob/blueBlobAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
             _spriteBlob = new AnimatedSprite(spriteSheetBlob);
         }
 
-        public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
+        public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2) // Cette méthodes permet au blob de se diriger vers le joueur
         {
-            if(isDead == false)
+            if(isDead == false) // si le blob meurs arrête toutes ses déplacements
             {
                 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 _spriteBlob.Play(_animationBlob);
@@ -107,7 +107,7 @@ namespace CHADventure
 
         public void Draw(SpriteBatch spritebatch)
          {
-            if (isDead == false)
+            if (isDead == false) // si le blob meurs 
                 spritebatch.Draw(this._spriteBlob, this.PositionBlob);
             
          }

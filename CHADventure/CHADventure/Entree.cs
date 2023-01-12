@@ -20,10 +20,11 @@ namespace CHADventure
         private Vector2 _positionPerso;
 
         //changement de scene :
-        public bool _peutentrer = false;
+        private bool _peutentrer = false;
 
         public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
         public Coeur Coeur { get => _coeur; set => _coeur = value; }
+        public bool Peutentrer { get => _peutentrer; set => _peutentrer = value; }
 
 
         // pour récupérer une référence à l’objet game pour avoir accès à tout ce qui esthg
@@ -32,7 +33,7 @@ namespace CHADventure
         {
             _myGame = game;
         }
-        public override void Initialize()
+        public override void Initialize() 
         {
             _perso = new Perso();
             Coeur = new Coeur();
@@ -43,12 +44,12 @@ namespace CHADventure
         }
         public override void LoadContent()
         {
-            Coeur.Initialize();
-            _tiledMap = Content.Load<TiledMap>("map/Entree/ExterieurMap");
-            _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");
+            Coeur.Initialize(); // Initialize un nouveau Coeur
+            _tiledMap = Content.Load<TiledMap>("map/Entree/ExterieurMap");              //Défini la map
+            _mapLayer = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree");       //Défini les couches de collisions
             _mapLayer2 = _tiledMap.GetLayer<TiledMapTileLayer>("obstaclesEntree2");
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-            SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader());
+            SpriteSheet spriteSheetPerso = Content.Load<SpriteSheet>("ezio/ezioAnimation.sf", new MonoGame.Extended.Serialization.JsonContentLoader()); //Load le personnage
             _perso._ezioSprite = new AnimatedSprite(spriteSheetPerso);
             Coeur.LoadContent(_myGame);
             base.LoadContent();
@@ -56,7 +57,7 @@ namespace CHADventure
 
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)  // Update les animations du perso, la map, et les déplacements du perso
         {
             KeyboardState keyboardState = Keyboard.GetState();
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -71,36 +72,25 @@ namespace CHADventure
             _perso._ezioSprite.Update(deltaTime);
             OuverturePorte(_myGame.tx, _myGame.ty);
         }
-        public override void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime) // Dessine la map, le personnage et, ainsi que le coeur
         {
-            _tiledMapRenderer.Draw(); // on utilise la reference vers
+            _tiledMapRenderer.Draw();
             _myGame._spriteBatch.Begin();
             _myGame._spriteBatch.Draw(_perso._ezioSprite, _perso._positionPerso);
             Coeur.Draw(_myGame._spriteBatch);
-            _myGame._spriteBatch.End(); // Game1 pour changer le graphisme
+            _myGame._spriteBatch.End();
 
         }
 
-        public void OuverturePorte(ushort tx, ushort ty)
+        public void OuverturePorte(ushort tx, ushort ty) // permet de détecter l'endroit qui nous sert a changé de salle
         {
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
-            _peutentrer = false;
+            Peutentrer = false;
             if (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223)
             {
-                _peutentrer = true;
+                Peutentrer = true;
             }
-        }
-        public override void UnloadContent()
-        {
-            ushort tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth);
-            ushort ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight);
-            KeyboardState keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.E) && (_mapLayer2.GetTile(tx, ty).GlobalIdentifier == 224 || _mapLayer2.GetTile(tx, ty).GlobalIdentifier == 223))
-            {
-                base.UnloadContent();
-            }
-
         }
     }
 }

@@ -161,7 +161,7 @@ namespace CHADventure
                 touche = true;
             }
            
-            return touche;.
+            return touche;
 
         }
 
