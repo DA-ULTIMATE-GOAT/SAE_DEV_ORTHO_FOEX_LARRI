@@ -78,6 +78,18 @@
 /processorParam:TextureFormat=Color
 /build:Fond_Chateau.png
 
+#begin GameOver/GameOver.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GameOver/GameOver.png
+
 #begin Logo/AnimationLogo.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -365,6 +377,36 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:mob/Sombrero/SombreroFini.png
+
+#begin Sound/Ezio/Epee_Sound2.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Ezio/Epee_Sound2.mp3
+
+#begin Sound/Ezio/Ezio_Sound.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Ezio/Ezio_Sound.mp3
+
+#begin Sound/Menu/Menu2.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Menu/Menu2.mp3
+
+#begin Sound/SalleDG/CombatouBoss.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/SalleDG/CombatouBoss.mp3
+
+#begin Sound/SalleP/interieurChateau.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/SalleP/interieurChateau.mp3
 
 #begin Touches fond.png
 /importer:TextureImporter
