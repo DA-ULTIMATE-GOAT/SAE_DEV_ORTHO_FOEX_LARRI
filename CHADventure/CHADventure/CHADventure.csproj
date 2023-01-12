@@ -41,7 +41,7 @@
     <None Update="Content\mob\RedBlob\redBlobAnimation.sf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Content\mob\Sans\bossAnimation.sf">
+    <None Update="Content\mob\Landi\bossAnimation.sf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Content\mob\Sombrero\sombreroAnimation.sf">
