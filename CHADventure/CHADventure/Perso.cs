@@ -147,7 +147,6 @@ namespace CHADventure
             {
                 _cd = 0;
                 degats = true;
-                _animation = "attack";
                 Console.WriteLine("Marche2");
             }
             return degats;
@@ -182,6 +181,18 @@ namespace CHADventure
 
             return touche;
 
+        }
+
+        public string Attack(GameTime gameTime)
+        {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            _cd += elapsed;
+            KeyboardState keyboardState = Keyboard.GetState();
+            if(keyboardState.IsKeyDown(Keys.Space) && _cd >= 2000)
+            {
+                _animation = "Attack";
+            }
+            return _animation;
         }
 
 

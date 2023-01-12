@@ -28,6 +28,8 @@ namespace CHADventure
         private int _vitesse;
         private int pv = 2;
         private float reloadAttack;
+        private float _timer;
+        private bool isDead = false;
 
         public BlueBlob(Perso cible)
         {
@@ -52,54 +54,61 @@ namespace CHADventure
 
         public void DeplacementBlob(GameTime gameTime, TiledMap _tiledMap, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _spriteBlob.Play(_animationBlob);
-            _spriteBlob.Update(gameTime);
-            if (Pv == 2 || Pv == 1)
+            if(isDead == false)
             {
-                if (PositionBlob.X > Perso._positionPerso.X)
+                float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                _spriteBlob.Play(_animationBlob);
+                _spriteBlob.Update(gameTime);
+                if (Pv == 2 || Pv == 1)
                 {
-                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth + 1);
-                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
-                    _animationBlob = "walkEast";
+                    if (PositionBlob.X > Perso._positionPerso.X)
+                    {
+                        ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth + 1);
+                        ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
+                        _animationBlob = "walkEast";
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionBlob.X -= _vitesse * deltaTime;
-                }
-                if (PositionBlob.X < Perso._positionPerso.X)
-                {
-                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth - 1);
-                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
-                    _animationBlob = "walkWest";
+                        if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                            _positionBlob.X -= _vitesse * deltaTime;
+                    }
+                    if (PositionBlob.X < Perso._positionPerso.X)
+                    {
+                        ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth - 1);
+                        ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 1);
+                        _animationBlob = "walkWest";
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionBlob.X += _vitesse * deltaTime;
-                }
-                if (PositionBlob.Y > Perso._positionPerso.Y)
-                {
-                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
-                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight);
-                    _animationBlob = "walkNorth";
+                        if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                            _positionBlob.X += _vitesse * deltaTime;
+                    }
+                    if (PositionBlob.Y > Perso._positionPerso.Y)
+                    {
+                        ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
+                        ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight);
+                        _animationBlob = "walkNorth";
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionBlob.Y -= _vitesse * deltaTime;
-                }
-                if (PositionBlob.Y < Perso._positionPerso.Y)
-                {
-                    ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
-                    ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 2);
-                    _animationBlob = "walkSouth";
+                        if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                            _positionBlob.Y -= _vitesse * deltaTime;
+                    }
+                    if (PositionBlob.Y < Perso._positionPerso.Y)
+                    {
+                        ushort tx = (ushort)(PositionBlob.X / _tiledMap.TileWidth);
+                        ushort ty = (ushort)(PositionBlob.Y / _tiledMap.TileHeight + 2);
+                        _animationBlob = "walkSouth";
 
-                    if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
-                        _positionBlob.Y += _vitesse * deltaTime;
+                        if (!IsCollision(tx, ty, _mapLayer, _mapLayer2))
+                            _positionBlob.Y += _vitesse * deltaTime;
+                    }
+                    APorter(_positionBlob);
                 }
-                APorter(_positionBlob);
+            
             }
 
         }
+
         public void Draw(SpriteBatch spritebatch)
          {
-            spritebatch.Draw(this._spriteBlob, this.PositionBlob);
+            if (isDead == false)
+                spritebatch.Draw(this._spriteBlob, this.PositionBlob);
+            
          }
         private bool IsCollision(ushort x, ushort y, TiledMapTileLayer _mapLayer, TiledMapTileLayer _mapLayer2)
         {
@@ -132,22 +141,31 @@ namespace CHADventure
 
         public bool Attaque(GameTime gameTime, Perso perso)
         {
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            reloadAttack += elapsed;
             bool attaque = false;
-            if (APorter(perso._positionPerso) && reloadAttack >= 1500)
+            if (isDead == false)
             {
-                attaque = true;
-                reloadAttack = 0;
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                reloadAttack += elapsed;
+                if (APorter(perso._positionPerso) && reloadAttack >= 1500)
+                {
+                    attaque = true;
+                    reloadAttack = 0;
+                }
             }
             return attaque;
         }
 
         public string Mort(GameTime gameTime)
         {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            _timer += elapsed;
             if (Pv == 0)
             {
-                return _animationBlob = "death";
+                _animationBlob = "death";
+                if(_timer >= 600)
+                {
+                    isDead = true;
+                }
             }
             return _animationBlob;
             

@@ -97,6 +97,7 @@ namespace CHADventure
                 {
                     //_redBlob.Mort(gameTime);
                    _tabBlob[i].Mort(gameTime);
+                   //RedBlob.
                 }
 
             }
@@ -104,6 +105,7 @@ namespace CHADventure
                 if (!_perso._attaque)
                 _perso.DeplacementPerso(gameTime, _tiledMap, _mapLayer, _mapLayer2);
             _tiledMapRenderer.Update(gameTime);
+            _perso.Attack(gameTime);
             _perso._ezioSprite.Play(_perso._animation);
             _perso._ezioSprite.Update(deltaTime);
             for (int i = 0; i < _tabBlob.Length; i++)
