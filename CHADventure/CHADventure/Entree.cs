@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CHADventure.personnage;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;

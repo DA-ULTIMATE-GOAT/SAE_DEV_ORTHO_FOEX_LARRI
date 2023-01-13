@@ -1,10 +1,10 @@
 ﻿using System;
+using CHADventure.monstre;
+using CHADventure.personnage;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Screens;
-using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
@@ -13,12 +13,11 @@ namespace CHADventure
 {
     public class SalleDroite : GameScreen
     {
-        private Game1 _myGame;
+        private Game1 _myGame;                  //Initialization des variables
         private BlueBlob _blueBlob;
         private Perso _perso;
         private Coeur _coeur;
         private SallePrincipale _sallePrincipale;
-
         private readonly ScreenManager _screenManager;
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
@@ -31,6 +30,7 @@ namespace CHADventure
         private Vector2 _positionPerso;
         Random rndm = new Random();
 
+        //changement de scene :
         public bool _peutSallePrincipaleD = false;
 
         public Vector2 PositionPerso { get => _positionPerso; set => _positionPerso = value; }
@@ -46,7 +46,7 @@ namespace CHADventure
             
             Coeur = new Coeur();
         }
-        public override void Initialize()
+        public override void Initialize() //Initialization du tableau de blob bleu
         {
             _perso._positionPerso = PositionPerso;
             _tabBlob = new BlueBlob[5];
@@ -83,16 +83,16 @@ namespace CHADventure
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             for (int i = 0; i < _tabBlob.Length; i++)
             {
-                if(_perso.Degats(_blueBlob.PositionBlob, _tabBlob[i], gameTime)){
+                if(_perso.Degats(_blueBlob.PositionBlob, _tabBlob[i], gameTime)) // si le perso attaque un blob du tableau, lui enlève alors un pv
+                { 
                     _tabBlob[i].Pv -= 1;
                 }
-                if (_tabBlob[i].Attaque(gameTime, _perso))
+                if (_tabBlob[i].Attaque(gameTime, _perso)) // si le Perso prends un dégats, il perd un pv
                 {
                     Coeur.Pv -= 1;
                 }
-                if (_tabBlob[i].Pv == 0)
+                if (_tabBlob[i].Pv == 0) // si les pv d'un blob
                 {
-
                     _tabBlob[i].Mort(gameTime);
                 }
             }
@@ -110,7 +110,7 @@ namespace CHADventure
             _tiledMapRenderer.Update(gameTime);
             SallesPrincipale(_myGame.tx, _myGame.ty);
         }
-        public override void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime) //Draw la map, les blobs, le perso et les coeurs
         {
             _tiledMapRenderer.Draw();
             _myGame._spriteBatch.Begin();
@@ -123,7 +123,7 @@ namespace CHADventure
             _myGame._spriteBatch.End();
 
         }
-        public void SallesPrincipale(ushort tx, ushort ty)
+        public void SallesPrincipale(ushort tx, ushort ty) // permet de retourner dans la salle principale
         {
             tx = (ushort)(_perso._positionPerso.X / _tiledMap.TileWidth - 1);
             ty = (ushort)(_perso._positionPerso.Y / _tiledMap.TileHeight + 1);

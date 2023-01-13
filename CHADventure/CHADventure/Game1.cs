@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CHADventure.screen;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
@@ -19,7 +20,6 @@ namespace CHADventure
         private SallePrincipale _sallePrincipale;
         private SalleDroite _salleDroite;
         private SalleGauche _salleGauche;
-        private SalleBoss _salleBoss;
         private ScreenGameOver _screenGameOver;
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
@@ -54,10 +54,8 @@ namespace CHADventure
             _sallePrincipale = new SallePrincipale(this);
             _menu = new ScreenMenu(this);
             _touches = new Touches(this);
- 
             _salleDroite = new SalleDroite(this);
             _salleGauche = new SalleGauche(this);
-            _salleBoss = new SalleBoss(this);
             _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
             _screenGameOver = new ScreenGameOver(this);
         }

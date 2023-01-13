@@ -8,6 +8,7 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using Microsoft.Xna.Framework.Media;
 using System;
+using CHADventure.personnage;
 
 namespace CHADventure
 {
