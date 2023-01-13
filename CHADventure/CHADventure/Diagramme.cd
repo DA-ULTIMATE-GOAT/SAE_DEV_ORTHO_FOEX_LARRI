@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CHADventure.BlueBlob" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAASAAAAggQwAgAAAAABAAgBBAAAAcARAAFAgQAAQ=</HashCode>
+      <FileName>BlueBlob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.Coeur" Collapsed="true">
+    <Position X="8.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAGAABAAAAwAAgAAAAAAAgEBAAAAQABAAABAQAAQ=</HashCode>
+      <FileName>Coeur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.Entree" Collapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABCkAAEEAAwAAAAAAABEAAABAAAACAAAgAAAIAAQ=</HashCode>
+      <FileName>Entree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.Game1" Collapsed="true">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CHADventure.Game1.Etats" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Game1.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAQAEAAAA0AAAwAACgAAAAACBAKggAACAICAACAAgAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.Perso" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAAASCBAEAQCAgAKAAAAAEQiJAAAAAQACAgABABAAA=</HashCode>
+      <FileName>Perso.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.RedBlob" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAASAAAAggQwAgAAAAABAAgBBAAAAcARAAFAgQAAQ=</HashCode>
+      <FileName>RedBlob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.SalleDroite" Collapsed="true">
+    <Position X="8.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAACgAAkEQAwgAAAAAADEABABAAAAAABAgBCgIAAQ=</HashCode>
+      <FileName>SalleDroite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.SalleGauche" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAACgAAkEAAwAAAAAAADEABABgAAAAABAgBBAIAAQ=</HashCode>
+      <FileName>SalleGauche.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.SallePrincipale" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACgAAEEAAwAAAgAAABEAgATggQAAAAEAAwEIAAQ=</HashCode>
+      <FileName>SallePrincipale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.ScreenGameOver" Collapsed="true">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAAAEAgAiAAAAAIACAAAADAgAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ScreenGameOver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.ScreenMenu" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAACAAAAgAAoABAAAgAAAQIABAAAAAAAAAAiAAAAQ=</HashCode>
+      <FileName>ScreenMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHADventure.Touches" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABCAAAAAAAgAAAAAAAAAQIAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Touches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
